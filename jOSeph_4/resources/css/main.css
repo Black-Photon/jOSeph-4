@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color: whitesmoke;
+    -fx-font-size: 11pt;
+    -fx-font-family: serif;
+}
+.label{
+
+}
+.button{
+    -fx-background-radius: 6;
+    -fx-background-color: #282828;
+    -fx-text-fill: white;
+    -fx-background-size: 10%;
+}
+#green:hover{
+    -fx-background-color: green;
+}
+#red:hover{
+    -fx-background-color: firebrick;
+}
+#green:pressed{
+    -fx-background-color: lightgreen;
+}
+#red:pressed{
+    -fx-background-color: tomato;
+}

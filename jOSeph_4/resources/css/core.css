@@ -1,0 +1,12 @@
+.root{
+    -fx-background-color: #FF3232;
+}
+.button{
+    -fx-background-radius: 0;
+    -fx-background-color: #282828;
+    -fx-graphic: url("../images/core/calc.png");
+}
+#calc{
+    -fx-graphic: url("../images/core/calc.png");
+    -fx-width: 20%;
+}
