@@ -12,7 +12,7 @@ import java.util.Random;
 /* Creates a class to control the load scene(s)
  * BEWARE, THE WHOLE LOAD SCREEN IS COMPLETE NONSENSE. THIS IS THE REASON FOR THE NEW SKIP BUTTON
  *
- *
+ * If you solve the load screen, remember to celebrate
  *
  */
 
@@ -24,6 +24,7 @@ public class Load implements Runnable{
 	private Button skip;
 	private Scene scene;
 
+	//Constructor, to construct stuff
 	public Load(String message, double progress){
 		//System.out.println("construct: " + this);
 		layout = new VBox(20);
@@ -33,6 +34,7 @@ public class Load implements Runnable{
 		layout.setAlignment(Pos.CENTER);
 	}
 
+	//Basically makes and sets the scene
 	public void startLoad(){
 		//System.out.println("startLoad: " + this);
 		layout.getChildren().addAll(label,bar,skip);
@@ -47,33 +49,44 @@ public class Load implements Runnable{
 		skip.setOnAction(e -> {Main.coreProgramStart();});
 	}
 
+	//For Threads :D
 	public void run(){
 		System.out.println("run()");
 		startLoad();
 	}
 
+	public Scene getScene() {
+		return scene;
+	}
 
 
 
 
-
-
-
+	//Controls the order and timing of loading. As static, it has control over everything, unbound to any one object
 	public static void loadController(){
 		Load load = new Load("Getting jOSeph ready...",0.0);
 		load.startLoad();
+
+		Main.getVars().getWindow().setScene(load.getScene());
 
 		//Waits a while and creates a new object which replaces the scene
 		//TODO Can be optimised with Threads - Come back once learned
 		//IMPORTANT - BELOW IS THE NONSENSE MENTIONED IN HEADER
 
+
+
+
+
 		Load loadProblem = new Load("Until I manage to fix load, this is all there is", 1.0);
 		waitLoad(loadProblem, 2500);
 
+		//Exits load sequence
 		Main.coreProgramStart();
 
 		//As usual, doesn't work. Don't uncomment without intent to fix, or show brokenness
-		/*Load load1 = new Load("Configurating Settings...", 0.1);
+		/*
+		//Attempt without threads
+		Load load1 = new Load("Configurating Settings...", 0.1);
 		waitLoad(load1, 1500);
 
 		Load load2 = new Load("Saving Files to C:/Java/System/Projects...", 0.2);
@@ -122,8 +135,8 @@ public class Load implements Runnable{
 		}
 		Load load10 = new Load("Good to Go!", 1.0);
 		waitLoad(load10, 1000);
-
 */
+
 
 
 	}
@@ -132,13 +145,18 @@ public class Load implements Runnable{
 
 	//Method to do the waiting and loading
 	public static void waitLoad(Load load, int time){
+
 		try {
 			Thread.sleep(time);
-		}catch(Exception e){
-			Error error = new Error("Error", 500);
-			error.setLabel("Exception at class Load, contact admin");
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		load.startLoad();
+		//Creates and starts a thread to try and re-set the scene
+		Thread loadX = new Thread(load);
+		loadX.start();
+
+
+
+
 	}
 }
