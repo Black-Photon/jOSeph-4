@@ -8,5 +8,5 @@
 }
 #calc{
     -fx-graphic: url("../images/core/calc.png");
-    -fx-width: 20%;
+   // -fx-height: 4;
 }

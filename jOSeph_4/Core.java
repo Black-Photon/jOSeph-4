@@ -56,6 +56,7 @@ public class Core {
 		scene.getStylesheets().addAll("jOSeph_4/resources/css/core.css");
 
 		//UNFINISHED
+		//TODO LEARN SCENE BUILDER!
 
 	}
 	public void start(){
