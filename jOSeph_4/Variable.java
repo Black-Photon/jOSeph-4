@@ -19,6 +19,7 @@ public class Variable {
 	private Files files;
 	private File mainFile;
 	private Insets defaultInsets;
+	private String user;
 
 	public Variable(Stage primaryStage) {
 		window = primaryStage;
@@ -71,5 +72,13 @@ public class Variable {
 
 	public Insets getDefaultInsets() {
 		return defaultInsets;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 }

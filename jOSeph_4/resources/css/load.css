@@ -3,11 +3,17 @@
     -fx-font-size: 12pt;
     -fx-font-family: fantasy;
 }
+.label{
+    -fx-font-size: 12pt;
+    -fx-font-family: fantasy;
+}
 .button{
     -fx-background-radius: 6;
     -fx-background-color: #282828;
     -fx-text-fill: white;
     -fx-background-size: 10%;
+    -fx-font-size: 12pt;
+    -fx-font-family: fantasy;
 }
 .button:hover{
     -fx-background-color: cyan;

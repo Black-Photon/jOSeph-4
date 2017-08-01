@@ -1,12 +1,72 @@
 .root{
-    -fx-background-color: #FF3232;
+    -fx-background-color: whitesmoke;
 }
 .button{
     -fx-background-radius: 0;
     -fx-background-color: #282828;
+}
+#generate_s{
+    -fx-graphic: url("../images/core/generator.png");
+}
+#quiz_s{
+    -fx-graphic: url("../images/core/quiz.png");
+}
+#calc_s{
     -fx-graphic: url("../images/core/calc.png");
 }
-#calc{
-    -fx-graphic: url("../images/core/calc.png");
-   // -fx-height: 4;
+#new_s{
+    -fx-graphic: url("../images/core/new.png");
+}
+#help_s{
+    -fx-graphic: url("../images/core/help.png");
+}
+#exit_s{
+    -fx-graphic: url("../images/core/exit.png");
+}
+#next_s{
+    -fx-graphic: url("../images/core/next.png");
+}
+#generate{
+    -fx-background-color: #282828;
+    -fx-text-fill: whitesmoke;
+    -fx-background-radius: 10;
+}
+#generate:hover{
+    -fx-background-color: #888888;
+}
+#generate:pressed{
+    -fx-background-color: #999999;
+}
+.progress-bar > .track {
+    -fx-text-box-border: black;
+    -fx-control-inner-background: whitesmoke;
+    -fx-background-radius: 10;
+}
+.progress-bar .bar {
+    -fx-text-box-border: black;
+    -fx-padding: 8px;
+    -fx-background-insets: 0;
+    -fx-background-color: #282828;
+    -fx-background-radius: 10;
+}
+.scroll-pane {
+    -fx-background-color: #282828;
+}
+
+.scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: whitesmoke;
+    -fx-background-radius: 5em;
 }

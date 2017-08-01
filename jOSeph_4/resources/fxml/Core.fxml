@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/core.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.Core_Controller">
+   <left>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" prefWidth="96.0">
+               <content>
+                  <VBox maxWidth="90.0">
+                     <children>
+                        <Button id="generate_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="quiz_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="calc_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="new_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="help_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="exit_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="next_s" layoutX="10.0" layoutY="360.0" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </left>
+   <center>
+      <Group BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="250.0" prefWidth="250.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="250.0" prefWidth="250.0" spacing="20.0">
+                     <children>
+                        <Label text="Generating...">
+                           <font>
+                              <Font name="Arial" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button id="generate" mnemonicParsing="false" onAction="#onGeneratorClick" prefHeight="200.0" prefWidth="200.0" text="Generate">
+                           <font>
+                              <Font name="Arial" size="29.0" />
+                           </font>
+                        </Button>
+                        <ProgressBar fx:id="bar" prefWidth="200.0" progress="0.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Ideas: ">
+                                 <font>
+                                    <Font name="Arial" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="count" text="0">
+                                 <font>
+                                    <Font name="Arial" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Group>
+   </center>
+</BorderPane>

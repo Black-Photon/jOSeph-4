@@ -42,15 +42,23 @@ public class Main extends Application{
 
 	}
 
-	public static void coreProgramStart(){
+	public static void startLoad() throws Exception{
+		Load load = new Load();
+	}
+
+	public static void coreProgramStart() {
 		Core core = new Core();
-		core.start();
+		try {
+			core.start();
+		} catch (Exception e) {
+			System.out.println("Error #0004");
+			e.printStackTrace();
+		}
 	}
 
 
 
 	//Getters and Setters
-
 	public static Variable getVars() {
 		return vars;
 	}
