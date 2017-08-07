@@ -4,7 +4,7 @@ public class Version {
 
 	//Temp names to hold version information. There should only be 1 object instance at any time
 	private String a = "Fairly Stable";
-	private int[] b = {4,0,0};
+	private int[] b = {4,1,2};
 	private String c = "Alpha";
 
 	public Version(){
