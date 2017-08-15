@@ -1,0 +1,50 @@
+.root{
+    -fx-background-color: whitesmoke;
+}
+.button{
+    -fx-background-radius: 0;
+    -fx-background-color: #282828;
+    -fx-text-fill: whitesmoke;
+}
+#generate_s{
+    -fx-graphic: url("../../images/core/generator.png");
+}
+#quiz_s{
+    -fx-graphic: url("../../images/core/quiz.png");
+}
+#calc_s{
+    -fx-graphic: url("../../images/core/calc.png");
+}
+#new_s{
+    -fx-graphic: url("../../images/core/new.png");
+}
+#help_s{
+    -fx-graphic: url("../../images/core/help.png");
+}
+#exit_s{
+    -fx-graphic: url("../../images/core/exit.png");
+}
+#next_s{
+    -fx-graphic: url("../../images/core/next.png");
+}
+.scroll-pane {
+    -fx-background-color: #282828;
+}
+
+.scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: whitesmoke;
+    -fx-background-radius: 5em;
+}
