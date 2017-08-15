@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.Launcher_Controller">
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="green" mnemonicParsing="false" onAction="#login" text="On" />
+            <Button id="red" mnemonicParsing="false" onAction="#quit" text="Off" />
+         </children>
+      </HBox>
+   </center>
+   <top>
+      <Label text="Welcome to jOSeph" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <Label fx:id="version" text="If this message is visible, contact Admin. Error #0002" BorderPane.alignment="CENTER" />
+   </bottom>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</BorderPane>
