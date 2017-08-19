@@ -1,5 +1,6 @@
 package jOSeph_4;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -37,7 +38,9 @@ public class Error {
 		borderPane.setBottom(ok);
 		borderPane.setAlignment(borderPane.getBottom(), Pos.CENTER);
 
-		borderPane.setPadding(Main.getVars().getDefaultInsets());
+		//TODO REDO THIS!!!!
+		//borderPane.setPadding(Main.getVars().getDefaultInsets());
+		borderPane.setPadding(new Insets(20));
 
 		scene = new Scene(borderPane, width,150);
 		scene.getStylesheets().setAll("jOSeph_4/resources/css/error.css");
