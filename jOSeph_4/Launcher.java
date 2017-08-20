@@ -1,33 +1,22 @@
 package jOSeph_4;
 
-import jOSeph_4.resources.controllers.Launcher_Controller;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 
-public class Launcher {
+import java.io.IOException;
 
-	private Scene scene;
+class Launcher {
 
-	/* This method creates a new launcher by referencing FXML file
-	 *
-	 *
+	/**
+	 * This method creates a new launcher by referencing FXML file
 	 *
 	 */
-
-	public Launcher() throws Exception{
+	void start() throws IOException{
 		Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Launcher.fxml"));
-		scene = new Scene(root);
+		Scene scene = new Scene(root);
+		Variable.getWindow().setScene(scene);
+		Variable.getWindow().show();
 	}
 
-	//Setters and Getters
-
-	public Scene getScene() {
-		return scene;
-	}
 }

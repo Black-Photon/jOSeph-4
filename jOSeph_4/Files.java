@@ -1,97 +1,102 @@
 package jOSeph_4;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Files {
+/**
+ * File from jOSeph 3 optimised for jOSeph 4
+ *
+ * Imagine the formatter to be the file
+ */
+
+class Files {
+
 	//Variables
-	private Scanner read;
+	private Scanner scanner;
 
-	private Formatter file;
+	private Formatter formatter;
 
-	/* If 'create' is true, it creates the file. Otherwise, it simply reads it. It should be made on every load
-	 *
-	 * The 'data' is what the file will be set to once made - use to keep old data and reload to temp system vars
-	 *
-	 * I copied this from jOSeph 3, so it may not be fully stable - by now I've forgotten how it works!
+	/**
+	 * Loads, reads and writes to the config file
+	 * @param data Blank database to save to
 	 */
-
-
-	public HashMap<String, String> load(boolean create, HashMap<String, String> data){
-		if(Main.getVars().getMainFile().isFile()){
-			loadFile();
-			Main.getVars().setDatabase(readFile());
-		}else{
-			Main.getVars().getDatabase().put("Ele20002", "Triangle");
-			Main.getVars().getDatabase().put("Guest", "Admin");
-			Main.getVars().getDatabase().put("Tom", "Tom");
-		}
-		if(data!=null){
-			Main.getVars().setDatabase(data);
-
-		}
-		if(create){
-			createFile();
-			writeFile(Main.getVars().getDatabase());
+	void loadConfig(HashMap<String, String> data){
+		try {
+			if(fileExists(Variable.getMainFile())){
+				loadFile(Variable.getMainFile());
+				readFile(data);
+			}else{
+				addDefaultConfigData(data);
+			}
+			createFile(Variable.getConfigLocation());
+			writeFile(data);
 			closeFile();
-			return null;
-		}else{
-			loadFile();
-			return readFile();
-		}
-
-	}
-	private void createFile(){
-		try{
-			file = new Formatter("jOSeph_config.txt");
-		}catch(Exception e){
-			//TODO Add Error Message
-			//AlertBox_GUI.display("Error...", "Error trying to write a new file", "Return", 300);
-		}
-		File use = new File("jOSeph_config.txt");
-		try{
-			read = new Scanner(use);
-		}catch(Exception e){
-			System.out.println("Error?");
+			Variable.setDatabase(data);
+		}catch (IOException e){
+			e.printStackTrace();
+			new Error("Error #0006: IOException at Files.java", 500);
 		}
 	}
-	private void loadFile(){
-		File use = new File("jOSeph_config.txt");
-		try{
-			read = new Scanner(use);
-		}catch(Exception e){
-			System.out.println("Error");
-		}
-
+	//Creating a formatter creates a file
+	private void createFile(String location) throws IOException{
+		formatter = new Formatter(location);
 	}
-	private void writeFile(HashMap<String, String> x){
-		int z = 0;
-		while(z<x.size()){
-			Set<String> keyset=x.keySet();
-			//System.out.printf("%s %s\n",keyset.toArray()[z],x.get(keyset.toArray()[z]));
-			file.format("%s %s ",
-					keyset.toArray()[z],
-					Encryption.encrypt(x.get(keyset.toArray()[z]),"yu53efae98uafe05"));
-			z++;
+	//Creating a scanner allows the file to be read
+	private void loadFile(File file) throws IOException{
+		scanner = new Scanner(file);
+	}
+	//Writes the database to the file
+	private void writeFile(HashMap<String, String> data){
+		Set<String> keyset = data.keySet();
+		for(int i = 0; i<data.size(); i++){
+			formatter.format("%s %s ", keyset.toArray()[i], data.get(keyset.toArray()[i]));
 		}
 	}
-
-	private HashMap<String, String> readFile(){
+	//Reads file and puts into database
+	private void readFile(HashMap<String,String> data){
 		String a;
 		String b;
-		while(read.hasNext()){
-			a = read.next();
-			b = Encryption.decrypt(read.next(),"yu53efae98uafe05");
-			Main.getVars().getDatabase().put(a, b);
+		while(scanner.hasNext()){
+			a = scanner.next();
+			b = scanner.next();
+			data.put(a, b);
 		}
-		return Main.getVars().getDatabase();//"yu53efae98uafe05"
-
 	}
+	//The formatter is the only thing need be closed
 	private void closeFile(){
-		file.close();
+		formatter.close();
+	}
+	private boolean fileExists(File file){
+		return file.isFile();
+	}
 
+	//Simply adds default username's and passwords to the database
+	private void addDefaultConfigData(HashMap<String,String> data){
+		data.put("Ele20002", Encryption.hashEncrypt("Triangle"));
+		data.put("Guest", Encryption.hashEncrypt("Admin"));
+		data.put("Tom", Encryption.hashEncrypt("Tom"));
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

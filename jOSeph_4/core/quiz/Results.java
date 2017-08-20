@@ -1,6 +1,7 @@
 package jOSeph_4.core.quiz;
 
 import jOSeph_4.Main;
+import jOSeph_4.Variable;
 import jOSeph_4.resources.controllers.quiz.Question_Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,8 +22,8 @@ public class Results {
 
 		}
 		scene = new Scene(root);
-		Main.getVars().getWindow().setScene(scene);
-		Main.getVars().getWindow().setTitle("Results");
+		Variable.getWindow().setScene(scene);
+		Variable.getWindow().setTitle("Results");
 
 
 

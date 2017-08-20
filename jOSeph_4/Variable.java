@@ -1,84 +1,75 @@
 package jOSeph_4;
 
-import javafx.geometry.Insets;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Random;
 
 public class Variable {
 
 	//Variables go here
 
 	//Substitutes primaryStage with window to readability (Hopefully)
-	private final Stage window;
+	private static Stage window;
 
-	private Version versionObject;
-	private HashMap<String,String> database;
-	private Files files;
-	private File mainFile;
-	private Insets defaultInsets;
-	private String user;
-
-	public Variable(Stage primaryStage) {
-		window = primaryStage;
-		versionObject = new Version();
-		database = new HashMap<>();
-		files = new Files();
-		mainFile = new File("jOSeph_config.txt");
-		defaultInsets = new Insets(20);
-
-	}
-
+	private static Version versionObject = new Version();
+	private static HashMap<String,String> database = new HashMap<>();
+	private static Files configFiles = new Files();
+	private static String user;
+	private static final String configLocation = "jOSeph_config.txt";
+	private static File mainFile = new File(configLocation);
 
 	//Getters and Setters
 
-	public Stage getWindow() {
+	public static Stage getWindow() {
 		return window;
 	}
 
-	public Version getVersionObject() {
+	public static void setWindow(Stage primaryStage){
+		window = primaryStage;
+	}
+
+	public static Version getVersionObject() {
 		return versionObject;
 	}
 
-	public void setVersionObject(Version versionObject) {
-		this.versionObject = versionObject;
+	public static void setVersionObject(Version versionObject) {
+		Variable.versionObject = versionObject;
 	}
 
-	public HashMap<String, String> getDatabase() {
+	public static HashMap<String, String> getDatabase() {
 		return database;
 	}
 
-	public void setDatabase(HashMap<String, String> database) {
-		this.database = database;
+	public static void setDatabase(HashMap<String, String> database) {
+		Variable.database = database;
 	}
 
-	public Files getFiles() {
-		return files;
+	public static Files getConfigFiles() {
+		return configFiles;
 	}
 
-	public void setFiles(Files files) {
-		this.files = files;
+	public static void setConfigFiles(Files files) {
+		Variable.configFiles = files;
 	}
 
-	public File getMainFile() {
+	public static File getMainFile() {
 		return mainFile;
 	}
 
-	public void setMainFile(File mainFile) {
-		this.mainFile = mainFile;
+	public static void setMainFile(File mainFile) {
+		Variable.mainFile = mainFile;
 	}
 
-	public Insets getDefaultInsets() {
-		return defaultInsets;
-	}
-
-	public String getUser() {
+	public static String getUser() {
 		return user;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public static void setUser(String user) {
+		Variable.user = user;
+	}
+
+	public static String getConfigLocation() {
+		return configLocation;
 	}
 }

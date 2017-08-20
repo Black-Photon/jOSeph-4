@@ -22,7 +22,7 @@
                      <children>
                         <Button id="generate_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onGenMenuClick" />
                         <Button id="quiz_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onQuizMenuClick" />
-                        <Button id="calc_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
+                        <Button id="calc_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onCalcMenuClick" />
                         <Button id="new_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
                         <Button id="help_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" />
                         <Button id="exit_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#exit" />
@@ -87,6 +87,7 @@
                   </VBox>
                </children>
             </Pane>
+            <Pane fx:id="calculatorPane" prefHeight="200.0" prefWidth="200.0" visible="false" />
          </children>
       </Group>
    </center>

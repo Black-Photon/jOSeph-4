@@ -1,7 +1,9 @@
 package jOSeph_4;
 
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +13,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Error {
 
 	private Label label;
@@ -19,39 +23,54 @@ public class Error {
 	private Scene scene;
 	private Stage stage;
 	private Button ok;
+	private double width;
+	private String text;
 
-	public Error(String title, int width){
-		label = new Label();
-		image = new Image("jOSeph_4/resources/images/Error.png");
-		imageView = new ImageView(image);
-		HBox hBox = new HBox();
-		hBox.setSpacing(10);
-		hBox.getChildren().addAll(imageView,label);
-		hBox.setAlignment(Pos.CENTER);
+	private static Error currentObject;
 
-		ok = new Button("OK");
-		ok.setOnAction(e -> {stage.close();});
+	public Error() {
+		this("Error");
+	}
 
+	public Error(String text){
+		this(text, 400);
+	}
 
-		BorderPane borderPane = new BorderPane();
-		borderPane.setCenter(hBox);
-		borderPane.setBottom(ok);
-		borderPane.setAlignment(borderPane.getBottom(), Pos.CENTER);
+	public Error(String text, int width){
+		this(text, width, "Error");
+	}
 
-		//TODO REDO THIS!!!!
-		//borderPane.setPadding(Main.getVars().getDefaultInsets());
-		borderPane.setPadding(new Insets(20));
-
-		scene = new Scene(borderPane, width,150);
-		scene.getStylesheets().setAll("jOSeph_4/resources/css/error.css");
+	public Error(String text, int width, String title){
+		this.width = width;
+		this.text = text;
+		currentObject = this;
 
 		stage = new Stage();
 		stage.setTitle(title);
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Error.fxml"));
+			scene = new Scene(root);
+		}catch (IOException e){
+			System.out.println("Could not generate Error Message");
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	public void setLabel(String text) {
-		this.label.setText(text);
+	public static Error getCurrentObject() {
+		return currentObject;
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void exit(){
+		stage.close();
 	}
 }

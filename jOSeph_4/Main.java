@@ -4,12 +4,9 @@ import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.util.Iterator;
+import java.io.IOException;
 
 public class Main extends Application{
-
-	//Variables
-	private static Variable vars;
 
 	//Main Method
 	public static void main(String[] args) {
@@ -19,54 +16,39 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		vars = new Variable(primaryStage);
-		vars.getWindow().setTitle("");
-		if (vars.getMainFile().isFile() == false) {
-			vars.getFiles().load(true, null);
-		} else {
-			vars.getFiles().load(true, vars.getDatabase());
-		}
-		//System.out.println(vars.getDatabase());
+		Variable.setWindow(primaryStage);
+		Variable.getWindow().setTitle("");
+		Variable.getConfigFiles().loadConfig( Variable.getDatabase());
 
 		//Sets up Stage
-		vars.getWindow().setOnCloseRequest(e -> {
+		Variable.getWindow().setOnCloseRequest(e -> {
 			quit();
 			e.consume();
 		});
-		vars.getWindow().getIcons().add(new Image("jOSeph_4/resources/images/BasicLogo.png"));
-		vars.getWindow().setTitle("jOSeph " + vars.getVersionObject().bToString());
+		Variable.getWindow().getIcons().add(new Image("jOSeph_4/resources/images/BasicLogo.png"));
+		Variable.getWindow().setTitle("jOSeph " + Variable.getVersionObject().bToString());
 
-		Launcher launcher = new Launcher();
-		vars.getWindow().setScene(launcher.getScene());
-		vars.getWindow().show();
-
+		new Launcher().start();
 	}
 
-	public static void startLoad() throws Exception{
+	public static void startLoad() throws IOException{
 		Load load = new Load();
+		load.startLoad();
 	}
 
-	public static void coreProgramStart() {
+	public static void coreProgramStart(){
 		Core core = new Core();
 		try {
 			core.start();
-		} catch (Exception e) {
-			System.out.println("Error #0004");
+		} catch (IOException e) {
+			new Error("Error #0004: IOException at Main.java",400);
 			e.printStackTrace();
 		}
 	}
 
-
-
-	//Getters and Setters
-	public static Variable getVars() {
-		return vars;
-	}
-
-
 	//Quit
 	public static void quit(){
 		System.out.println("System closed successfully");
-		vars.getWindow().close();
+		Variable.getWindow().close();
 	}
 }

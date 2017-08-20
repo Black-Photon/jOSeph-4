@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import java.io.IOException;
+
 public class Core {
 
 	private Scene scene;
@@ -13,11 +15,11 @@ public class Core {
 	public Core(){
 
 	}
-	public void start() throws Exception{
+	public void start() throws IOException{
 		Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Core.fxml"));
 		scene = new Scene(root);
-		Main.getVars().getWindow().setTitle("Page 1");
-		Main.getVars().getWindow().setScene(scene);
+		Variable.getWindow().setTitle("Page 1");
+		Variable.getWindow().setScene(scene);
 	}
 	public static void startQuiz(){
 		try{

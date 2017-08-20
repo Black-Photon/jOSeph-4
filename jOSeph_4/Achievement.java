@@ -13,9 +13,9 @@ public class Achievement {
 	private String description;
 	private int level;
 	private boolean obtained;
-	private String type;
+	private Achievement_Type type;
 
-	public Achievement(String url, String title, String description, int level, String type){
+	public Achievement(String url, String title, String description, int level, Achievement_Type type){
 		image = new Image("jOSeph_4/resources/images/achievements/"+url,true);
 		this.title = title;
 		this.description = description;

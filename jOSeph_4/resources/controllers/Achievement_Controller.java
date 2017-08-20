@@ -39,12 +39,13 @@ public class Achievement_Controller  implements Initializable {
 
 	public static void createGeneratorAchievements(){
 		generatorAchievements = new ArrayList<Achievement>();
-		generatorAchievements.add(new Achievement("level10.png","Good Thinker", "Reached Level 10",10, Achievement_Type.GENERATOR));
-		generatorAchievements.add(new Achievement("level25.png","Great Thinker", "Had lots of ideas",25, Achievement_Type.GENERATOR));
-		generatorAchievements.add(new Achievement("level42.png","Deep Thought", "Discovered the answer to Life, the Universe and Everything",42, Achievement_Type.GENERATOR));
-		generatorAchievements.add(new Achievement("level50.png","Amazing Thinker", "Formed a new Theory",50, Achievement_Type.GENERATOR));
-		generatorAchievements.add(new Achievement("level100.png","Prize Winning Thinker", "Got a Turing Award",100, Achievement_Type.GENERATOR));
-		generatorAchievements.add(new Achievement("level500.png","Revolutionary Thinker", "The Modern Newton",500, Achievement_Type.GENERATOR));
+		Achievement_Type type = Achievement_Type.GENERATOR;
+		generatorAchievements.add(new Achievement("level10.png","Good Thinker", "Reached Level 10",10, type));
+		generatorAchievements.add(new Achievement("level25.png","Great Thinker", "Had lots of ideas",25, type));
+		generatorAchievements.add(new Achievement("level42.png","Deep Thought", "Discovered the answer to Life, the Universe and Everything",42, type));
+		generatorAchievements.add(new Achievement("level50.png","Amazing Thinker", "Formed a new Theory",50, type));
+		generatorAchievements.add(new Achievement("level100.png","Prize Winning Thinker", "Got a Turing Award",100, type));
+		generatorAchievements.add(new Achievement("level500.png","Revolutionary Thinker", "The Modern Newton",500, type));
 	}
 
 	public static void onLevelUp(int level) throws IOException{

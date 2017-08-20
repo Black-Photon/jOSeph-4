@@ -1,6 +1,7 @@
 package jOSeph_4.core.quiz;
 
 import jOSeph_4.Main;
+import jOSeph_4.Variable;
 import jOSeph_4.resources.controllers.quiz.Question_Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -118,11 +119,11 @@ public class Question {
 			e.printStackTrace();
 		}
 		scene = new Scene(root);
-		Main.getVars().getWindow().setScene(scene);
+		Variable.getWindow().setScene(scene);
 		try {
-			Main.getVars().getWindow().setTitle(subject.thisSubjectShown);
+			Variable.getWindow().setTitle(subject.thisSubjectShown);
 		}catch(Exception e){
-			Main.getVars().getWindow().setTitle("Quiz");
+			Variable.getWindow().setTitle("Quiz");
 		}
 
 

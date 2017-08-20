@@ -7,10 +7,6 @@ public class Version {
 	private int[] b = {4,1,2};
 	private String c = "Alpha";
 
-	public Version(){
-		//Temp for if later needed
-	}
-
 	public String getA() {
 		return a;
 	}
@@ -35,12 +31,17 @@ public class Version {
 		this.c = c;
 	}
 
-	//Gets version in "x.y.z" form
+	/**
+	 * 	Gets version in "x.y.z" form
+	 */
 	public String bToString(){
-		String version = "";
+		StringBuilder version = new StringBuilder("");
 		for(int x:b) {
-			version+=x+".";
-		} version = version.substring(0,version.length()-1);
-		return version;
+			version.append(x).append(".");
+		}
+		return version.substring(0,version.length()-1);
+	}
+	public String getWholeVersion(){
+		return bToString() + " " + getC() + " - " + getA();
 	}
 }
