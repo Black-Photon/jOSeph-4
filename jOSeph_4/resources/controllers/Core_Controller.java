@@ -2,13 +2,18 @@ package jOSeph_4.resources.controllers;
 
 import jOSeph_4.Core;
 import jOSeph_4.Main;
+import jOSeph_4.Variable;
 import jOSeph_4.core.Calculator;
-import jOSeph_4.core.quiz.Quiz;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,10 +32,15 @@ public class Core_Controller implements Initializable{
 	Pane quizPane;
 	@FXML
 	Pane calculatorPane;
+	@FXML
+	VBox vbox;
+	@FXML
+	Rectangle rect;
 
 	private static int countInt = 0;
 	private static double progress;
 	private ArrayList<Pane> panes;
+	private volatile Thread thread;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -51,7 +61,47 @@ public class Core_Controller implements Initializable{
 		panes.add(quizPane);
 		panes.add(calculatorPane);
 
+		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
+		rect.setFill(color);
+		rect.setStroke(color);
+
+		thread = new Thread(new Task() {
+			private double height;
+
+			@Override
+			protected Object call() throws Exception {
+				return null;
+			}
+			@Override
+			public void run(){
+				final int size1 = 96;
+				final int size2 = 80;
+				final int noOfButtons = 7;
+				final int heightBreakpoint = noOfButtons * 76;
+				while(thread == Thread.currentThread()){
+					height = Variable.getWindow().getHeight();
+					if(height>=heightBreakpoint){
+						vbox.setMinWidth(size1);
+						vbox.setPrefWidth(size1);
+						vbox.setMaxWidth(size1);
+						rect.setWidth(size1);
+					}else{
+						vbox.setMinWidth(size2);
+						vbox.setPrefWidth(size2);
+						vbox.setMaxWidth(size2);
+						rect.setWidth(size2);
+					}
+					rect.setHeight(height-heightBreakpoint);
+				}
+			}
+		});
+		thread.start();
+		Variable.getWindow().setOnCloseRequest(e->{
+			thread = null;
+			Main.quit();
+			e.consume();
+		});
 	}
 
 	public void onGeneratorClick(){
@@ -86,10 +136,12 @@ public class Core_Controller implements Initializable{
 	}
 
 	public void onQuizStartPressed(){
+		closeThread();
 		Core.startQuiz();
 	}
 
-	public void hideAllPanes(){
+	private void hideAllPanes(){
+		closeThread();
 		for(Pane i: panes){
 			i.setVisible(false);
 		}
@@ -108,6 +160,14 @@ public class Core_Controller implements Initializable{
 		calculatorPane.setVisible(true);
 	}
 	public void exit(){
+		closeThread();
 		Main.quit();
+	}
+	private void closeThread(){
+		Variable.getWindow().setOnCloseRequest(e->{
+			Main.quit();
+			e.consume();
+		});
+		thread = null;
 	}
 }

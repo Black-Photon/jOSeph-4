@@ -126,7 +126,7 @@ public class Calculator_Controller {
 		ArrayList<Character> operators = info.get(1);
 
 		//List of numbers in problem (In order)
-		ArrayList<Float> numbers = info.get(0);
+		ArrayList<Double> numbers = info.get(0);
 
 
 		//Given the end of the problem is an operator ('\'), the number of
@@ -150,9 +150,9 @@ public class Calculator_Controller {
 		//Knowing there should be 1 number, this confirms it, and displays the answer
 		if(numbers.size()==1) {
 			if(numbers.get(0)==Math.round(numbers.get(0))){
-				text.setText(Integer.toString(Math.round(numbers.get(0))));
+				text.setText(Long.toString(Math.round(numbers.get(0))));
 			}else {
-				text.setText(Float.toString(numbers.get(0)));
+				text.setText(Double.toString(numbers.get(0)));
 			}
 		}else if(numbers.size()==0) {
 			new Error("Math Error: No Input", 300);
@@ -168,7 +168,7 @@ public class Calculator_Controller {
 	 * @param operators The list of operators
 	 * @param numbers The list of numbers
 	 */
-	private void completeOperatorOperations(int size, char operatorType, ArrayList<Character> operators, ArrayList<Float> numbers){
+	private void completeOperatorOperations(int size, char operatorType, ArrayList<Character> operators, ArrayList<Double> numbers){
 		//Runs through numbers up to the size of lists
 		for (int i = 0; i < size; i++) {
 			//Only does anything if the operator is found
@@ -192,8 +192,8 @@ public class Calculator_Controller {
 				//
 				//	Answer = 6.5
 				operators.remove(i);
-				float num1 = numbers.get(i);
-				float num2 = numbers.get(i+1);
+				double num1 = numbers.get(i);
+				double num2 = numbers.get(i+1);
 				numbers.remove(i);
 				numbers.remove(i);
 				numbers.add(i, performOperation(operatorType, num1, num2));
@@ -219,7 +219,7 @@ public class Calculator_Controller {
 		//Creates ArrayLists - See parseAnswer for uses
 		ArrayList<ArrayList> superArray = new ArrayList<>();
 		ArrayList<Character> operatorArray = new ArrayList<>();
-		ArrayList<Float> numberArray = new ArrayList<>();
+		ArrayList<Double> numberArray = new ArrayList<>();
 
 		//When it detects an operator, it compiles everything read before into a number with parseNumber,
 		//and adds this number and the operator to ArrayLists
@@ -248,7 +248,7 @@ public class Calculator_Controller {
 	 * @param num2 Other number to perform operation on
 	 * @return Answer to operation
 	 */
-	private float performOperation(char operator, float num1, float num2){
+	private double performOperation(char operator, double num1, double num2){
 		switch(operator){
 			case '+':
 				return num1 + num2;
@@ -283,7 +283,7 @@ public class Calculator_Controller {
 	 * @param string String to convert
 	 * @return The number (float)
 	 */
-	private float parseNumber(String string){
+	private double parseNumber(String string){
 		try{
 			//If an int, simply converts
 			return Integer.parseInt(string);
@@ -329,7 +329,7 @@ public class Calculator_Controller {
 	 * @param number To convert
 	 * @return The decimal
 	 */
-	private float toDecimal(float number){
+	private double toDecimal(double number){
 		//Tests all reasonable divisions by 10 - Trial and error approach
 		for(float i = 10; i<Math.pow(10,10); i = i*10){
 			//Tests for decimal - first number <0

@@ -6,6 +6,7 @@
     -fx-background-color: #282828;
     -fx-text-fill: whitesmoke;
 }
+
 #generate_s{
     -fx-graphic: url("../../images/core/generator.png");
 }
@@ -27,6 +28,9 @@
 #next_s{
     -fx-graphic: url("../../images/core/next.png");
 }
+#settings_s{
+    -fx-graphic: url("../../images/core/settings.png");
+}
 .scroll-pane {
     -fx-background-color: #282828;
 }
@@ -47,4 +51,10 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color: whitesmoke;
     -fx-background-radius: 5em;
+}
+.icon{
+    -fx-pref-width: 7em;
+}
+#borderPane{
+    -fx-background-color: #282828;
 }
