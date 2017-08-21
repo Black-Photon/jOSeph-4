@@ -12,11 +12,8 @@ class Launcher {
 	 * This method creates a new launcher by referencing FXML file
 	 *
 	 */
-	void start() throws IOException{
-		Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Launcher.fxml"));
-		Scene scene = new Scene(root);
-		Variable.getWindow().setScene(scene);
-		Variable.getWindow().show();
+	void start(){
+		Main.createWindow("Launcher.fxml",Variable.getWindow(), "jOSeph " + Variable.getVersionObject().bToString());
 	}
 
 }

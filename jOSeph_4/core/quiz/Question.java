@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import java.util.MissingFormatArgumentException;
+
 /**
  * Holds all question data, and used to directly make into new window with createWindow();
  */
@@ -108,21 +110,10 @@ public class Question {
 
 		Question_Controller.preinitialize(questionNumber,subject,question,answers,this,correctAnswer);
 
-
-
-		Parent root = null;
-		FXMLLoader fxmlLoader = new FXMLLoader();
-		try {
-			root = fxmlLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/quiz/Question.fxml"));
-		}catch(Exception e){
-			System.out.println("Root could not be set D:");
-			e.printStackTrace();
-		}
-		scene = new Scene(root);
-		Variable.getWindow().setScene(scene);
+		Main.createWindow("quiz/Question.fxml", Variable.getWindow(), "Quiz");
 		try {
 			Variable.getWindow().setTitle(subject.thisSubjectShown);
-		}catch(Exception e){
+		}catch(NullPointerException e){
 			Variable.getWindow().setTitle("Quiz");
 		}
 

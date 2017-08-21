@@ -1,6 +1,9 @@
 package jOSeph_4;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -13,6 +16,7 @@ public class Main extends Application{
 		launch();
 	}
 
+	public static final Windows windows = new Windows();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -26,24 +30,27 @@ public class Main extends Application{
 			e.consume();
 		});
 		Variable.getWindow().getIcons().add(new Image("jOSeph_4/resources/images/BasicLogo.png"));
-		Variable.getWindow().setTitle("jOSeph " + Variable.getVersionObject().bToString());
 
 		new Launcher().start();
+		Variable.getWindow().show();
 	}
 
 	public static void startLoad() throws IOException{
-		Load load = new Load();
-		load.startLoad();
+		new Load().startLoad();
 	}
 
 	public static void coreProgramStart(){
-		Core core = new Core();
-		try {
-			core.start();
-		} catch (IOException e) {
-			new Error("Error #0004: IOException at Main.java",400);
-			e.printStackTrace();
-		}
+		new Core().start();
+	}
+
+	/**
+	 * Call to create a window, with given FXML file, window, and title
+	 * @param location Location of FXML file from the jOSeph_4/resources/fxml folder (eg. Load.fxml, quiz/Feedback.fxml)
+	 * @param window Window to display to
+	 * @param title Title of window
+	 */
+	public static void createWindow(String location, Stage window, String title){
+		windows.createWindow(location, window, title);
 	}
 
 	//Quit

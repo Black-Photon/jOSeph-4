@@ -149,7 +149,11 @@ public class Calculator_Controller {
 
 		//Knowing there should be 1 number, this confirms it, and displays the answer
 		if(numbers.size()==1) {
-			text.setText(Float.toString(numbers.get(0)));
+			if(numbers.get(0)==Math.round(numbers.get(0))){
+				text.setText(Integer.toString(Math.round(numbers.get(0))));
+			}else {
+				text.setText(Float.toString(numbers.get(0)));
+			}
 		}else if(numbers.size()==0) {
 			new Error("Math Error: No Input", 300);
 		}else{

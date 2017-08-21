@@ -7,20 +7,20 @@ import jOSeph_4.Variable;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 
 public class Logon_Controller {
-
-	//TODO Review Class
 
 	@FXML
 	TextField username;
 	@FXML
 	TextField password;
 
-	public void onLogon() throws Exception{
+	public void onLogon() throws IOException {
+		String userText = username.getText();
 		String passText = password.getText();
 		passText = Encryption.hashEncrypt(passText);
-		System.out.println(passText);
 
 		//TODO Temp Admin shortcut for development. Remove in finished app
 		if(username.getText().equals("a")){
@@ -29,13 +29,16 @@ public class Logon_Controller {
 		//End Temp Section
 
 
-
-		//If username empty, give relevant error message
-		if(Variable.getDatabase().get(username.getText())==null){
+		if(Variable.getDatabase().get(userText)==null){
 			new Error("Please enter valid username",400);
 
 			//If database password = password, start loading
-		}else if(Variable.getDatabase().get(username.getText()).equals(passText)){
+		}else if(userText.equals("")){
+			//If username empty, give relevant error message
+			new Error("Please enter username",400);
+
+			//If database password = password, start loading
+		}else if(Variable.getDatabase().get(userText).equals(passText)){
 			Variable.setUser(username.getText());
 			System.out.println("User: "+Variable.getUser());
 			Main.startLoad();
@@ -45,7 +48,7 @@ public class Logon_Controller {
 			new Error("Please Enter Password",300);
 
 			//For Wrong Password this is what's given out
-		}else if(!(Variable.getDatabase().get(username.getText()).equals(passText))){
+		}else if(!(Variable.getDatabase().get(userText).equals(passText))){
 			new Error("Your password seems to be incorrect",400);
 		}else{
 			new Error("Something went wrong! Please contact admin. Error #0001",500);

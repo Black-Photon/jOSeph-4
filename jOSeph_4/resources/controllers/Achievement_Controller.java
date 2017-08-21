@@ -2,6 +2,7 @@ package jOSeph_4.resources.controllers;
 
 import jOSeph_4.Achievement;
 import jOSeph_4.Achievement_Type;
+import jOSeph_4.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -61,11 +62,8 @@ public class Achievement_Controller  implements Initializable {
 
 	public void start(Achievement achievement) throws IOException {
 		this.achievement = achievement;
-		Parent root = FXMLLoader.load(getClass().getResource("../fxml/Achievement.fxml"));
-		scene = new Scene(root);
 		stage = new Stage();
-		stage.setTitle("New Achievement!");
-		stage.setScene(scene);
+		Main.createWindow("Achievement.fxml", stage, "New Achievement!");
 		stage.show();
 	}
 

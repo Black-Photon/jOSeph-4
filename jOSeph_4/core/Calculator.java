@@ -1,5 +1,7 @@
 package jOSeph_4.core;
 
+import jOSeph_4.Main;
+import jOSeph_4.Variable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,11 +17,8 @@ public class Calculator extends Application{
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/Calculator.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Calculator");
-		primaryStage.setScene(scene);
+	public void start(Stage primaryStage){
+		Main.createWindow("Calculator.fxml", primaryStage, "Calculator");
 		primaryStage.show();
 	}
 

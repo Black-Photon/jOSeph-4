@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Creates and shows an error message of chosen Message, width and title
+ */
+
 public class Error {
 
 	private Label label;
@@ -46,16 +50,7 @@ public class Error {
 		currentObject = this;
 
 		stage = new Stage();
-		stage.setTitle(title);
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Error.fxml"));
-			scene = new Scene(root);
-		}catch (IOException e){
-			System.out.println("Could not generate Error Message");
-			e.printStackTrace();
-		}
-		stage.setScene(scene);
-		stage.show();
+		Main.createWindow("Error.fxml", stage, title);
 	}
 
 	public static Error getCurrentObject() {

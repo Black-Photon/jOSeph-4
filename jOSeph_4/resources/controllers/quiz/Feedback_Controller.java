@@ -43,7 +43,7 @@ public class Feedback_Controller implements Initializable{
 	private static boolean correct;
 
 
-	public static void preinitalize(boolean correct, String answer){
+	public static void preInitalize(boolean correct, String answer){
 		if(correct){
 			correctLabelString = "Correct";
 		}else{

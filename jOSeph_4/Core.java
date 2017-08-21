@@ -15,18 +15,11 @@ public class Core {
 	public Core(){
 
 	}
-	public void start() throws IOException{
-		Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Core.fxml"));
-		scene = new Scene(root);
-		Variable.getWindow().setTitle("Page 1");
-		Variable.getWindow().setScene(scene);
+	public void start(){
+		Main.createWindow("Core.fxml",Variable.getWindow(),"Page 1");
 	}
 	public static void startQuiz(){
-		try{
-			new Quiz().startMenu();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		new Quiz().startMenu();
 	}
 
 

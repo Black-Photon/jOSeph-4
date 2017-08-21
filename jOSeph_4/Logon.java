@@ -14,10 +14,7 @@ import java.io.IOException;
 
 public class Logon {
 
-	public void start() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/Logon.fxml"));
-		Scene scene = new Scene(root);
-		Variable.getWindow().setTitle("Login");
-		Variable.getWindow().setScene(scene);
+	public void start(){
+		Main.createWindow("Logon.fxml", Variable.getWindow(), "Login");
 	}
 }
