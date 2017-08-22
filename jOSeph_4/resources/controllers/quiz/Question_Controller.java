@@ -1,5 +1,6 @@
 package jOSeph_4.resources.controllers.quiz;
 
+import jOSeph_4.Main;
 import jOSeph_4.core.Calculator;
 import jOSeph_4.core.quiz.Feedback;
 import jOSeph_4.core.quiz.Question;
@@ -71,7 +72,9 @@ public class Question_Controller implements Initializable{
 
 	//Opens calculator in new window
 	public void calculator(){
-		new Calculator().start(new Stage());
+		Stage stage = new Stage();
+		Main.createWindow("core/Calculator.fxml", stage, "Calculator");
+		stage.show();
 	}
 
 

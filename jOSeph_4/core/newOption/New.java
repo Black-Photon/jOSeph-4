@@ -1,7 +1,8 @@
 package jOSeph_4.core.newOption;
 
 import jOSeph_4.Version;
-import jOSeph_4.resources.controllers.New_Controller;
+import jOSeph_4.core.CorePane;
+import jOSeph_4.resources.controllers.core.New_Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Side;
 import javafx.scene.control.Tab;
@@ -11,9 +12,16 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.util.*;
 
-public class New {
+public class New extends CorePane{
 	private TabPane tabPane;
-	public TabPane getNew() throws IOException {
+
+	public Pane getPane() throws IOException{
+		Pane pane = new Pane();
+		pane.getChildren().add(getNew());
+		return pane;
+	}
+
+	private TabPane getNew() throws IOException {
 		tabPane = new TabPane();
 		createTabs(new Tabs().generateTabs(), tabPane);
 		tabPane.setSide(Side.LEFT);
@@ -29,7 +37,7 @@ public class New {
 		New_Controller.preInitalize(version, info);
 	}
 	private Pane getTabContents() throws IOException{
-		Pane root = FXMLLoader.load(getClass().getResource("../../resources/fxml/New.fxml"));
+		Pane root = FXMLLoader.load(getClass().getResource("../../resources/fxml/core/New.fxml"));
 		return root;
 	}
 	void createTabs(ArrayList<jOSeph_4.core.newOption.Tab> arrayList, TabPane tabPane) throws IOException{
