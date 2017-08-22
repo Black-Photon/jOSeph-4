@@ -4,12 +4,12 @@ import jOSeph_4.Core;
 import jOSeph_4.Main;
 import jOSeph_4.Variable;
 import jOSeph_4.core.Calculator;
+import jOSeph_4.core.newOption.New;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -33,6 +33,10 @@ public class Core_Controller implements Initializable{
 	@FXML
 	Pane calculatorPane;
 	@FXML
+	Pane newPane;
+	@FXML
+	Pane settingsPane;
+	@FXML
 	VBox vbox;
 	@FXML
 	Rectangle rect;
@@ -49,8 +53,10 @@ public class Core_Controller implements Initializable{
 		Achievement_Controller.createGeneratorAchievements();
 
 		Calculator calculator = new Calculator();
+		New newObject = new New();
 		try {
 			calculatorPane.getChildren().add(calculator.getCalculator());
+			newPane.getChildren().add(newObject.getNew());
 		}catch (IOException e){
 			e.printStackTrace();
 		}
@@ -60,6 +66,7 @@ public class Core_Controller implements Initializable{
 		panes.add(genPane);
 		panes.add(quizPane);
 		panes.add(calculatorPane);
+		panes.add(newPane);
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -158,6 +165,14 @@ public class Core_Controller implements Initializable{
 	public void onCalcMenuClick(){
 		hideAllPanes();
 		calculatorPane.setVisible(true);
+	}
+	public void onNewMenuClick(){
+		hideAllPanes();
+		newPane.setVisible(true);
+	}
+	public void onSettingsMenuClick(){
+		hideAllPanes();
+		settingsPane.setVisible(true);
 	}
 	public void exit(){
 		closeThread();

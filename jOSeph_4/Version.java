@@ -1,10 +1,39 @@
 package jOSeph_4;
 
 public class Version {
+	/**
+	 * Holds info about a version
+	 *
+	 * @param a Stability, eg. Stable
+	 * @param b Version No, eg. 4.2.0
+	 * @param c Stage, eg. Alpha
+	 */
+	public Version(String a, int[] b, String c){
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+	/**
+	 * Holds info about a version
+	 *
+	 * @param b Version No, eg. 4.2.0
+	 * @param c Stage, eg. Alpha
+	 */
+	public Version(int[] b, String c){
+		this.b = b;
+		this.c = c;
+	}
 
-	//Temp names to hold version information. There should only be 1 object instance at any time
+	/**
+	 * Use once - has current version data
+	 */
+	public Version(){
+
+	}
+
+	//Temp names to hold version information
 	private String a = "Fairly Stable";
-	private int[] b = {4,1,2};
+	private int[] b = {4,1,2,4};
 	private String c = "Alpha";
 
 	public String getA() {

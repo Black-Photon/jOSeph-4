@@ -1,6 +1,5 @@
 package jOSeph_4.resources.controllers;
 
-import jOSeph_4.Load;
 import jOSeph_4.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

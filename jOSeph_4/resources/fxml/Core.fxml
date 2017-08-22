@@ -24,10 +24,10 @@
                         <Button id="generate_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onGenMenuClick" styleClass="icon" />
                         <Button id="quiz_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onQuizMenuClick" styleClass="icon" />
                         <Button id="calc_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onCalcMenuClick" styleClass="icon" />
-                        <Button id="new_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" styleClass="icon" />
+                        <Button id="new_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onNewMenuClick" styleClass="icon" />
                         <Button id="exit_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#exit" styleClass="icon" />
                         <Button id="next_s" layoutX="10.0" layoutY="360.0" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" styleClass="icon" />
-                        <Button id="settings_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" styleClass="icon" />
+                        <Button id="settings_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onSettingsMenuClick" styleClass="icon" />
                         <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="#282828" stroke="#282828" strokeType="INSIDE" />
                      </children>
                   </VBox>
@@ -90,6 +90,8 @@
                </children>
             </Pane>
             <Pane fx:id="calculatorPane" prefHeight="200.0" prefWidth="200.0" visible="false" />
+            <Pane fx:id="newPane" prefHeight="200.0" prefWidth="200.0" visible="false" />
+            <Pane fx:id="settingsPane" prefHeight="200.0" prefWidth="200.0" visible="false" />
          </children>
       </Group>
    </center>

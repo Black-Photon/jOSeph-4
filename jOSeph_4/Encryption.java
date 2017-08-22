@@ -5,8 +5,6 @@ import java.util.Random;
 
 public class Encryption {
 
-	//TODO Review
-
 	public static Random random;
 	public static int possibleChars = 95;
 
@@ -73,6 +71,8 @@ public class Encryption {
 		return ans;
 	}
 
+
+	//Following all part of hashEncrypt
 	private static String textToConvert;
 
 	/**
@@ -141,15 +141,5 @@ public class Encryption {
 			encoded.add(Math.round(a*Math.pow(i,2)+b*i+c));
 		}
 		return encoded;
-	}
-	
-	
-	
-	
-	
-	//TODO Remove - Used for testing ONLY
-	public static void main(String[] args) {
-		System.out.println(hashEncrypt("MessageTest"));
-		System.out.println(hashEncrypt("TRIANGLE"));
 	}
 }
