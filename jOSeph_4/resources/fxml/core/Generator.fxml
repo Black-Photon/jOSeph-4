@@ -5,20 +5,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="genPane" prefHeight="250.0" prefWidth="250.0" stylesheets="@../../css/core/generator.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.Generator_Controller">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.Generator_Controller">
    <children>
-      <VBox alignment="CENTER" prefHeight="250.0" prefWidth="250.0" spacing="20.0">
+      <VBox alignment="CENTER" prefHeight="250.0" prefWidth="250.0" spacing="20.0" stylesheets="@../../css/core/generator.css">
          <children>
             <Label text="Generating...">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </Label>
-            <Button id="generate" mnemonicParsing="false" onAction="#onGeneratorClick" prefHeight="200.0" prefWidth="200.0" text="Generate">
+            <Button id="generate" mnemonicParsing="false" onAction="#onGeneratorClick" prefHeight="130.0" prefWidth="200.0" text="Generate">
                <font>
                   <Font name="Arial" size="29.0" />
                </font>
@@ -30,11 +33,17 @@
                      <font>
                         <Font name="Arial" size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
                   <Label fx:id="count" text="0">
                      <font>
                         <Font name="Arial" size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>
@@ -44,4 +53,4 @@
          </padding>
       </VBox>
    </children>
-</Pane>
+</StackPane>

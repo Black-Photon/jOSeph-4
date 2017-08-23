@@ -13,24 +13,23 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Core_Controller implements Initializable{
 	@FXML
-	Pane centerPane;
-	@FXML
 	VBox vbox;
 	@FXML
 	Rectangle rect;
+	@FXML
+	StackPane stackPane;
 
-	private ArrayList<CorePane> panes;
 	private static volatile Thread thread;
 
 	private Generator generator;
@@ -95,9 +94,14 @@ public class Core_Controller implements Initializable{
 	}
 
 	private void setMainPane(CorePane type){
+		if(type instanceof Quiz){
+			stackPane.getStylesheets().add("jOSeph_4/resources/css/core/new.css");
+		}else{
+			stackPane.getStylesheets().remove("jOSeph_4/resources/css/core/new.css");
+		}
 		try {
-			centerPane.getChildren().remove(0,centerPane.getChildren().size());
-			centerPane.getChildren().add(type.getPane());
+			stackPane.getChildren().remove(0,stackPane.getChildren().size());
+			stackPane.getChildren().add(type.getPane());
 		}catch (IOException e){
 			new Error("Error #0008: IOException at Core_Controller.java");
 			e.printStackTrace();
