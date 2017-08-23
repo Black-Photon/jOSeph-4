@@ -1,4 +1,4 @@
-package jOSeph_4.resources.controllers;
+package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Version;
 import javafx.fxml.FXML;

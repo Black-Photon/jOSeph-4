@@ -1,0 +1,41 @@
+.label{
+    -fx-font-size: 17px;
+}
+.tab-pane{
+    -fx-font-size: 13px;
+}
+.tab {
+    -fx-border-radius: 10 10 0 0;
+    -fx-background-radius: 10 10 0 0;
+    -fx-background-color: #282828;
+}
+.tab .tab-label{
+    -fx-text-fill: whitesmoke;
+}
+.tab:selected{
+    -fx-background-color: whitesmoke;
+}
+.tab:selected .tab-label{
+    -fx-text-fill: #282828;
+}
+.tab:selected .focus-indicator {
+    -fx-border-radius: 11 11 0 0, 10 10 0 0;
+}
+.text-area{
+    -fx-font-size: 20px;
+}
+
+.text-area .increment-button, .text-area .decrement-button{
+    -fx-background-color: #282828;
+    -fx-border-color: #282828;
+}
+.text-area .scroll-bar:horizontal .track,
+.text-area .scroll-bar:vertical .track{
+    -fx-background-color: #282828;
+    -fx-border-color: #282828;
+}
+.text-area .scroll-bar:horizontal .thumb,
+.text-area .scroll-bar:vertical .thumb {
+    -fx-background-color: whitesmoke;
+    -fx-background-radius: 5em;
+}

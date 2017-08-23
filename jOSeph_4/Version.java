@@ -73,4 +73,7 @@ public class Version {
 	public String getWholeVersion(){
 		return bToString() + " " + getC() + " - " + getA();
 	}
+	public String getMostVersion(){
+		return bToString() + " " + getC();
+	}
 }

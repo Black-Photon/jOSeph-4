@@ -5,7 +5,7 @@ import jOSeph_4.Version;
 import java.util.ArrayList;
 
 public class Tabs {
-	private static ArrayList<Tab> list = new ArrayList<Tab>();
+	private ArrayList<Tab> list = new ArrayList<Tab>();
 
 	ArrayList<Tab> generateTabs(){
 		createTab(new Version(new int[]{4, 1, 2, 4}, "Alpha"),
