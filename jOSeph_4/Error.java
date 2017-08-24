@@ -51,6 +51,7 @@ public class Error {
 
 		stage = new Stage();
 		Main.createWindow("Error.fxml", stage, title);
+		stage.show();
 	}
 
 	public static Error getCurrentObject() {

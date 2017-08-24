@@ -3,10 +3,7 @@ package jOSeph_4.resources.controllers.core;
 import jOSeph_4.Error;
 import jOSeph_4.Main;
 import jOSeph_4.Variable;
-import jOSeph_4.core.Calculator;
-import jOSeph_4.core.CorePane;
-import jOSeph_4.core.Generator;
-import jOSeph_4.core.Quiz;
+import jOSeph_4.core.*;
 import jOSeph_4.core.newOption.New;
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.concurrent.Task;
@@ -36,6 +33,7 @@ public class Core_Controller implements Initializable{
 	private Quiz quiz;
 	private Calculator calculator;
 	private New newObject;
+	private Settings settings;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -45,7 +43,7 @@ public class Core_Controller implements Initializable{
 		quiz = new Quiz();
 		calculator = new Calculator();
 		newObject = new New();
-
+		settings = new Settings();
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -121,8 +119,7 @@ public class Core_Controller implements Initializable{
 		setMainPane(newObject);
 	}
 	public void onSettingsMenuClick(){
-		setMainPane(new Generator());
-		new Error("Settings not done");
+		setMainPane(settings);
 	}
 	public void exit(){
 		closeThread();

@@ -13,7 +13,7 @@ import java.util.Set;
  * Imagine the formatter to be the file
  */
 
-class Files {
+public class Files {
 
 	//Variables
 	private Scanner scanner;
@@ -24,7 +24,7 @@ class Files {
 	 * Loads, reads and writes to the config file
 	 * @param data Blank database to save to
 	 */
-	void loadConfig(HashMap<String, String> data){
+	public void loadConfig(HashMap<String, String> data){
 		try {
 			if(fileExists(Variable.getMainFile())){
 				loadFile(Variable.getMainFile());
@@ -32,14 +32,17 @@ class Files {
 			}else{
 				addDefaultConfigData(data);
 			}
-			createFile(Variable.getConfigLocation());
-			writeFile(data);
-			closeFile();
+			loadAndWriteConfig(data);
 			Variable.setDatabase(data);
 		}catch (IOException e){
 			e.printStackTrace();
 			new Error("Error #0006: IOException at Files.java", 500);
 		}
+	}
+	public void loadAndWriteConfig(HashMap<String, String> data) throws IOException{
+		createFile(Variable.getConfigLocation());
+		writeFile(data);
+		closeFile();
 	}
 	//Creating a formatter creates a file
 	private void createFile(String location) throws IOException{
