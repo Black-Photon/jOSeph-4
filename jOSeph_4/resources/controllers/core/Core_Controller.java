@@ -34,16 +34,18 @@ public class Core_Controller implements Initializable{
 	private Calculator calculator;
 	private New newObject;
 	private Settings settings;
+	private Achievements_Menu achievements_menu;
+
+	final int noOfButtons = 8;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Achievement_Controller.createGeneratorAchievements();
-
 		generator = new Generator();
 		quiz = new Quiz();
 		calculator = new Calculator();
 		newObject = new New();
 		settings = new Settings();
+		achievements_menu = new Achievements_Menu();
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -62,7 +64,6 @@ public class Core_Controller implements Initializable{
 			public void run(){
 				final int size1 = 96;
 				final int size2 = 80;
-				final int noOfButtons = 7;
 				final int heightBreakpoint = noOfButtons * 76;
 				while(thread == Thread.currentThread()){
 					height = Variable.getWindow().getHeight();
@@ -120,6 +121,9 @@ public class Core_Controller implements Initializable{
 	}
 	public void onSettingsMenuClick(){
 		setMainPane(settings);
+	}
+	public void onAchievementsMenuClick(){
+		setMainPane(achievements_menu);
 	}
 	public void exit(){
 		closeThread();

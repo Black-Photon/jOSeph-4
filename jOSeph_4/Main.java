@@ -1,5 +1,6 @@
 package jOSeph_4;
 
+import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +21,8 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Achievement_Controller.createAchievements();
+
 		Variable.setWindow(primaryStage);
 		Variable.getWindow().setTitle("");
 		Variable.getConfigFiles().loadConfig( Variable.getDatabase());

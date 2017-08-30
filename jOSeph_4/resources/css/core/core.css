@@ -31,6 +31,10 @@
 #settings_s{
     -fx-graphic: url("../../images/core/settings.png");
 }
+
+#achievements_s{
+    -fx-graphic: url("../../images/achievements/level500.png");
+}
 .scroll-pane {
     -fx-background-color: #282828;
 }
@@ -55,6 +59,15 @@
 .icon{
     -fx-pref-width: 7em;
 }
-#borderPane{
+#borderPane {
     -fx-background-color: #282828;
+}
+.option{
+    -fx-text-fill: whitesmoke;
+}
+.option > .title {
+    -fx-background-color: -fx-box-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5px;
+    -fx-color: #282828;
 }

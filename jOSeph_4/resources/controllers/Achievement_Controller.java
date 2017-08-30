@@ -25,6 +25,7 @@ public class Achievement_Controller  implements Initializable {
 	private Scene scene;
 	private static Stage stage;
 	private static Achievement achievement;
+	private static List allAchievements;
 	private static List generatorAchievements;
 
 	@FXML
@@ -38,6 +39,11 @@ public class Achievement_Controller  implements Initializable {
 
 	//Static Methods control creation of all generatorAchievements
 
+	public static void createAchievements(){
+		allAchievements = new ArrayList<List>();
+		createGeneratorAchievements();
+	}
+
 	public static void createGeneratorAchievements(){
 		generatorAchievements = new ArrayList<Achievement>();
 		Achievement_Type type = Achievement_Type.GENERATOR;
@@ -47,6 +53,7 @@ public class Achievement_Controller  implements Initializable {
 		generatorAchievements.add(new Achievement("level50.png","Amazing Thinker", "Formed a new Theory",50, type));
 		generatorAchievements.add(new Achievement("level100.png","Prize Winning Thinker", "Got a Turing Award",100, type));
 		generatorAchievements.add(new Achievement("level500.png","Revolutionary Thinker", "The Modern Newton",500, type));
+		allAchievements.add(generatorAchievements);
 	}
 
 	public static void onLevelUp(int level) throws IOException{
@@ -75,5 +82,13 @@ public class Achievement_Controller  implements Initializable {
 	}
 	public void onButtonClick(){
 		stage.close();
+	}
+
+	public static List getAllAchievements() {
+		return allAchievements;
+	}
+
+	public static void setAllAchievements(List allAchievements) {
+		Achievement_Controller.allAchievements = allAchievements;
 	}
 }

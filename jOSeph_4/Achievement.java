@@ -11,6 +11,7 @@ public class Achievement {
 	private Image image;
 	private String title;
 	private String description;
+	private String category;
 	private int level;
 	private boolean obtained;
 	private Achievement_Type type;
@@ -21,6 +22,13 @@ public class Achievement {
 		this.description = description;
 		this.level = level;
 		this.type = type;
+		switch(type){
+			case GENERATOR:
+				category = "Generator";
+				break;
+			default:
+				new Error("Error #0010: No such type at Achievement.java");
+		}
 	}
 
 
@@ -64,5 +72,9 @@ public class Achievement {
 
 	public void setObtained(boolean obtained) {
 		this.obtained = obtained;
+	}
+
+	public String getCategory() {
+		return category;
 	}
 }

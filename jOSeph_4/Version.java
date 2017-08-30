@@ -33,7 +33,7 @@ public class Version {
 
 	//Temp names to hold version information
 	private String a = "Fairly Stable";
-	private int[] b = {4,1,2,4};
+	private int[] b = {4,1,2,7};
 	private String c = "Alpha";
 
 	public String getA() {

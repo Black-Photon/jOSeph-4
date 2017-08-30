@@ -8,6 +8,15 @@ public class Tabs {
 	private ArrayList<Tab> list = new ArrayList<Tab>();
 
 	ArrayList<Tab> generateTabs(){
+		createTab(new Version(new int[]{4, 1, 2, 7}, "Alpha"),
+				"Added Achievements selection in the Core"
+		);
+		createTab(new Version(new int[]{4, 1, 2, 6}, "Alpha"),
+				"Added Settings to the Core"
+		);
+		createTab(new Version(new int[]{4, 1, 2, 5}, "Alpha"),
+				"Added 'New' feature in the Core"
+		);
 		createTab(new Version(new int[]{4, 1, 2, 4}, "Alpha"),
 				"Fixed Core sizing problems and allowed for bigger calculator numbers"
 		);
