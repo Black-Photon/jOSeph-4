@@ -1,7 +1,6 @@
 package jOSeph_4.resources.controllers;
 
 import jOSeph_4.*;
-import jOSeph_4.Error;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 

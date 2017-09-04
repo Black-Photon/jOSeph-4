@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Achievement;
-import jOSeph_4.Error;
+import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;

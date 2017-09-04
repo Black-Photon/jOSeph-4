@@ -1,0 +1,48 @@
+package jOSeph_4.messageBoxes;
+
+import jOSeph_4.Main;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+/**
+ * Creates and shows an error message of chosen Message, width and title
+ */
+
+public class Error extends messageBoxes{
+
+	private static Error currentObject;
+
+	public Error() {
+		this("Error");
+	}
+
+	public Error(String text){
+		this(text, 400);
+	}
+
+	public Error(String text, int width){
+		this(text, width, "Error");
+	}
+
+	public Error(String text, int width, String title){
+		super(text, width, title);
+		currentObject = this;
+		stage = new Stage();
+		MessageBoxesMain.createWindow("Error.fxml", stage, title);
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
+	}
+
+	public static Error getCurrentObject() {
+		return currentObject;
+	}
+
+	public void exit(){
+		stage.close();
+	}
+}

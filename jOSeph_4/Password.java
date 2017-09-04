@@ -1,5 +1,6 @@
 package jOSeph_4;
 
+import jOSeph_4.messageBoxes.Error;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 

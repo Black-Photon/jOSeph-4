@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Achievement;
-import jOSeph_4.Error;
+import jOSeph_4.messageBoxes.Error;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

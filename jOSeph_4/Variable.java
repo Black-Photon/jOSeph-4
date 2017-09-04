@@ -15,6 +15,7 @@ public class Variable {
 	private static Version versionObject = new Version();
 	private static HashMap<String,String> database = new HashMap<>();
 	private static Files configFiles = new Files();
+	private static Files notesFiles = new Files();
 	private static String user;
 	private static final String configLocation = "jOSeph_config.txt";
 	private static File mainFile = new File(configLocation);
@@ -71,5 +72,13 @@ public class Variable {
 
 	public static String getConfigLocation() {
 		return configLocation;
+	}
+
+	public static Files getNotesFiles() {
+		return notesFiles;
+	}
+
+	public static void setNotesFiles(Files notesFiles) {
+		Variable.notesFiles = notesFiles;
 	}
 }

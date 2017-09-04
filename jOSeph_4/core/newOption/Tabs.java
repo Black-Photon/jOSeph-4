@@ -8,6 +8,9 @@ public class Tabs {
 	private ArrayList<Tab> list = new ArrayList<Tab>();
 
 	ArrayList<Tab> generateTabs(){
+		createTab(new Version(new int[]{4, 1, 2, 8}, "Alpha"),
+				"Added Notes and removed next icon"
+		);
 		createTab(new Version(new int[]{4, 1, 2, 7}, "Alpha"),
 				"Added Achievements selection in the Core"
 		);

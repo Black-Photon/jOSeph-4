@@ -1,11 +1,15 @@
 package jOSeph_4;
 
+import jOSeph_4.messageBoxes.ConfirmBox;
+import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.TextBox;
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -53,7 +57,7 @@ public class Main extends Application{
 	 * @param title Title of window
 	 */
 	public static void createWindow(String location, Stage window, String title){
-		windows.createWindow(location, window, title);
+		windows.createWindow(location, window, title,"jOSeph_4/resources/fxml/");
 	}
 
 	//Quit

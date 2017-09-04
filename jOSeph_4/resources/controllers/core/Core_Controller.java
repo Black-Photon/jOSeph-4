@@ -1,15 +1,13 @@
 package jOSeph_4.resources.controllers.core;
 
-import jOSeph_4.Error;
+import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.Main;
 import jOSeph_4.Variable;
 import jOSeph_4.core.*;
 import jOSeph_4.core.newOption.New;
-import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -35,6 +33,7 @@ public class Core_Controller implements Initializable{
 	private New newObject;
 	private Settings settings;
 	private Achievements_Menu achievements_menu;
+	private Notes notes;
 
 	final int noOfButtons = 8;
 
@@ -46,6 +45,7 @@ public class Core_Controller implements Initializable{
 		newObject = new New();
 		settings = new Settings();
 		achievements_menu = new Achievements_Menu();
+		notes = new Notes();
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -124,6 +124,9 @@ public class Core_Controller implements Initializable{
 	}
 	public void onAchievementsMenuClick(){
 		setMainPane(achievements_menu);
+	}
+	public void onNotesMenuClick(){
+		setMainPane(notes);
 	}
 	public void exit(){
 		closeThread();

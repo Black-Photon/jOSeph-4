@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Encryption;
-import jOSeph_4.Error;
+import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.Password;
 import jOSeph_4.Variable;
 import javafx.fxml.FXML;

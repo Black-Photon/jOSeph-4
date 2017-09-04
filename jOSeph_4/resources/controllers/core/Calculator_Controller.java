@@ -2,7 +2,7 @@ package jOSeph_4.resources.controllers.core;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import jOSeph_4.Error;
+import jOSeph_4.messageBoxes.Error;
 
 import java.util.ArrayList;
 

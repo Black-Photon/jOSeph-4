@@ -1,5 +1,6 @@
 package jOSeph_4;
 
+import jOSeph_4.messageBoxes.Error;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,9 +13,9 @@ import java.io.IOException;
  */
 
 public class Windows {
-	public void createWindow(String location, Stage window, String title){
+	public void createWindow(String location, Stage window, String title, String startLocation){
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/" + location));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(startLocation + location));
 			Scene scene = new Scene(root);
 			window.setScene(scene);
 			window.setTitle(title);
