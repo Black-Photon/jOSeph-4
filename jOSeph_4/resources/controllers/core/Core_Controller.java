@@ -34,8 +34,9 @@ public class Core_Controller implements Initializable{
 	private Settings settings;
 	private Achievements_Menu achievements_menu;
 	private Notes notes;
+	private Messaging messaging;
 
-	final int noOfButtons = 8;
+	final int noOfButtons = 9;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -46,6 +47,7 @@ public class Core_Controller implements Initializable{
 		settings = new Settings();
 		achievements_menu = new Achievements_Menu();
 		notes = new Notes();
+		messaging = new Messaging();
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -127,6 +129,9 @@ public class Core_Controller implements Initializable{
 	}
 	public void onNotesMenuClick(){
 		setMainPane(notes);
+	}
+	public void onMessagingMenuClick(){
+		setMainPane(messaging);
 	}
 	public void exit(){
 		closeThread();

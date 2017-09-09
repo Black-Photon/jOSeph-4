@@ -31,6 +31,9 @@
 #notes_s{
     -fx-graphic: url("../../images/core/notes.png");
 }
+#messaging_s{
+    -fx-graphic: url("../../images/core/messaging.png");
+}
 
 #achievements_s{
     -fx-graphic: url("../../images/achievements/level500.png");
