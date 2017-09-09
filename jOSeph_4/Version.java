@@ -1,15 +1,40 @@
 package jOSeph_4;
 
 public class Version {
-
-	//Temp names to hold version information. There should only be 1 object instance at any time
-	private String a = "Fairly Stable";
-	private int[] b = {4,1,2};
-	private String c = "Alpha";
-
-	public Version(){
-		//Temp for if later needed
+	/**
+	 * Holds info about a version
+	 *
+	 * @param a Stability, eg. Stable
+	 * @param b Version No, eg. 4.2.0
+	 * @param c Stage, eg. Alpha
+	 */
+	public Version(String a, int[] b, String c){
+		this.a = a;
+		this.b = b;
+		this.c = c;
 	}
+	/**
+	 * Holds info about a version
+	 *
+	 * @param b Version No, eg. 4.2.0
+	 * @param c Stage, eg. Alpha
+	 */
+	public Version(int[] b, String c){
+		this.b = b;
+		this.c = c;
+	}
+
+	/**
+	 * Use once - has current version data
+	 */
+	public Version(){
+
+	}
+
+	//Temp names to hold version information
+	private String a = "Fairly Stable";
+	private int[] b = {4,1,2,8};
+	private String c = "Alpha";
 
 	public String getA() {
 		return a;
@@ -35,12 +60,20 @@ public class Version {
 		this.c = c;
 	}
 
-	//Gets version in "x.y.z" form
+	/**
+	 * 	Gets version in "x.y.z" form
+	 */
 	public String bToString(){
-		String version = "";
+		StringBuilder version = new StringBuilder("");
 		for(int x:b) {
-			version+=x+".";
-		} version = version.substring(0,version.length()-1);
-		return version;
+			version.append(x).append(".");
+		}
+		return version.substring(0,version.length()-1);
+	}
+	public String getWholeVersion(){
+		return bToString() + " " + getC() + " - " + getA();
+	}
+	public String getMostVersion(){
+		return bToString() + " " + getC();
 	}
 }

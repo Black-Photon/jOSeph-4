@@ -27,3 +27,10 @@
 #red:pressed{
     -fx-background-color: tomato;
 }
+#medium{
+    -fx-font-size: 15pt;
+}
+#large{
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+}

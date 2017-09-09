@@ -1,6 +1,5 @@
 package jOSeph_4.resources.controllers;
 
-import jOSeph_4.Load;
 import jOSeph_4.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -24,8 +23,7 @@ public class Load_Controller implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
-		//IMPORTANT - BELOW IS THE NONSENSE MENTIONED IN HEADER MAIN LOAD CLASS HEADER
-
+		//BEWARE, THE WHOLE LOAD SCREEN IS COMPLETE NONSENSE. THIS IS THE REASON FOR THE NEW SKIP BUTTON
 
 		//Uses timeline's. Each update adds an event consisting of changing a property that takes place after a certain period of time
 		timeline = new Timeline();

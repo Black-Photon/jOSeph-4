@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxWidth="1.7976931348623157E308" minHeight="150.0" prefHeight="152.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.Achievement_Controller">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="122.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="624.0" minWidth="10.0" prefWidth="453.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="624.0" minWidth="10.0" prefWidth="94.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <ImageView id="border" fx:id="image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+      </ImageView>
+      <Label id="medium" fx:id="description" text="Description" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <Label id="large" fx:id="title" text="Title" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+         <GridPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <ImageView fx:id="obtained" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@../../images/crossBox.png" />
+         </image>
+      </ImageView>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/main.css" />
+      <URL value="@../../css/core/core.css" />
+   </stylesheets>
+</GridPane>

@@ -2,6 +2,7 @@ package jOSeph_4.resources.controllers;
 
 import jOSeph_4.Logon;
 import jOSeph_4.Main;
+import jOSeph_4.Variable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,7 +15,7 @@ public class Launcher_Controller implements Initializable{
 	Label version;
 
 	public void login() throws Exception{
-		Logon logon = new Logon();
+		new Logon().start();
 	}
 	public void quit(){
 		Main.quit();
@@ -22,6 +23,6 @@ public class Launcher_Controller implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		version.setText(("This system is currently in version " + Main.getVars().getVersionObject().bToString() + " " + Main.getVars().getVersionObject().getC() + " - " + Main.getVars().getVersionObject().getA()));
+		version.setText(("This system is currently in version " + Variable.getVersionObject().getWholeVersion()));
 	}
 }

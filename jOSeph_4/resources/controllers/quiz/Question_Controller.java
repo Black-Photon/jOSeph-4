@@ -1,5 +1,7 @@
 package jOSeph_4.resources.controllers.quiz;
 
+import jOSeph_4.Main;
+import jOSeph_4.core.Calculator;
 import jOSeph_4.core.quiz.Feedback;
 import jOSeph_4.core.quiz.Question;
 import jOSeph_4.core.quiz.Subject;
@@ -7,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,7 +72,9 @@ public class Question_Controller implements Initializable{
 
 	//Opens calculator in new window
 	public void calculator(){
-
+		Stage stage = new Stage();
+		Main.createWindow("core/Calculator.fxml", stage, "Calculator");
+		stage.show();
 	}
 
 

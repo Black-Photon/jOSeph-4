@@ -1,10 +1,13 @@
 package jOSeph_4.core.quiz;
 
 import jOSeph_4.Main;
+import jOSeph_4.Variable;
 import jOSeph_4.resources.controllers.quiz.Question_Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
+import java.util.MissingFormatArgumentException;
 
 /**
  * Holds all question data, and used to directly make into new window with createWindow();
@@ -107,22 +110,11 @@ public class Question {
 
 		Question_Controller.preinitialize(questionNumber,subject,question,answers,this,correctAnswer);
 
-
-
-		Parent root = null;
-		FXMLLoader fxmlLoader = new FXMLLoader();
+		Main.createWindow("quiz/Question.fxml", Variable.getWindow(), "Quiz");
 		try {
-			root = fxmlLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/quiz/Question.fxml"));
-		}catch(Exception e){
-			System.out.println("Root could not be set D:");
-			e.printStackTrace();
-		}
-		scene = new Scene(root);
-		Main.getVars().getWindow().setScene(scene);
-		try {
-			Main.getVars().getWindow().setTitle(subject.thisSubjectShown);
-		}catch(Exception e){
-			Main.getVars().getWindow().setTitle("Quiz");
+			Variable.getWindow().setTitle(subject.thisSubjectShown);
+		}catch(NullPointerException e){
+			Variable.getWindow().setTitle("Quiz");
 		}
 
 
