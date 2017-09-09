@@ -23,7 +23,7 @@ public class Files {
 	 * Loads, reads and writes to the config file
 	 * @param data Blank database to save to
 	 */
-	public void loadConfig(HashMap<String, String> data){
+	void loadConfig(HashMap<String, String> data){
 		try {
 			if(fileExists(Variable.getMainFile())){
 				loadFile(Variable.getMainFile());
@@ -42,11 +42,12 @@ public class Files {
 	}
 	public void loadAndWriteConfig(HashMap<String, String> data) throws IOException{
 		createFile(Variable.getConfigLocation());
+		loadFile(Variable.getMainFile());
 		writeFile(data);
 		closeFile();
 	}
 	//Creating a formatter creates a file
-	public void createFile(String location) throws IOException{
+	private void createFile(String location) throws IOException{
 		formatter = new Formatter(location);
 	}
 	//Creating a scanner allows the file to be read
@@ -96,10 +97,9 @@ public class Files {
 		return files;
 	}
 
-	public File[] getAllFiles(String folderName){
+	private File[] getAllFiles(String folderName){
 		File folder = new File(folderName);
-		File[] files = folder.listFiles();
-		return files;
+		return folder.listFiles();
 	}
 
 	public void saveNotes(File file, String text) throws IOException{
@@ -115,8 +115,7 @@ public class Files {
 	}
 	private String readFile(File file){
 		scanner.useDelimiter("\\Z"); //???
-		String content = scanner.next();
-		return content;
+		return scanner.next();
 	}
 
 	public void createAndCloseFile(String path){
