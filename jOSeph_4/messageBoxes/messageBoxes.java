@@ -33,7 +33,6 @@ public abstract class messageBoxes {
 	public String getText() {
 		return text;
 	}
-
 	public void exit(){
 		stage.close();
 	}
