@@ -9,7 +9,7 @@ Manual Bug Fixing:
 If you fix a bug, add a pull request explaining why you did what you did in comments or commit description
 
 Developing:
-I run using IntelliJ. There are 3 main functions. The one in Main.java starts the project while the 2 in the messaging package starts a basic GUI for the messaging features
+I run using IntelliJ. There are 2 main functions. The one in Main.java starts the project while the one in the messaging package starts a basic GUI for the serverside messaging features
 
 
 
