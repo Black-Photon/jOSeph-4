@@ -1,5 +1,9 @@
 package jOSeph_4;
 
+import jOSeph_4.files.ConfigFiles;
+import jOSeph_4.files.Files;
+import jOSeph_4.files.MessagingFiles;
+import jOSeph_4.files.NotesFiles;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -14,8 +18,9 @@ public class Variable {
 
 	private static Version versionObject = new Version();
 	private static HashMap<String,String> database = new HashMap<>();
-	private static Files configFiles = new Files();
-	private static Files notesFiles = new Files();
+	private static ConfigFiles configFiles = new ConfigFiles();
+	private static NotesFiles notesFiles = new NotesFiles();
+	private static MessagingFiles messagingFiles = new MessagingFiles();
 	private static String user;
 	private static final String configLocation = "jOSeph_config.txt";
 	private static File mainFile = new File(configLocation);
@@ -46,11 +51,11 @@ public class Variable {
 		Variable.database = database;
 	}
 
-	public static Files getConfigFiles() {
+	public static ConfigFiles getConfigFiles() {
 		return configFiles;
 	}
 
-	public static void setConfigFiles(Files files) {
+	public static void setConfigFiles(ConfigFiles files) {
 		Variable.configFiles = files;
 	}
 
@@ -74,11 +79,19 @@ public class Variable {
 		return configLocation;
 	}
 
-	public static Files getNotesFiles() {
+	public static NotesFiles getNotesFiles() {
 		return notesFiles;
 	}
 
-	public static void setNotesFiles(Files notesFiles) {
+	public static void setNotesFiles(NotesFiles notesFiles) {
 		Variable.notesFiles = notesFiles;
+	}
+
+	public static MessagingFiles getMessagingFiles() {
+		return messagingFiles;
+	}
+
+	public static void setMessagingFiles(MessagingFiles messagingFiles) {
+		Variable.messagingFiles = messagingFiles;
 	}
 }

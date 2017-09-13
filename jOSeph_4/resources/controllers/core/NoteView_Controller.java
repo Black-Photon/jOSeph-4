@@ -1,6 +1,5 @@
 package jOSeph_4.resources.controllers.core;
 
-import jOSeph_4.Files;
 import jOSeph_4.messageBoxes.ConfirmBox;
 import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.Variable;

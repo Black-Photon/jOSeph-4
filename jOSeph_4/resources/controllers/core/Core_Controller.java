@@ -5,6 +5,7 @@ import jOSeph_4.Main;
 import jOSeph_4.Variable;
 import jOSeph_4.core.*;
 import jOSeph_4.core.newOption.New;
+import jOSeph_4.messaging.Client;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,11 +35,16 @@ public class Core_Controller implements Initializable{
 	private Settings settings;
 	private Achievements_Menu achievements_menu;
 	private Notes notes;
+	private Messaging messaging;
 
-	final int noOfButtons = 8;
+	private static Core_Controller thisObject;
+
+	final int noOfButtons = 9;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		thisObject = this;
+
 		generator = new Generator();
 		quiz = new Quiz();
 		calculator = new Calculator();
@@ -46,6 +52,7 @@ public class Core_Controller implements Initializable{
 		settings = new Settings();
 		achievements_menu = new Achievements_Menu();
 		notes = new Notes();
+		messaging = new Messaging();
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -93,7 +100,8 @@ public class Core_Controller implements Initializable{
 	}
 
 	private void setMainPane(CorePane type){
-		if(type instanceof Quiz){
+		Client.close();
+		if(type instanceof New){
 			stackPane.getStylesheets().add("jOSeph_4/resources/css/core/new.css");
 		}else{
 			stackPane.getStylesheets().remove("jOSeph_4/resources/css/core/new.css");
@@ -128,6 +136,11 @@ public class Core_Controller implements Initializable{
 	public void onNotesMenuClick(){
 		setMainPane(notes);
 	}
+	public void onMessagingMenuClick(){
+		setMainPane(messaging);
+	}
+
+	public void setMessagingPane(Connection_Data data){setMainPane(new Messaging_Window(data));}
 	public void exit(){
 		closeThread();
 		Main.quit();
@@ -138,5 +151,8 @@ public class Core_Controller implements Initializable{
 			e.consume();
 		});
 		thread = null;
+	}
+	public static Core_Controller getThisObject(){
+		return thisObject;
 	}
 }

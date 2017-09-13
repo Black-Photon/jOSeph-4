@@ -3,7 +3,7 @@ package jOSeph_4.messageBoxes;
 import javafx.stage.Stage;
 
 public abstract class messageBoxes {
-	Stage stage;
+	public Stage stage;
 	private double width;
 	private String text;
 	String title;
@@ -32,5 +32,8 @@ public abstract class messageBoxes {
 
 	public String getText() {
 		return text;
+	}
+	public void exit(){
+		stage.close();
 	}
 }

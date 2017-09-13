@@ -1,8 +1,10 @@
 package jOSeph_4;
 
+import jOSeph_4.core.Connection_Data;
 import jOSeph_4.messageBoxes.ConfirmBox;
 import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.messageBoxes.TextBox;
+import jOSeph_4.messaging.Client;
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application{
 
@@ -63,6 +66,7 @@ public class Main extends Application{
 	//Quit
 	public static void quit(){
 		System.out.println("System closed successfully");
+		Client.close();
 		Variable.getWindow().close();
 	}
 }
