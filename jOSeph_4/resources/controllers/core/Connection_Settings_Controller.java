@@ -42,7 +42,7 @@ public class Connection_Settings_Controller implements Initializable{
 		ipArray.add(ip2Box);
 		limits.add(3);
 		ipArray.add(ip3Box);
-		limits.add(1);
+		limits.add(3);
 		ipArray.add(ip4Box);
 		limits.add(3);
 		ipArray.add(ipPortBox);

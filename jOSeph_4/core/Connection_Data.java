@@ -21,6 +21,13 @@ public class Connection_Data {
 		System.out.println("Created Connection "+name+" at "+this.ip+":"+port);
 	}
 
+	public boolean sameAs(Connection_Data data){
+		if(name.equals(data.name) && ip.equals(data.ip) && port == data.port){
+			return true;
+		}
+		return false;
+	}
+
 	private String arrayToIp(ArrayList array){
 		StringBuilder sb = new StringBuilder();
 		sb.append(array.get(0));

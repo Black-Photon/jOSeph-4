@@ -1,5 +1,6 @@
 package jOSeph_4;
 
+import jOSeph_4.core.Connection_Data;
 import jOSeph_4.messageBoxes.ConfirmBox;
 import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.messageBoxes.TextBox;
@@ -13,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application{
 

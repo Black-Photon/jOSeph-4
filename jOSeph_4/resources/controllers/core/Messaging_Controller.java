@@ -1,5 +1,6 @@
 package jOSeph_4.resources.controllers.core;
 
+import jOSeph_4.Variable;
 import jOSeph_4.core.Connection_Data;
 import jOSeph_4.core.Connection_Settings;
 import javafx.collections.FXCollections;
@@ -29,6 +30,7 @@ public class Messaging_Controller implements Initializable{
 	private TableColumn<Connection_Data, String> ipColumn;
 
 	private ObservableList tableData;
+	private ArrayList<Connection_Data> arrayList;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -40,8 +42,9 @@ public class Messaging_Controller implements Initializable{
 		portColumn.setCellValueFactory(new PropertyValueFactory<>("port"));
 		ipColumn.setCellValueFactory(new PropertyValueFactory<>("ip"));
 
-		tableData = FXCollections.observableArrayList();
-		tableView.setItems(tableData);
+		arrayList = Variable.getMessagingFiles().readMessagingConfig("messaging_config.txt");
+		refresh();
+
 	}
 
 	@FXML
@@ -60,7 +63,14 @@ public class Messaging_Controller implements Initializable{
 
 	@FXML
 	void onDeletePressed(){
-		tableData.remove(tableView.getSelectionModel().getSelectedItem());
+		arrayList.remove(tableView.getSelectionModel().getSelectedItem());
+		refresh();
+	}
+
+	private void refresh(){
+		tableData = FXCollections.observableArrayList(arrayList);
+		tableView.setItems(tableData);
+		Variable.getMessagingFiles().saveMessagingConfig("messaging_config.txt", arrayList);
 	}
 
 	private void addEntry(ArrayList data){
@@ -68,7 +78,8 @@ public class Messaging_Controller implements Initializable{
 		ArrayList ip = (ArrayList) data.get(2);
 		int port = (int) ((ArrayList) data.get(2)).get(4);
 		Connection_Data connection = new Connection_Data(name, ip, port);
-		tableData.add(connection);
+		arrayList.add(connection);
+		refresh();
 	}
 
 
