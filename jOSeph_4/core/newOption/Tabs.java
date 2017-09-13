@@ -8,6 +8,9 @@ public class Tabs {
 	private ArrayList<Tab> list = new ArrayList<Tab>();
 
 	ArrayList<Tab> generateTabs(){
+		createTab(new Version(new int[]{4, 1, 2, 9}, "Alpha"),
+				"Added all messaging features"
+		);
 		createTab(new Version(new int[]{4, 1, 2, 8}, "Alpha"),
 				"Added Notes and removed next icon"
 		);
