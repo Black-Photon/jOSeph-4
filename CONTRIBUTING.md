@@ -2,7 +2,7 @@ Bugs:
 Please report bugs by adding to the 'Issues' section
 
 New Features:
-If you have an idea for a new feature, submit a pull request editing the IDEAS.md file, explaining your idea
+If you have an idea for a new feature, submit a pull request editing the IDEAS.txt file, explaining your idea
 Also include code for the idea in the pull request if you have any
 
 Manual Bug Fixing:
