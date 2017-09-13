@@ -58,7 +58,21 @@ public class Messaging_Controller implements Initializable{
 
 	@FXML
 	void onPressJoin() {
-
+		Connection_Data data = tableView.getSelectionModel().getSelectedItem();
+		if(data==null) return;
+		Core_Controller.getThisObject().setMessagingPane(data);
+	}
+	@FXML
+	void onPressEdit() {
+		Connection_Data originalData = tableView.getSelectionModel().getSelectedItem();
+		if(originalData==null) return;
+		ArrayList<Object> data = new Connection_Settings().createWindow(originalData);
+		if(data==null || data.get(0).equals(false)) {
+			return;
+		}
+		addEntry(data);
+		arrayList.remove(originalData);
+		refresh();
 	}
 
 	@FXML

@@ -109,7 +109,6 @@ public class MessagingFiles extends Files {
 	}
 	//Writes the database to the file
 	void writeMessagingFile(ArrayList<Connection_Data> data){
-		System.out.println("Writing "+data);
 		for(Connection_Data info: data){
 			formatter.format("%s,%s,%s;", info.getName(), info.getIp(), info.getPort());
 		}

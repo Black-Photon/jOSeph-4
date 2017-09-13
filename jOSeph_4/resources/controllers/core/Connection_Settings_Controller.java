@@ -1,5 +1,6 @@
 package jOSeph_4.resources.controllers.core;
 
+import jOSeph_4.core.Connection_Data;
 import jOSeph_4.core.Connection_Settings;
 import jOSeph_4.messageBoxes.Error;
 import javafx.fxml.FXML;
@@ -33,6 +34,8 @@ public class Connection_Settings_Controller implements Initializable{
 	private ArrayList<TextField> ipArray;
 	private ArrayList<Integer> limits;
 
+	private static Connection_Data connection_data;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ipArray = new ArrayList<>();
@@ -47,11 +50,21 @@ public class Connection_Settings_Controller implements Initializable{
 		limits.add(3);
 		ipArray.add(ipPortBox);
 		limits.add(5);
+		if(connection_data==null) return;
+		nameBox.setText(connection_data.getName());
+		ip1Box.setText(connection_data.getIpArray().get(0).toString());
+		ip2Box.setText(connection_data.getIpArray().get(1).toString());
+		ip3Box.setText(connection_data.getIpArray().get(2).toString());
+		ip4Box.setText(connection_data.getIpArray().get(3).toString());
+		ipPortBox.setText(Integer.toString(connection_data.getPort()));
 	}
 
 	@FXML
 	void onBackPressed() {
-		returnInfo(false);
+		ArrayList<Object> data = new ArrayList<>();
+		data.add(false);
+		Connection_Settings.getCurrentObject().setData(data);
+		Connection_Settings.getCurrentObject().exit();
 	}
 
 	@FXML
@@ -105,11 +118,15 @@ public class Connection_Settings_Controller implements Initializable{
 
 	private boolean confirmTextSize(){
 		for(int i = 0; i<ipArray.size();i++){
-			if(ipArray.get(i).getText().length()!=limits.get(i)){
+			if(ipArray.get(i).getText().length()>limits.get(i)){
 				new Error("Please fully complete all boxes",500);
 				return false;
 			}
 		}
 		return true;
+	}
+
+	public static void setConnection_data(Connection_Data connection_data) {
+		Connection_Settings_Controller.connection_data = connection_data;
 	}
 }

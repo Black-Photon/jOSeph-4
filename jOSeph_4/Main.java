@@ -4,6 +4,7 @@ import jOSeph_4.core.Connection_Data;
 import jOSeph_4.messageBoxes.ConfirmBox;
 import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.messageBoxes.TextBox;
+import jOSeph_4.messaging.Client;
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -65,6 +66,7 @@ public class Main extends Application{
 	//Quit
 	public static void quit(){
 		System.out.println("System closed successfully");
+		Client.close();
 		Variable.getWindow().close();
 	}
 }

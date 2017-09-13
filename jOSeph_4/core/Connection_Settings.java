@@ -3,6 +3,7 @@ package jOSeph_4.core;
 import jOSeph_4.Main;
 import jOSeph_4.messageBoxes.Error;
 import jOSeph_4.messageBoxes.messageBoxes;
+import jOSeph_4.resources.controllers.core.Connection_Settings_Controller;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,7 +27,12 @@ public class Connection_Settings extends messageBoxes {
 			data = new ArrayList<>();
 			data.add(false);
 		}
+		Connection_Settings_Controller.setConnection_data(null);
 		return data;
+	}
+	public ArrayList<Object> createWindow(Connection_Data connection){
+		Connection_Settings_Controller.setConnection_data(connection);
+		return createWindow();
 	}
 
 	public ArrayList<Object> getData() {

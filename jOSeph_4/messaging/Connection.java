@@ -18,7 +18,8 @@ class Connection {
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	private Socket socket;
-	private static final int port = 6666;
+	private static int port = 50000;
+	private String name;
 
 	//Getters and setters
 
@@ -46,7 +47,19 @@ class Connection {
 		this.socket = socket;
 	}
 
+	public static void setPort(int port) {
+		Connection.port = port;
+	}
+
 	static int getPort(){
 		return port;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

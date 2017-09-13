@@ -1,17 +1,22 @@
 package jOSeph_4.core;
 
+import jOSeph_4.messageBoxes.Error;
+
 import java.util.ArrayList;
 
 public class Connection_Data {
 	private String name;
 	private String ip;
-	private ArrayList ipArray;
+	private ArrayList<Integer> ipArray;
 	private int port;
+
+	private StringBuilder temp;
 
 	public Connection_Data(String name, String ip, int port){
 		this.name = name;
 		this.ip = ip;
 		this.port = port;
+		this.ipArray = ipToArray(ip);
 	}
 	public Connection_Data(String name, ArrayList ip, int port){
 		this.name = name;
@@ -28,6 +33,9 @@ public class Connection_Data {
 		return false;
 	}
 
+	public String arrayToIp(){
+		return arrayToIp(ipArray);
+	}
 	private String arrayToIp(ArrayList array){
 		StringBuilder sb = new StringBuilder();
 		sb.append(array.get(0));
@@ -38,6 +46,32 @@ public class Connection_Data {
 		sb.append(".");
 		sb.append(array.get(3));
 		return sb.toString();
+	}
+	public ArrayList<Integer> ipToArray(){
+		return ipToArray(ip);
+	}
+	private ArrayList<Integer> ipToArray(String text){
+		temp = new StringBuilder();
+		ipArray = new ArrayList<>();
+		for(char i:text.toCharArray()){
+			if(i=='.'){
+				addToArray();
+			}else{
+				temp.append(i);
+			}
+		}
+		addToArray();
+
+		return ipArray;
+	}
+	private void addToArray(){
+		try {
+			ipArray.add(Integer.parseInt(temp.toString()));
+			temp = new StringBuilder();
+		}catch (NumberFormatException e){
+			new Error("IP not a number");
+			e.printStackTrace();
+		}
 	}
 
 	public String getName() {
@@ -56,11 +90,11 @@ public class Connection_Data {
 		this.ip = ip;
 	}
 
-	public ArrayList getIpArray() {
+	public ArrayList<Integer> getIpArray() {
 		return ipArray;
 	}
 
-	public void setIpArray(ArrayList ipArray) {
+	public void setIpArray(ArrayList<Integer> ipArray) {
 		this.ipArray = ipArray;
 	}
 

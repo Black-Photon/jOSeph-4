@@ -22,13 +22,17 @@
                   </Button>
                </left>
                <right>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="442.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onDeletePressed" styleClass="curved" text="DELETE">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#onPressEdit" styleClass="curved" text="EDIT">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin></Button>
                         <Button mnemonicParsing="false" onAction="#onPressCreate" styleClass="curved" text="CREATE" />
                      </children>
                      <BorderPane.margin>
