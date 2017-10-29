@@ -1,6 +1,6 @@
 package jOSeph_4;
 
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -13,12 +13,12 @@ public class Password {
 	public static boolean isPasswordCorrect(String userText, String passText){
 		passText = Encryption.hashEncrypt(passText);
 		if(Variable.getDatabase().get(userText)==null){
-			new Error("Please enter valid username",400);
+			new Error("Please enter valid username",400).showModalWindow();
 
 			//If database password = password, start loading
 		}else if(userText.equals("")){
 			//If username empty, give relevant error message
-			new Error("Please enter username",400);
+			new Error("Please enter username",400).showModalWindow();
 
 			//If database password = password, start loading
 		}else if(Variable.getDatabase().get(userText).equals(passText)){
@@ -26,13 +26,13 @@ public class Password {
 
 			//If password empty, give relevant error message
 		}else if(passText.equals("")){
-			new Error("Please Enter Password",300);
+			new Error("Please Enter Password",300).showModalWindow();
 
 			//For Wrong Password this is what's given out
 		}else if(!(Variable.getDatabase().get(userText).equals(passText))){
-			new Error("Your password seems to be incorrect",400);
+			new Error("Your password seems to be incorrect",400).showModalWindow();
 		}else{
-			new Error("Something went wrong! Please contact admin. Error #0001",500);
+			new Error("Something went wrong! Please contact admin. Error #0001",500).showModalWindow();
 		}
 		return false;
 	}

@@ -1,11 +1,10 @@
 package jOSeph_4.resources.controllers.core;
 
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.Main;
 import jOSeph_4.Variable;
 import jOSeph_4.core.*;
 import jOSeph_4.core.newOption.New;
-import jOSeph_4.messaging.Client;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -100,47 +99,45 @@ public class Core_Controller implements Initializable{
 	}
 
 	private void setMainPane(CorePane type){
-		Client.close();
-		if(type instanceof New){
+		/*if(type instanceof New){
 			stackPane.getStylesheets().add("jOSeph_4/resources/css/core/new.css");
 		}else{
 			stackPane.getStylesheets().remove("jOSeph_4/resources/css/core/new.css");
-		}
+		}*/
 		try {
 			stackPane.getChildren().remove(0,stackPane.getChildren().size());
 			stackPane.getChildren().add(type.getPane());
 		}catch (IOException e){
-			new Error("Error #0008: IOException at Core_Controller.java");
+			new Error("Error #0008: IOException at Core_Controller.java").showModalWindow();
 			e.printStackTrace();
 		}
 	}
 
-	public void onGenMenuClick(){
+	@FXML public void onGenMenuClick(){
 		setMainPane(generator);
 	}
-	public void onQuizMenuClick(){
+	@FXML public void onQuizMenuClick(){
 		setMainPane(quiz);
 	}
-	public void onCalcMenuClick(){
+	@FXML public void onCalcMenuClick(){
 		setMainPane(calculator);
 	}
-	public void onNewMenuClick(){
+	@FXML public void onNewMenuClick(){
 		setMainPane(newObject);
 	}
-	public void onSettingsMenuClick(){
+	@FXML public void onSettingsMenuClick(){
 		setMainPane(settings);
 	}
-	public void onAchievementsMenuClick(){
+	@FXML public void onAchievementsMenuClick(){
 		setMainPane(achievements_menu);
 	}
-	public void onNotesMenuClick(){
+	@FXML public void onNotesMenuClick(){
 		setMainPane(notes);
 	}
-	public void onMessagingMenuClick(){
+	@FXML public void onMessagingMenuClick(){
 		setMainPane(messaging);
 	}
 
-	public void setMessagingPane(Connection_Data data){setMainPane(new Messaging_Window(data));}
 	public void exit(){
 		closeThread();
 		Main.quit();

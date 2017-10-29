@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="600.0" stylesheets="@../css/error.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.messageBoxes.resources.controllers.Error_Controller">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="600.0" stylesheets="@../css/error.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.messageBoxes.sourceFiles.Error_Controller">
    <center>
       <HBox alignment="CENTER" prefHeight="150.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="60.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/images/Error.png" />
+                  <Image url="@../images/Error.png" />
                </image>
             </ImageView>
             <Label fx:id="label" text="Label" />

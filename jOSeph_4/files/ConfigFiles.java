@@ -2,7 +2,7 @@ package jOSeph_4.files;
 
 import jOSeph_4.Encryption;
 import jOSeph_4.Variable;
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class ConfigFiles extends Files {
 			scanner.close();
 		}catch (IOException e){
 			e.printStackTrace();
-			new Error("Error #0006: IOException at ConfigFiles.java", 500);
+			new Error("Error #0006: IOException at ConfigFiles.java", 500).showModalWindow();
 		}
 	}
 	public void loadAndWriteConfig(HashMap<String, String> data) throws IOException{

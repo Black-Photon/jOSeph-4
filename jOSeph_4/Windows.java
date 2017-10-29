@@ -1,6 +1,6 @@
 package jOSeph_4;
 
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +21,7 @@ public class Windows {
 			window.setTitle(title);
 		}catch(IOException e){
 			try {
-				new Error("Error #0000: Can't create window");
+				new Error("Error #0000: Can't create window").showModalWindow();
 				e.printStackTrace();
 			}catch (Exception e1){
 				System.out.println("Can't create window or error window");

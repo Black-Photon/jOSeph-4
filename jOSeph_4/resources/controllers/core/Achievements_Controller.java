@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Achievement;
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +34,7 @@ public class Achievements_Controller implements Initializable {
 				titledPane.setText(list.get(0).getCategory());
 				accordion.getPanes().add(titledPane);
 			}catch (IOException e){
-				new Error("Error #0009: IOException at Achievements_Controller.java", 600);
+				new Error("Error #0009: IOException at Achievements_Controller.java", 600).showModalWindow();
 				e.printStackTrace();
 			}
 		}

@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Achievement;
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,7 +35,7 @@ public class Achievement_Category_Controller implements Initializable{
 				vBox.getChildren().add(new Separator());
 				vBox.getChildren().add(option);
 			}catch (IOException e){
-				new Error("Error #0011: IOException at A_C_C.java", 500);
+				new Error("Error #0011: IOException at A_C_C.java", 500).showModalWindow();
 				e.printStackTrace();
 			}
 		}

@@ -2,7 +2,7 @@ package jOSeph_4.resources.controllers.core;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 
 import java.util.ArrayList;
 
@@ -132,7 +132,7 @@ public class Calculator_Controller {
 		//Given the end of the problem is an operator ('\'), the number of
 		//operators and numbers should be the same in any problem
 		if(operators.size()!=numbers.size()){
-			new Error("Syntax Error: Too many/few operators", 450);
+			new Error("Syntax Error: Too many/few operators", 450).showModalWindow();
 			return;
 		}
 
@@ -155,9 +155,9 @@ public class Calculator_Controller {
 				text.setText(Double.toString(numbers.get(0)));
 			}
 		}else if(numbers.size()==0) {
-			new Error("Math Error: No Input", 300);
+			new Error("Math Error: No Input", 300).showModalWindow();
 		}else{
-			new Error("Math Error: Unused numbers", 300);
+			new Error("Math Error: Unused numbers", 300).showModalWindow();
 		}
 	}
 
@@ -259,7 +259,7 @@ public class Calculator_Controller {
 			case '/':
 				return num1 / num2;
 			default:
-				new Error("Calculator Operation Error", 300);
+				new Error("Calculator Operation Error", 300).showModalWindow();
 				return 0;
 		}
 	}
@@ -308,7 +308,7 @@ public class Calculator_Controller {
 				}else{
 					//Don't try it
 					if(character=='.'){
-						new Error("Syntax Error: 2 decimals not allowed", 400);
+						new Error("Syntax Error: 2 decimals not allowed", 400).showModalWindow();
 						return 0;
 					}
 					//Adds to temp string for processing after

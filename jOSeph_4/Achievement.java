@@ -1,6 +1,6 @@
 package jOSeph_4;
 
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import javafx.scene.image.Image;
 
 public class Achievement {
@@ -28,7 +28,7 @@ public class Achievement {
 				category = "Generator";
 				break;
 			default:
-				new Error("Error #0010: No such type at Achievement.java");
+				new Error("Error #0010: No such type at Achievement.java").showModalWindow();
 		}
 	}
 

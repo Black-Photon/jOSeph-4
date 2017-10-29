@@ -1,9 +1,9 @@
 package jOSeph_4.resources.controllers.core;
 
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.Variable;
 import jOSeph_4.core.NoteView;
-import jOSeph_4.messageBoxes.TextBox;
+import jOSeph_4.messageBoxes.sourceFiles.TextBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ public class Notes_Controller implements Initializable{
 		if(!(folder.exists() && folder.isDirectory())) {
 			boolean success = folder.mkdirs();
 			if (!success) {
-				new Error("Could not create this folder", 500);
+				new Error("Could not create this folder", 500).showModalWindow();
 			}
 		}
 
@@ -48,7 +48,7 @@ public class Notes_Controller implements Initializable{
 
 	@FXML
 	void onPressNew() {
-		String selectedName = new TextBox("Please enter file name: ", 600, "Enter filename").getString();
+		String selectedName = new TextBox("Please enter file name: ", 600, "Enter filename").createResponseBox();
 		if(selectedName==null || selectedName.equals("")){return;}
 		String fileName = selectedName;
 		Variable.getNotesFiles().createAndCloseFile(fileToPath(fileName));
@@ -68,7 +68,7 @@ public class Notes_Controller implements Initializable{
 		try {
 			new NoteView().createNoteView(file);
 		}catch (IOException e){
-			new Error("Error #0011: IOException at Notes_Controller",600);
+			new Error("Error #0011: IOException at Notes_Controller",600).showModalWindow();
 			e.printStackTrace();
 		}
 	}

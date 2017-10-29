@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
 import jOSeph_4.Encryption;
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.Password;
 import jOSeph_4.Variable;
 import javafx.fxml.FXML;
@@ -35,7 +35,7 @@ public class Settings_Controller implements Initializable{
 			for (String key : Variable.getDatabase().keySet()) {
 				if (!key.equals(Variable.getUser())) {
 					if (key.equals(username.getText())) {
-						new Error("Can't change username to existing username", 500);
+						new Error("Can't change username to existing username", 500).showModalWindow();
 						return;
 					}
 				}
@@ -63,13 +63,13 @@ public class Settings_Controller implements Initializable{
 					database.put(Variable.getUser(), Encryption.hashEncrypt(password.getText()));
 					System.out.println(database);
 				} else {
-					new Error("Error #0008: Logic error at Settings_Controller.java", 600);
+					new Error("Error #0008: Logic error at Settings_Controller.java", 600).showModalWindow();
 				}
 				Password.setCorrect(false);
 				try {
 					Variable.getConfigFiles().loadAndWriteConfig(Variable.getDatabase());
 				} catch (IOException e) {
-					new Error("Error #0009: IOException at Settings_Controller.java", 500);
+					new Error("Error #0009: IOException at Settings_Controller.java", 500).showModalWindow();
 					e.printStackTrace();
 				}
 			}

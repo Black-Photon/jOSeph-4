@@ -1,8 +1,6 @@
 package jOSeph_4;
 
 import jOSeph_4.files.ConfigFiles;
-import jOSeph_4.files.Files;
-import jOSeph_4.files.MessagingFiles;
 import jOSeph_4.files.NotesFiles;
 import javafx.stage.Stage;
 
@@ -20,7 +18,6 @@ public class Variable {
 	private static HashMap<String,String> database = new HashMap<>();
 	private static ConfigFiles configFiles = new ConfigFiles();
 	private static NotesFiles notesFiles = new NotesFiles();
-	private static MessagingFiles messagingFiles = new MessagingFiles();
 	private static String user;
 	private static final String configLocation = "jOSeph_config.txt";
 	private static File mainFile = new File(configLocation);
@@ -85,13 +82,5 @@ public class Variable {
 
 	public static void setNotesFiles(NotesFiles notesFiles) {
 		Variable.notesFiles = notesFiles;
-	}
-
-	public static MessagingFiles getMessagingFiles() {
-		return messagingFiles;
-	}
-
-	public static void setMessagingFiles(MessagingFiles messagingFiles) {
-		Variable.messagingFiles = messagingFiles;
 	}
 }

@@ -1,7 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
-import jOSeph_4.messageBoxes.ConfirmBox;
-import jOSeph_4.messageBoxes.Error;
+import jOSeph_4.messageBoxes.sourceFiles.ConfirmBox;
+import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.Variable;
 import jOSeph_4.core.NoteView;
 import javafx.fxml.FXML;
@@ -32,7 +32,7 @@ public class NoteView_Controller implements Initializable{
 		try {
 			textArea.setText(Variable.getNotesFiles().readNotes(thisFile));
 		}catch (IOException e){
-			new Error("Error #0013: IOException at NoteView_Controller", 600);
+			new Error("Error #0013: IOException at NoteView_Controller", 600).showModalWindow();
 			e.printStackTrace();
 		}
 
@@ -42,10 +42,10 @@ public class NoteView_Controller implements Initializable{
 	void onPressBack() {
 		try {
 			if (!(textArea.getText().equals(Variable.getNotesFiles().readNotes(thisFile))))
-				if (new ConfirmBox("Would you like to save?", 500).getAnswer())
+				if (new ConfirmBox("Would you like to save?", 500).createResponseBox())
 					onPressSave();
 		}catch(IOException e){
-			new Error("Error #0015: IOException at NoteView_Controller.java",650);
+			new Error("Error #0015: IOException at NoteView_Controller.java",650).showModalWindow();
 		}
 		NoteView.getStage().close();
 	}
@@ -55,7 +55,7 @@ public class NoteView_Controller implements Initializable{
 		try {
 			Variable.getNotesFiles().saveNotes(thisFile, textArea.getText());
 		}catch (IOException e){
-			new Error("Error #0012: IOException at NoteView_Controller", 600);
+			new Error("Error #0012: IOException at NoteView_Controller", 600).showModalWindow();
 			e.printStackTrace();
 		}
 
