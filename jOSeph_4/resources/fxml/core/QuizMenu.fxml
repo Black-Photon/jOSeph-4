@@ -21,6 +21,7 @@
       </VBox>
    </children>
    <stylesheets>
+      <URL value="@../../css/main.css" />
       <URL value="@../../css/core/core.css" />
       <URL value="@../../css/core/quiz.css" />
    </stylesheets>

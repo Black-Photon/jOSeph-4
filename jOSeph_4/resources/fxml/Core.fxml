@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -8,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane id="borderpane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" stylesheets="@../css/core/core.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.Core_Controller">
+<BorderPane id="borderpane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.Core_Controller">
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -16,15 +18,51 @@
                <content>
                   <VBox fx:id="vbox" maxWidth="90.0">
                      <children>
-                        <Button id="generate_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onGenMenuClick" styleClass="icon" />
-                        <Button id="quiz_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onQuizMenuClick" styleClass="icon" />
-                        <Button id="calc_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onCalcMenuClick" styleClass="icon" />
-                        <Button id="new_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onNewMenuClick" styleClass="icon" />
-                        <Button id="achievements_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onAchievementsMenuClick" styleClass="icon" />
-                        <Button id="notes_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onNotesMenuClick" styleClass="icon" />
-                        <Button id="messaging_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onMessagingMenuClick" styleClass="icon" />
-                        <Button id="settings_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onSettingsMenuClick" styleClass="icon" />
-                        <Button id="exit_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#exit" styleClass="icon" />
+                        <Button id="generate_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onGenMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="quiz_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onQuizMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="calc_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onCalcMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="new_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onNewMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="achievements_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onAchievementsMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="notes_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onNotesMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="messaging_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onMessagingMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="settings_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onSettingsMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
+                        <Button id="exit_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#exit">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass></Button>
                         <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" fill="#282828" stroke="#282828" strokeType="INSIDE" />
                      </children>
                   </VBox>
@@ -36,4 +74,8 @@
    <center>
       <StackPane fx:id="stackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/core/core.css" />
+   </stylesheets>
 </BorderPane>

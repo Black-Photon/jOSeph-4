@@ -8,18 +8,6 @@
     -fx-font-size: 15pt;
     -fx-text-fill: #282828;
 }
-#green:hover{
-    -fx-background-color: green;
-}
-#red:hover{
-    -fx-background-color: firebrick;
-}
-#green:pressed{
-    -fx-background-color: lightgreen;
-}
-#red:pressed{
-    -fx-background-color: tomato;
-}
 #maths{
     -fx-background-color: #FFFF99;
     -fx-text-fill: #282828;
@@ -51,9 +39,6 @@
 .footer{
     -fx-background-color: #2A2A2A;
 }
-#whiteText{
+.whiteText{
     -fx-text-fill: whitesmoke;
-}
-#calc_s{
-    -fx-graphic: url("../images/core/calc.png");
 }

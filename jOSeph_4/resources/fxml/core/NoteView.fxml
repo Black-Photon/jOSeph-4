@@ -13,7 +13,7 @@
    <top>
       <BorderPane prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <left>
-            <Label id="medium" fx:id="file_name" text="Title" BorderPane.alignment="CENTER">
+            <Label fx:id="file_name" styleClass="medium" text="Title" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </BorderPane.margin>
@@ -22,12 +22,12 @@
          <right>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onPressBack" styleClass="curved" text="BACK">
+                  <Button mnemonicParsing="false" onAction="#onPressBack" text="BACK">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onPressSave" styleClass="curved" text="SAVE">
+                  <Button mnemonicParsing="false" onAction="#onPressSave" text="SAVE">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>

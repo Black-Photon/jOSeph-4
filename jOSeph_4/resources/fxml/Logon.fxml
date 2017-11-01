@@ -24,7 +24,7 @@
       <Label text="Login here with your username and password" GridPane.columnSpan="2" />
       <Label text="Username:" GridPane.rowIndex="1" />
       <Label text="Password:" GridPane.rowIndex="2" />
-      <Button id="green" mnemonicParsing="false" onAction="#onLogon" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button mnemonicParsing="false" onAction="#onLogon" styleClass="green" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="username" maxWidth="200.0" onAction="#onLogon" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <PasswordField fx:id="password" maxWidth="200.0" onAction="#onLogon" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>

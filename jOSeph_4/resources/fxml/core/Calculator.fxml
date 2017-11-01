@@ -52,6 +52,7 @@
       </GridPane>
    </children>
    <stylesheets>
+      <URL value="@../../css/main.css" />
       <URL value="@../../css/core/core.css" />
       <URL value="@../../css/core/calculator.css" />
    </stylesheets>

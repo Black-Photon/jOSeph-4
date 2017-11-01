@@ -2,7 +2,7 @@
     -fx-background-color: whitesmoke;
 }
 .button{
-    -fx-background-radius: 0;
+    -fx-background-radius: 10px;
     -fx-background-color: #282828;
     -fx-text-fill: whitesmoke;
 }
@@ -92,6 +92,6 @@
     -fx-background-radius: 5px;
     -fx-color: #282828;
 }
-.curved{
-    -fx-background-radius: 10px;
+.square{
+    -fx-background-radius: 0;
 }

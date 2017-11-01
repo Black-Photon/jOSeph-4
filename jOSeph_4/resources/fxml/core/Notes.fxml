@@ -20,7 +20,7 @@
    <top>
       <VBox alignment="CENTER" prefHeight="103.0" prefWidth="427.0" BorderPane.alignment="CENTER">
          <children>
-            <Label id="medium" text="Notes" VBox.vgrow="NEVER">
+            <Label styleClass="medium" text="Notes" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
@@ -35,17 +35,17 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#onPressNew" styleClass="curved" text="NEW">
+                  <Button mnemonicParsing="false" onAction="#onPressNew" text="NEW">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onPressOpen" styleClass="curved" text="OPEN" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <Button mnemonicParsing="false" onAction="#onPressOpen" text="OPEN" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <GridPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button id="curved" mnemonicParsing="false" onAction="#onPressDelete" styleClass="curved" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Button id="curved" mnemonicParsing="false" onAction="#onPressDelete" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                </children>
             </GridPane>
          </children>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/core/core.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.New_Controller">
+<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jOSeph_4.resources.controllers.core.New_Controller">
    <top>
       <Label fx:id="versionInfo" text="Version Info" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -16,4 +17,8 @@
    <center>
       <TextArea fx:id="textArea" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <stylesheets>
+      <URL value="@../../css/main.css" />
+      <URL value="@../../css/core/core.css" />
+   </stylesheets>
 </BorderPane>
