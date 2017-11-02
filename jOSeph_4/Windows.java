@@ -14,11 +14,14 @@ import java.io.IOException;
 
 public class Windows {
 	public void createWindow(String location, Stage window, String title, String startLocation){
+		window.setScene(buildWindow(location, window, title, startLocation));
+	}
+	public Scene buildWindow(String location, Stage window, String title, String startLocation){
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(startLocation + location));
 			Scene scene = new Scene(root);
-			window.setScene(scene);
 			window.setTitle(title);
+			return scene;
 		}catch(IOException e){
 			try {
 				new Error("Error #0000: Can't create window").showModalWindow();
@@ -30,5 +33,6 @@ public class Windows {
 				e1.printStackTrace();
 			}
 		}
+		return null;
 	}
 }

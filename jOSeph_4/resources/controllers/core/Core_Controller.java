@@ -1,5 +1,6 @@
 package jOSeph_4.resources.controllers.core;
 
+import jOSeph_4.games.menu.NoughtsAndCrossesMenu;
 import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.Main;
 import jOSeph_4.Variable;
@@ -8,6 +9,7 @@ import jOSeph_4.core.newOption.New;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -35,10 +37,11 @@ public class Core_Controller implements Initializable{
 	private Achievements_Menu achievements_menu;
 	private Notes notes;
 	private Messaging messaging;
+	private NoughtsAndCrossesMenu NaC;
 
 	private static Core_Controller thisObject;
 
-	final int noOfButtons = 9;
+	final int noOfButtons = 10;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -52,6 +55,8 @@ public class Core_Controller implements Initializable{
 		achievements_menu = new Achievements_Menu();
 		notes = new Notes();
 		messaging = new Messaging();
+		Image OX_image = new Image("jOSeph_4/resources/images/game/N&C.png");
+		NaC = new NoughtsAndCrossesMenu(OX_image);
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -98,12 +103,7 @@ public class Core_Controller implements Initializable{
 		onGenMenuClick();
 	}
 
-	private void setMainPane(CorePane type){
-		/*if(type instanceof New){
-			stackPane.getStylesheets().add("jOSeph_4/resources/css/core/new.css");
-		}else{
-			stackPane.getStylesheets().remove("jOSeph_4/resources/css/core/new.css");
-		}*/
+	public void setMainPane(CorePane type){
 		try {
 			stackPane.getChildren().remove(0,stackPane.getChildren().size());
 			stackPane.getChildren().add(type.getPane());
@@ -136,6 +136,9 @@ public class Core_Controller implements Initializable{
 	}
 	@FXML public void onMessagingMenuClick(){
 		setMainPane(messaging);
+	}
+	@FXML public void onNoughtsAndCrossesMenuClick(){
+		setMainPane(NaC);
 	}
 
 	public void exit(){

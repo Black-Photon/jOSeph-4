@@ -2,6 +2,7 @@ package jOSeph_4;
 
 import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -51,6 +52,16 @@ public class Main extends Application{
 	 */
 	public static void createWindow(String location, Stage window, String title){
 		windows.createWindow(location, window, title,"jOSeph_4/resources/fxml/");
+	}
+	/**
+	 * Call to create a window WITHOUT setting the scene, with given FXML file, window, and title
+	 * @param location Location of FXML file from the jOSeph_4/resources/fxml folder (eg. Load.fxml, quiz/Feedback.fxml)
+	 * @param window Window to display to
+	 * @param title Title of window
+	 * @return The scene built
+	 */
+	public static Scene buildWindow(String location, Stage window, String title){
+		return windows.buildWindow(location, window, title,"jOSeph_4/resources/fxml/");
 	}
 
 	//Quit

@@ -38,6 +38,9 @@
 #achievements_s{
     -fx-graphic: url("../../images/achievements/level500.png");
 }
+#n_c_s{
+    -fx-graphic: url("../../images/core/n&c.png");
+}
 .scroll-pane {
     -fx-background-color: #282828;
 }
