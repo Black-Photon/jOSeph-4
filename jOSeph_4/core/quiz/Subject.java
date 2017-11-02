@@ -9,16 +9,35 @@ import java.util.ArrayList;
 
 
 public abstract class Subject {
-	public static final String MATHS = "MATHS";
-	public static final String SCIENCE = "SCIENCE";
-	public static final String COMPUTING = "COMPUTING";
+	/**
+	 * Name of the subject for the user to see
+	 */
+	protected String thisSubjectShown;
+	protected ArrayList<Question> questions;
+	protected int counter;
+	protected int questionCounter;
 
-	public String thisSubjectShown;
 
+	public Subject(){
+		questionCounter = 0;
+		counter = 0;
+	}
+
+	/**
+	 * Start's the quiz<br/>
+	 * Creates and loads the first question
+	 */
 	public abstract void start();
 
-	//Sets question data in a new question, and saves it to an array of questions in the subject class
-	public void createQuestion(String questionString, String[] answers, Subject subject, int correct){
+	/**
+	 * Sets question data in a new question, and saves it to an array of questions in the subject class
+	 *
+	 * @param questionString Question to ask
+	 * @param answers That are possible - size = 4
+	 * @param subject Subject of the question
+	 * @param correct Which given answer is correct 1-4
+	 */
+	protected void createQuestion(String questionString, String[] answers, Subject subject, int correct){
 		Question question = new Question(subject,subject.getQuestionCounter());
 		subject.getQuestions().add(question);
 		question.setQuestion(questionString);
@@ -26,17 +45,32 @@ public abstract class Subject {
 		question.setCorrectAnswer(correct);
 	}
 
-	public abstract ArrayList<Question> getQuestions();
+	public ArrayList<Question> getQuestions() {
+		return questions;
+	}
+	public String getThisSubjectShown() {
+		return thisSubjectShown;
+	}
+	public int getQuestionCounter() {
+		return questionCounter;
+	}
+	public void setQuestionCounter(int questionCounter) {
+		this.questionCounter = questionCounter;
+	}
 
-	public abstract String getThisSubjectShown();
+	/**
+	 * Set's the question number and loads the next question into the window
+	 */
+	public void loadQuestion(){
+		questions.get(questionCounter).setQuestionNumber(questionCounter);
+		questions.get(questionCounter).createWindow();
+	}
 
-	public abstract int getQuestionCounter();
-
-	public abstract void setQuestionCounter(int questionCounter);
-
-	public abstract void loadQuestion();
-
-	public void nextQuestion(Question thisQuestion, Subject subject){
+	/**
+	 * Moves to the next question
+	 * @param subject Subject to load the next question of
+	 */
+	public void nextQuestion(Subject subject){
 		subject.setQuestionCounter(subject.getQuestionCounter()+1);
 		if(subject.getQuestionCounter()>=subject.getQuestions().size()){
 			Results results = new Results();
@@ -49,4 +83,5 @@ public abstract class Subject {
 			subject.loadQuestion();
 		}
 	}
+
 }

@@ -41,12 +41,14 @@ public class Core_Controller implements Initializable{
 
 	private static Core_Controller thisObject;
 
+	//Can't easily auto-update - please keep updated
 	final int noOfButtons = 10;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		thisObject = this;
 
+		//Creates corePane object's
 		generator = new Generator();
 		quiz = new Quiz();
 		calculator = new Calculator();
@@ -103,6 +105,10 @@ public class Core_Controller implements Initializable{
 		onGenMenuClick();
 	}
 
+	/**
+	 * Set's the main part of the pane, calling the getPane method in a given CorePane
+	 * @param type To call getPane on
+	 */
 	public void setMainPane(CorePane type){
 		try {
 			stackPane.getChildren().remove(0,stackPane.getChildren().size());
@@ -141,10 +147,17 @@ public class Core_Controller implements Initializable{
 		setMainPane(NaC);
 	}
 
+	/**
+	 * To exit the whole application
+	 */
 	public void exit(){
 		closeThread();
 		Main.quit();
 	}
+
+	/**
+	 * Closes the thread to set size
+	 */
 	public static void closeThread(){
 		Variable.getWindow().setOnCloseRequest(e->{
 			Main.quit();

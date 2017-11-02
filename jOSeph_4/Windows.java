@@ -10,8 +10,8 @@ import java.io.IOException;
 
 /**
  * Used by main class to create windows
+ * All descriptions in main
  */
-
 public class Windows {
 	public void createWindow(String location, Stage window, String title, String startLocation){
 		window.setScene(buildWindow(location, window, title, startLocation));

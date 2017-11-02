@@ -73,16 +73,24 @@ public class Load_Controller implements Initializable{
 
 	}
 
+	/**
+	 * Updates by adding relevant keyframes
+	 * @param text Text to change to
+	 * @param progress Progress to set to
+	 * @param time Time to do this step for
+	 */
 	private void update(String text, float progress, float time){
 		timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time+timeElapsed), new KeyValue(label.textProperty(), text)));
 		timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time+timeElapsed), new KeyValue(bar.progressProperty(), progress)));
 		timeElapsed = time + timeElapsed;
 
 	}
+
+	/**
+	 * Stops the progress bar and moves to the core
+	 */
 	public void skip(){
 		timeline.stop();
-
 		Main.coreProgramStart();
-
 	}
 }

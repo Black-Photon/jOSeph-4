@@ -3,6 +3,9 @@ package jOSeph_4;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Encryption methods
+ */
 public class Encryption {
 
 	public static Random random;
@@ -77,6 +80,7 @@ public class Encryption {
 
 	/**
 	 * A new trial method for passwords, involving the password not being decrypted at all
+	 * <br/> Works by taking the text, converting each character to an ASCII number, using these numbers to create a random formula which is applied to the ASCII numbers to randomise them. This is then converted back to text.
 	 * @param text To encrypt
 	 * @return The encrypted text
 	 */
@@ -90,16 +94,28 @@ public class Encryption {
 		ArrayList<Long> encodedArray = mainFormula(functionArray.get(0),functionArray.get(1),functionArray.get(2), numberArray);
 		return arrayToString(encodedArray);
 	}
+
+	/**
+	 * Convert's a string of characters to an ArrayList of ASCII int's, eg. "hi" -> [6423,6352]
+	 * @param text Text to convert
+	 * @return The ArrayList
+	 */
 	private static ArrayList<Integer> stringToInts(String text){
-		ArrayList<Integer> numberArray = new ArrayList<Integer>();
+		ArrayList<Integer> numberArray = new ArrayList<>();
 
 		for(char i: text.toCharArray()){
 			numberArray.add((int) i);
 		}
 		return numberArray;
 	}
+
+	/**
+	 * Creates a formula using the number digit's, so each character is more scrambled
+	 * @param code The string to use to generate the function - Can be the text or a passcode
+	 * @return The formula part's
+	 */
 	private static ArrayList<Double> generateFunction(String code){
-		ArrayList<Double> partsOfFormula = new ArrayList<Double>();
+		ArrayList<Double> partsOfFormula = new ArrayList<>();
 
 		double uniqueNumber = 0;
 
@@ -114,6 +130,12 @@ public class Encryption {
 		partsOfFormula.add(formulaC(uniqueNumber));
 		return partsOfFormula;
 	}
+
+	/**
+	 * Convert's an array of numbers to the ASCII character's, returning in a string
+	 * @param encodedArray Array of number's
+	 * @return Scrambled text
+	 */
 	private static String arrayToString(ArrayList<Long> encodedArray){
 		String text = "";
 		for(long i: encodedArray){
@@ -135,8 +157,16 @@ public class Encryption {
 		return (n*Math.sqrt((n+1)*(n-n/2)));
 	}
 
+	/**
+	 * Uses a formula with given coefficients to scramble the numbers in the ArrayList
+	 * @param a First coefficient
+	 * @param b Second coefficient
+	 * @param c Third coefficient
+	 * @param text To scramble
+	 * @return The scrambled numbers
+	 */
 	private static ArrayList<Long> mainFormula(double a, double b, double c, ArrayList<Integer> text){
-		ArrayList<Long> encoded = new ArrayList<Long>();
+		ArrayList<Long> encoded = new ArrayList<>();
 		for(int i:text){
 			encoded.add(Math.round(a*Math.pow(i,2)+b*i+c));
 		}

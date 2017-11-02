@@ -79,11 +79,9 @@ public class Settings_Controller implements Initializable{
 	private boolean adminSettingChanged(){
 		return usernameChanged() || passwordChanged();
 	}
-
 	private boolean usernameChanged(){
 		return !username.getText().equals(Variable.getUser());
 	}
-
 	private boolean passwordChanged(){
 		return !password.getText().equals("");
 	}

@@ -43,55 +43,46 @@ public class Question {
 	public String[] getAnswers() {
 		return answers;
 	}
-
 	public void setAnswers(String[] answers) {
 		this.answers = answers;
 	}
-
 	public int getCorrectAnswer() {
 		return correctAnswer;
 	}
-
 	public void setCorrectAnswer(int correct) {
 		this.correctAnswer = correct;
 	}
-
 	public boolean isCorrect() {
 		return correct;
 	}
-
 	public void setCorrect(boolean correct) {
 		this.correct = correct;
 	}
-
 	public void setCorrectString(){
 		correctString = answers[correctAnswer-1];
 	}
-
 	public int getQuestionNumber() {
 		return questionNumber+1;
 	}
-
 	public void setQuestionNumber(int questionNumber) {
 		this.questionNumber = questionNumber;
 	}
-
 	public String getQuestion() {
 		return question;
 	}
-
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-
 	public String getCorrectString() {
 		return correctString;
 	}
-
 	public String getIsCorrectString() {
 		return isCorrectString;
 	}
 
+	/**
+	 * Set's the String using the boolean correct
+	 */
 	public void setIsCorrectString() {
 		if(correct){
 			isCorrectString = "Correct";

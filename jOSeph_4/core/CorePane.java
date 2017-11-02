@@ -12,6 +12,12 @@ import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 public abstract class CorePane implements CorePaneInterface{
+	/**
+	 * Get's a pane full of a scene to use, with a default ResourceBundle containing this (sub)class
+	 * @param name Of the FXML file in the jOSeph_4/resources/fxml/core folder
+	 * @return The content pane
+	 * @throws IOException
+	 */
 	public Pane getPane(String name) throws IOException {
 		CorePane thisObject = this;
 		ResourceBundle resources = new ResourceBundle() {
@@ -51,6 +57,14 @@ public abstract class CorePane implements CorePaneInterface{
 		};      //Basically contains this object in a convoluted way. Supports extra info
 		return getPane(name, resources);
 	}
+
+	/**
+	 * Get's a pane full of a scene to use
+	 * @param name Of the FXML file in the jOSeph_4/resources/fxml/core folder
+	 * @param resources What resources to give the controller
+	 * @return The content pane
+	 * @throws IOException
+	 */
 	public Pane getPane(String name, ResourceBundle resources) throws IOException {
 		StackPane stackPane = FXMLLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/core/"+name), resources);
 		stackPane.setAlignment(Pos.CENTER);

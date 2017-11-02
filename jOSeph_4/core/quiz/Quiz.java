@@ -7,9 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class Quiz {
-
-	private Scene scene;
-
 	public void startMenu(){
 		Main.createWindow("quiz/Quiz.fxml",Variable.getWindow(),"Quiz");
 	}

@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class Tabs {
 	private ArrayList<Tab> list = new ArrayList<Tab>();
 
+	/**
+	 * Creates all versions, adding them to the list
+	 * @return List of all tabs
+	 */
 	ArrayList<Tab> generateTabs(){
 		createTab(new Version(new int[]{4, 1, 2, 9}, "Alpha"),
 				"Added all messaging features"
@@ -47,6 +51,11 @@ public class Tabs {
 		return list;
 	}
 
+	/**
+	 * Creates a tab, and adds it to the list
+	 * @param version Version of tab
+	 * @param info Info to describe the version
+	 */
 	private void createTab(Version version, String info){
 		list.add(new Tab(version, info));
 	}

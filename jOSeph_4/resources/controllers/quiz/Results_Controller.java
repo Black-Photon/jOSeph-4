@@ -1,6 +1,5 @@
 package jOSeph_4.resources.controllers.quiz;
 
-import jOSeph_4.Core;
 import jOSeph_4.core.quiz.Question;
 import jOSeph_4.core.quiz.Quiz;
 import javafx.collections.FXCollections;
@@ -33,6 +32,8 @@ public class Results_Controller implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//Set's up the table to work
+
 		this.questions = getQuestions();
 		tableColumnQuestionNumber.setCellValueFactory(new PropertyValueFactory<>("questionNumber"));
 		tableColumnQuestion.setCellValueFactory(new PropertyValueFactory<>("question"));
@@ -60,7 +61,10 @@ public class Results_Controller implements Initializable{
 		return Question_Controller.getSubject().getQuestions();
 	}
 
+	/**
+	 * 	Exit's the quiz
+	 */
 	public void exit(){
-		Core.startQuiz();
+		new Quiz().startMenu();
 	}
 }

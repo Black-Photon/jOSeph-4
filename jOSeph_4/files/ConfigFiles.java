@@ -30,6 +30,12 @@ public class ConfigFiles extends Files {
 			new Error("Error #0006: IOException at ConfigFiles.java", 500).showModalWindow();
 		}
 	}
+
+	/**
+	 * Loads the config file, writing the given data to it
+	 * @param data To write to the file
+	 * @throws IOException
+	 */
 	public void loadAndWriteConfig(HashMap<String, String> data) throws IOException{
 		createFile(Variable.getConfigLocation());
 		loadFile(Variable.getMainFile());
@@ -37,7 +43,9 @@ public class ConfigFiles extends Files {
 		closeFile();
 	}
 
-	//Reads file and puts into database
+	/**
+	 * 	Reads file and puts into database
+	 */
 	void readConfigFile(HashMap<String,String> data){
 		String a;
 		String b;
@@ -47,13 +55,23 @@ public class ConfigFiles extends Files {
 			data.put(a, b);
 		}
 	}
-	//Simply adds default username's and passwords to the database
+
+	/**
+	 * Simply adds default username's and passwords to the database
+	 *
+	 * @param data To add
+	 */
 	void addDefaultConfigData(HashMap<String,String> data){
 		data.put("Ele20002", Encryption.hashEncrypt("Triangle"));
 		data.put("Guest", Encryption.hashEncrypt("Admin"));
 		data.put("Tom", Encryption.hashEncrypt("Tom"));
 	}
-	//Writes the database to the file
+
+	/**
+	 * Writes the database to the file
+	 *
+	 * @param data To write
+	 */
 	void writeFile(HashMap<String, String> data){
 		Set<String> keyset = data.keySet();
 		for(int i = 0; i<data.size(); i++){

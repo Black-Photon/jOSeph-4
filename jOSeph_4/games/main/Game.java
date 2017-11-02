@@ -7,6 +7,9 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
+/**
+ * Abstract class which handles a default interface for games
+ */
 public abstract class Game extends CorePane{
 	private GameType gameType;
 
@@ -15,6 +18,14 @@ public abstract class Game extends CorePane{
 	private Image player1_img;
 	private Image player2_img;
 
+	/**
+	 *
+	 * @param gameType What game it is
+	 * @param player1 Name of first player
+	 * @param player2 Name of second player
+	 * @param player1_img Circular image to represent the first player
+	 * @param player2_img Circular image to represent the first player
+	 */
 	public Game(GameType gameType, String player1, String player2, Image player1_img, Image player2_img){
 		this.gameType = gameType;
 		this.player1 = player1;

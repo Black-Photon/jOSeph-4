@@ -39,11 +39,17 @@ public class Achievement_Controller  implements Initializable {
 
 	//Static Methods control creation of all generatorAchievements
 
+	/**
+	 * Creates all achievements
+	 */
 	public static void createAchievements(){
 		allAchievements = new ArrayList<List>();
 		createGeneratorAchievements();
 	}
 
+	/**
+	 * Create's generator achievements
+	 */
 	public static void createGeneratorAchievements(){
 		generatorAchievements = new ArrayList<Achievement>();
 		Achievement_Type type = Achievement_Type.GENERATOR;
@@ -56,7 +62,11 @@ public class Achievement_Controller  implements Initializable {
 		allAchievements.add(generatorAchievements);
 	}
 
-	public static void onLevelUp(int level) throws IOException{
+	/**
+	 * Controls leveling up on generator, and checks if you get an achievement
+	 * @param level Level you've leveled to
+	 */
+	public static void onLevelUp(int level) {
 		for(Iterator<Achievement> iterator = generatorAchievements.iterator(); iterator.hasNext();){
 			Achievement thisAchievement = iterator.next();
 			if(thisAchievement.getLevel()==level){
@@ -67,7 +77,11 @@ public class Achievement_Controller  implements Initializable {
 		}
 	}
 
-	public void start(Achievement achievement) throws IOException {
+	/**
+	 * Creates a window to tell you you won the achievement
+	 * @param achievement You've gotten
+	 */
+	public void start(Achievement achievement) {
 		this.achievement = achievement;
 		stage = new Stage();
 		Main.createWindow("Achievement.fxml", stage, "New Achievement!");

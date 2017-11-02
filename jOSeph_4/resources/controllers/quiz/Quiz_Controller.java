@@ -3,6 +3,9 @@ package jOSeph_4.resources.controllers.quiz;
 import jOSeph_4.Main;
 import jOSeph_4.core.quiz.Quiz_Runtime;
 
+/**
+ * Controls what is run
+ */
 public class Quiz_Controller {
 	public void onMathsPressed(){
 		Quiz_Runtime.start();

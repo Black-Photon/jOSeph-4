@@ -12,19 +12,15 @@ public class Tab {
 
 
 	//Getters and setters
-
 	public Version getVersion() {
 		return version;
 	}
-
 	public void setVersion(Version version) {
 		this.version = version;
 	}
-
 	public String getInfo() {
 		return info;
 	}
-
 	public void setInfo(String info) {
 		this.info = info;
 	}

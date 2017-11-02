@@ -1,21 +1,20 @@
 package jOSeph_4;
 
 /**
- * Creates a class to control the load scene(s)
+ * Object creates a new load scene and sets as current scene
  *
+ * Doesn't need to be big now as controllers do stuff and Main.createWindow() actually creates the window
  *
+ * TODO remove
  */
-
 public class Load {
-	//Basically makes and sets the scene
-	public void startLoad(){
-		Main.createWindow("load.fxml", Variable.getWindow(),"Loading...");
+	/**
+	 * Start's the load screen
+	 */
+	public void start(){
+		Main.createWindow("Load.fxml", Variable.getWindow(), "Loading...");
 	}
 }
-
-
-
-
 
 
 

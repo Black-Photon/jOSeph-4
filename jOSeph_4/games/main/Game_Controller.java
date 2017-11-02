@@ -13,6 +13,9 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controls the game outer shell. The pane should be filled with the inner game
+ */
 public class Game_Controller implements Initializable{
 
 	@FXML
@@ -33,6 +36,10 @@ public class Game_Controller implements Initializable{
 		image2.fitHeightProperty().set(20);
 		setTitle();
 	}
+
+	/**
+	 * Set's the title of the window to whoever's turn it is (Not stage title)
+	 */
 	void setTitle(){
 		if(player1()){
 			title.setText(game.getPlayer1()+"'s Turn");
@@ -52,12 +59,20 @@ public class Game_Controller implements Initializable{
 		}
 		return false;
 	}
+
+	/**
+	 * Swaps the current player
+	 */
 	void swapPlayer(){
 		if(player==Player.PLAYER1) player = Player.PLAYER2; else
 		if(player==Player.PLAYER2) player = Player.PLAYER1;
 		swapPlayerImages();
 		setTitle();
 	}
+
+	/**
+	 * Enlarges one image and shrinks the other
+	 */
 	void swapPlayerImages(){
 		Timeline timeline = new Timeline();
 		KeyValue value1;
@@ -73,6 +88,7 @@ public class Game_Controller implements Initializable{
 		timeline.getKeyFrames().add(0,frame);
 		timeline.play();
 	}
+
 	@FXML
 	public void swap(){
 		swapPlayer();

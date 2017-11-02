@@ -64,7 +64,6 @@ public class NoteView_Controller implements Initializable{
 	public static File getFile() {
 		return file;
 	}
-
 	public static void setFile(File file) {
 		NoteView_Controller.file = file;
 	}

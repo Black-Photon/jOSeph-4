@@ -1,19 +1,18 @@
 package jOSeph_4;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
-import java.io.IOException;
-
-class Launcher {
-
+/**
+ * Object creates a new launcher scene and sets as current scene
+ *
+ * Doesn't need to be big now as controllers do stuff and Main.createWindow() actually creates the window
+ *
+ * TODO remove
+ */
+public class Launcher {
 	/**
-	 * This method creates a new launcher by referencing FXML file
-	 *
+	 * Start's the logon screen
 	 */
 	void start(){
-		Main.createWindow("Launcher.fxml",Variable.getWindow(), "jOSeph " + Variable.getVersionObject().bToString());
+		Main.createWindow("Launcher.fxml",Variable.getWindow(), "jOSeph " + Variable.getVersionObject().versionToString());
 	}
 
 }

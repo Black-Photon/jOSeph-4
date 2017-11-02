@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class New_Controller implements Initializable{
 	private static Version version;
 	private static String info;
-	public static void preInitalize(Version version, String info){
+	public static void preInitialize(Version version, String info){
 		New_Controller.version = version;
 		New_Controller.info = info;
 	}
@@ -24,7 +24,7 @@ public class New_Controller implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		versionInfo.setText("jOSeph Version: " + version.bToString() + " " + version.getC());
+		versionInfo.setText("jOSeph Version: " + version.versionToString() + " " + version.getRelease());
 		textArea.setText(info);
 	}
 }

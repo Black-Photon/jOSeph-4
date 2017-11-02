@@ -10,7 +10,7 @@ public class Feedback {
 
 	public void create(boolean isCorrect, String answer){
 
-		Feedback_Controller.preInitalize(isCorrect, answer);
+		Feedback_Controller.preInitialize(isCorrect, answer);
 
 		stage = new Stage();
 

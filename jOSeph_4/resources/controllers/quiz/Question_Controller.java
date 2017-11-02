@@ -47,7 +47,7 @@ public class Question_Controller implements Initializable{
 		onAnswer(4);
 	}
 
-
+	@FXML
 	public void onAnswer(int selected){
 		if(selected==correctAnswer){
 			correct = true;
@@ -56,21 +56,15 @@ public class Question_Controller implements Initializable{
 		}
 
 		thisQuestion.setCorrect(correct);
-
-
 		System.out.println("Correct = "+correct);
-
 		String answer = answers[correctAnswer-1];
-
-
 
 		Feedback feedback = new Feedback();
 		feedback.create(correct, answer);
-
-		//subject.nextQuestion(thisQuestion);
 	}
 
 	//Opens calculator in new window
+	@FXML
 	public void calculator(){
 		Stage stage = new Stage();
 		Main.createWindow("core/Calculator.fxml", stage, "Calculator");
@@ -137,19 +131,15 @@ public class Question_Controller implements Initializable{
 	public boolean isCorrect() {
 		return correct;
 	}
-
 	public static Subject getSubject() {
 		return subject;
 	}
-
 	public static void setSubject(Subject subject) {
 		Question_Controller.subject = subject;
 	}
-
 	public static Question getThisQuestion() {
 		return thisQuestion;
 	}
-
 	public static void setThisQuestion(Question thisQuestion) {
 		Question_Controller.thisQuestion = thisQuestion;
 	}

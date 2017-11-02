@@ -19,10 +19,13 @@ public class Feedback_Controller implements Initializable{
 	@FXML
 	Button button;
 
+	/**
+	 * Quit's the window, moving to the next question
+	 */
 	public void nextQuestion(){
 		Feedback.closeStage();
 		Question_Controller q = new Question_Controller();
-		q.getSubject().nextQuestion(q.getThisQuestion(), q.getSubject());
+		q.getSubject().nextQuestion(q.getSubject());
 	}
 
 	@Override
@@ -42,8 +45,12 @@ public class Feedback_Controller implements Initializable{
 	private static String answerLabelString;
 	private static boolean correct;
 
-
-	public static void preInitalize(boolean correct, String answer){
+	/**
+	 * Called before window made to pass data
+	 * @param correct
+	 * @param answer
+	 */
+	public static void preInitialize(boolean correct, String answer){
 		if(correct){
 			correctLabelString = "Correct";
 		}else{

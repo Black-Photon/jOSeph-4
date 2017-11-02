@@ -14,9 +14,11 @@ public class Launcher_Controller implements Initializable{
 	@FXML
 	Label version;
 
+	@FXML
 	public void login() throws Exception{
 		new Logon().start();
 	}
+	@FXML
 	public void quit(){
 		Main.quit();
 	}

@@ -1,33 +1,17 @@
 package jOSeph_4;
 
-import jOSeph_4.core.quiz.Quiz;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
-import java.io.IOException;
-
+/**
+ * Object creates a new load scene and sets as current scene
+ *
+ * Doesn't need to be big now as controllers do stuff and Main.createWindow() actually creates the window
+ *
+ * TODO remove
+ */
 public class Core {
-
-	private Scene scene;
-	private static int genCount;
-
-	public Core(){
-
-	}
+	/**
+	 * Starts the core program
+	 */
 	public void start(){
 		Main.createWindow("Core.fxml",Variable.getWindow(),"Page 1");
-	}
-	public static void startQuiz(){
-		new Quiz().startMenu();
-	}
-
-
-	public static int getGenCount() {
-		return genCount;
-	}
-
-	public static void setGenCount(int genCount) {
-		Core.genCount = genCount;
 	}
 }

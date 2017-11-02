@@ -8,9 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class Results {
-
-	private Scene scene;
-
 	public void createWindow(){
 		Main.createWindow("quiz/Results.fxml", Variable.getWindow(), "Results");
 	}

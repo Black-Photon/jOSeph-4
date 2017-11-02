@@ -1,29 +1,31 @@
 package jOSeph_4;
 
+/**
+ * Contains all relevant info of stability jOSeph version
+ */
 public class Version {
 	/**
-	 * Holds info about a version
+	 * Holds info about stability version
 	 *
-	 * @param a Stability, eg. Stable
+	 * @param stability Stability, eg. Stable
 	 * @param b Version No, eg. 4.2.0
-	 * @param c Stage, eg. Alpha
+	 * @param release Stage, eg. Alpha
 	 */
-	public Version(String a, int[] b, String c){
-		this.a = a;
-		this.b = b;
-		this.c = c;
+	public Version(String stability, int[] b, String release){
+		this.stability = stability;
+		this.version = b;
+		this.release = release;
 	}
 	/**
-	 * Holds info about a version
+	 * Holds info about stability version
 	 *
 	 * @param b Version No, eg. 4.2.0
-	 * @param c Stage, eg. Alpha
+	 * @param release Stage, eg. Alpha
 	 */
-	public Version(int[] b, String c){
-		this.b = b;
-		this.c = c;
+	public Version(int[] b, String release){
+		this.version = b;
+		this.release = release;
 	}
-
 	/**
 	 * Use once - has current version data
 	 */
@@ -31,49 +33,67 @@ public class Version {
 
 	}
 
-	//Temp names to hold version information
-	private String a = "Fairly Stable";
-	private int[] b = {4,1,2,9};
-	private String c = "Alpha";
+	//Holds default version info
+	/**
+	 * Stability - Eg. Unstable, stable, fairly stable ect.
+	 */
+	private String stability = "Fairly Stable";
+	/**
+	 * Version to 4 sig figs - eg. 4.1.2.9
+	 */
+	private int[] version = {4,1,2,9};
+	/**
+	 * Release type: Alpha, Beta, Pre-Release, Release
+	 */
+	private String release = "Alpha";
 
-	public String getA() {
-		return a;
+	public String getStability() {
+		return stability;
 	}
 
-	public void setA(String a) {
-		this.a = a;
+	public void setStability(String stability) {
+		this.stability = stability;
 	}
 
-	public int[] getB() {
-		return b;
+	public int[] getVersion() {
+		return version;
 	}
 
-	public void setB(int[] b) {
-		this.b = b;
+	public void setVersion(int[] version) {
+		this.version = version;
 	}
 
-	public String getC() {
-		return c;
+	public String getRelease() {
+		return release;
 	}
 
-	public void setC(String c) {
-		this.c = c;
+	public void setRelease(String release) {
+		this.release = release;
 	}
 
 	/**
 	 * 	Gets version in "x.y.z" form
 	 */
-	public String bToString(){
+	public String versionToString(){
 		StringBuilder version = new StringBuilder("");
-		for(int x:b) {
+		for(int x: this.version) {
 			version.append(x).append(".");
 		}
 		return version.substring(0,version.length()-1);
 	}
+
+	/**
+	 * Returns the version in a convenient string
+	 * @return Whole version
+	 */
 	public String getWholeVersion(){
-		return bToString() + " " + getC() + " - " + getA();
+		return versionToString() + " " + getRelease() + " - " + getStability();
 	}
+	/**
+	 * Returns the version without the stability in a convenient string
+	 * @return Version
+	 */
 	public String getMostVersion(){
-		return bToString() + " " + getC();
+		return versionToString() + " " + getRelease();
 	}
 }

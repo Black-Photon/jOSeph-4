@@ -21,6 +21,7 @@ public class Generator_Controller implements Initializable{
 	private static int countInt = 0;
 	private static double progress;
 
+	@FXML
 	public void onGeneratorClick(){
 		int x = countInt;
 
@@ -40,15 +41,7 @@ public class Generator_Controller implements Initializable{
 			changed = false;
 		}
 		if(changed){
-			//TODO make message interface
-
-			//*
-			try {
-				Achievement_Controller.onLevelUp(countInt);
-			}catch (IOException e){
-				e.printStackTrace();
-			}//*/
-
+			Achievement_Controller.onLevelUp(countInt);
 		}
 	}
 

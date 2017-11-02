@@ -4,13 +4,26 @@ import jOSeph_4.messageBoxes.sourceFiles.Error;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controls the password system, with methods to do with everything
+ */
 public class Password {
 
+	/**
+	 * Is the password correct
+	 */
 	private static boolean correct = false;
 
 	private static Stage stage;
 
+	/**
+	 * Checks if the password is correct giving errors if not
+	 * @param userText Username to test
+	 * @param passText Password to test
+	 * @return True if the password and username are in the database
+	 */
 	public static boolean isPasswordCorrect(String userText, String passText){
+		//Security!
 		passText = Encryption.hashEncrypt(passText);
 		if(Variable.getDatabase().get(userText)==null){
 			new Error("Please enter valid username",400).showModalWindow();
@@ -37,6 +50,9 @@ public class Password {
 		return false;
 	}
 
+	/**
+	 * Creates a box to confirm whether the password is correct. It set's the 'correct' variable in this class, so isPasswordCorrect() can be instantly called
+	 */
 	public static void createConfirmBox(){
 		stage = new Stage();
 		Main.createWindow("Confirm_Password.fxml", stage, "Confirm Password");
@@ -47,11 +63,13 @@ public class Password {
 	public static boolean isCorrect() {
 		return correct;
 	}
-
 	public static void setCorrect(boolean correct) {
 		Password.correct = correct;
 	}
 
+	/**
+	 * Closes the stage
+	 */
 	public static void closeStage() {
 		stage.close();
 	}

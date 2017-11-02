@@ -14,6 +14,8 @@ public class Calculator_Controller {
 	@FXML
 	private TextField text;
 
+	//Unfortunately, need so many for each button D:
+
 	@FXML
 	void on0Pressed() {
 		onPress("0");

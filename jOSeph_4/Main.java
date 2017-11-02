@@ -10,15 +10,26 @@ import java.io.IOException;
 
 public class Main extends Application{
 
-	//Main Method
+	/**
+	 * Starts the program
+	 * @param args Ignored
+	 */
 	public static void main(String[] args) {
 		launch();
 	}
 
+
+	//Used to create windows easily. Done through main as can't be static
 	public static final Windows windows = new Windows();
 
+	/**
+	 * Starts the program as if just opened. DO NOT CALL - Done automatically through launch()
+	 * @param primaryStage
+	 * @throws Exception
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		//Here to ensure it get's called
 		Achievement_Controller.createAchievements();
 
 		Variable.setWindow(primaryStage);
@@ -36,10 +47,17 @@ public class Main extends Application{
 		Variable.getWindow().show();
 	}
 
+	/**
+	 * Start's the load part
+	 * @throws IOException
+	 */
 	public static void startLoad() throws IOException{
-		new Load().startLoad();
+		new Load().start();
 	}
 
+	/**
+	 * Start's Core
+	 */
 	public static void coreProgramStart(){
 		new Core().start();
 	}
@@ -64,7 +82,10 @@ public class Main extends Application{
 		return windows.buildWindow(location, window, title,"jOSeph_4/resources/fxml/");
 	}
 
-	//Quit
+	/**
+	 * Anything that must be done before closing the program should go here.
+	 * Call to close the program
+	 */
 	public static void quit(){
 		System.out.println("System closed successfully");
 		Variable.getWindow().close();

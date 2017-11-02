@@ -64,6 +64,10 @@ public class Notes_Controller implements Initializable{
 		openFile(new File(fileLocation));
 	}
 
+	/**
+	 * Opens a file by opening window to view
+	 * @param file
+	 */
 	private void openFile(File file){
 		try {
 			new NoteView().createNoteView(file);
@@ -73,6 +77,9 @@ public class Notes_Controller implements Initializable{
 		}
 	}
 
+	/**
+	 * Refresh's by resetting the list view
+	 */
 	private void refresh(){
 		files = Variable.getNotesFiles().getAllTextFiles(Variable.getUser());
 
@@ -85,6 +92,11 @@ public class Notes_Controller implements Initializable{
 		listView.setItems(fileNames);
 	}
 
+	/**
+	 * Creates a path from a file name, eg. "note" -> "User/note.txt"
+	 * @param name
+	 * @return
+	 */
 	private String fileToPath(String name){
 		return Variable.getUser() + "/" + name + ".txt";
 	}
