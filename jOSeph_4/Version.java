@@ -41,7 +41,7 @@ public class Version {
 	/**
 	 * Version to 4 sig figs - eg. 4.1.2.9
 	 */
-	private int[] version = {4,1,2,9};
+	private int[] version = {4,1,3,0};
 	/**
 	 * Release type: Alpha, Beta, Pre-Release, Release
 	 */

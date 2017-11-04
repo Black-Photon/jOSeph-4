@@ -12,6 +12,9 @@ public class Tabs {
 	 * @return List of all tabs
 	 */
 	ArrayList<Tab> generateTabs(){
+		createTab(new Version(new int[]{4, 1, 3, 0}, "Alpha"),
+				"Implemented Messaging from message-peoples and added Noughts and Crosses"
+		);
 		createTab(new Version(new int[]{4, 1, 2, 9}, "Alpha"),
 				"Added all messaging features"
 		);
