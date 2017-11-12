@@ -6,9 +6,11 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
+//Piece images from www.openclipart.org
+
 public class Chess extends Game {
 	public Chess() {
-		super(GameType.CHESS, "White", "Black", new Image("jOSeph_4/resources/images/game/noughts.png"), new Image("jOSeph_4/resources/images/game/crosses.png"));
+		super(GameType.CHESS, "White", "Black", new Image("jOSeph_4/resources/images/game/white.png"), new Image("jOSeph_4/resources/images/game/black.png"));
 	}
 
 	Pane getGame(Game_Controller controller) throws IOException{

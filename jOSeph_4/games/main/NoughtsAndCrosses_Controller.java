@@ -26,8 +26,8 @@ public class NoughtsAndCrosses_Controller implements Initializable{
 
 	private Game_Controller controller;
 
-	private Image image1_n = new Image("jOSeph_4/resources/images/game/nought.png");
-	private Image image2_c = new Image("jOSeph_4/resources/images/game/cross.png");
+	private final Image image1_n = new Image("jOSeph_4/resources/images/game/nought.png");
+	private final Image image2_c = new Image("jOSeph_4/resources/images/game/cross.png");
 
 	private Player winner = NONE;
 

@@ -59,6 +59,12 @@
                               <String fx:value="square" />
                            </styleClass>
                         </Button>
+                        <Button id="chess_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onChessMenuClick">
+                           <styleClass>
+                              <String fx:value="icon" />
+                              <String fx:value="square" />
+                           </styleClass>
+                        </Button>
                         <Button id="settings_s" maxHeight="70.0" maxWidth="128.0" minHeight="70.0" minWidth="64.0" mnemonicParsing="false" onAction="#onSettingsMenuClick">
                            <styleClass>
                               <String fx:value="icon" />
@@ -78,7 +84,7 @@
       </HBox>
    </left>
    <center>
-      <StackPane fx:id="stackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <StackPane fx:id="stackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
    </center>
    <stylesheets>
       <URL value="@../css/main.css" />

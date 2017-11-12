@@ -41,6 +41,9 @@
 #n_c_s{
     -fx-graphic: url("../../images/core/n&c.png");
 }
+#chess_s{
+    -fx-graphic: url("../../images/core/chess.png");
+}
 .scroll-pane {
     -fx-background-color: #282828;
 }

@@ -1,5 +1,6 @@
 package jOSeph_4.resources.controllers.core;
 
+import jOSeph_4.games.menu.ChessMenu;
 import jOSeph_4.games.menu.NoughtsAndCrossesMenu;
 import jOSeph_4.messageBoxes.sourceFiles.Error;
 import jOSeph_4.Main;
@@ -38,11 +39,12 @@ public class Core_Controller implements Initializable{
 	private Notes notes;
 	private Messaging messaging;
 	private NoughtsAndCrossesMenu NaC;
+	private ChessMenu chess;
 
 	private static Core_Controller thisObject;
 
 	//Can't easily auto-update - please keep updated
-	final int noOfButtons = 10;
+	final int noOfButtons = 11;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -59,6 +61,8 @@ public class Core_Controller implements Initializable{
 		messaging = new Messaging();
 		Image OX_image = new Image("jOSeph_4/resources/images/game/N&C.png");
 		NaC = new NoughtsAndCrossesMenu(OX_image);
+		Image chess_image = new Image("jOSeph_4/resources/images/game/chess.png");
+		chess = new ChessMenu(chess_image);
 
 		Color color = new Color(0.1569, 0.1569, 0.1569, 1);
 
@@ -145,6 +149,9 @@ public class Core_Controller implements Initializable{
 	}
 	@FXML public void onNoughtsAndCrossesMenuClick(){
 		setMainPane(NaC);
+	}
+	@FXML public void onChessMenuClick(){
+		setMainPane(chess);
 	}
 
 	/**
