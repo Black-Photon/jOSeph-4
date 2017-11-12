@@ -1,5 +1,7 @@
 package jOSeph_4.resources.controllers.core;
 
+import jOSeph_4.Variable;
+import jOSeph_4.resources.controllers.Achievement_Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import jOSeph_4.messageBoxes.sourceFiles.Error;
@@ -13,6 +15,11 @@ import java.util.ArrayList;
 public class Calculator_Controller {
 	@FXML
 	private TextField text;
+
+	/**
+	 * True if directed here from the quiz question "What is 2+2?"
+	 */
+	private static boolean fromQuiz = false;
 
 	//Unfortunately, need so many for each button D:
 
@@ -88,6 +95,7 @@ public class Calculator_Controller {
 
 	@FXML
 	void onEqualsPressed() {
+		if(fromQuiz && text.getText().equals("2+2") && !Achievement_Controller.getAchievementByName("Problem Solver").isObtained()) Achievement_Controller.getAchievement(Achievement_Controller.getAchievementByName("Problem Solver"));
 		parseAnswer();
 	}
 
@@ -340,5 +348,10 @@ public class Calculator_Controller {
 			}
 		}
 		return 0;
+	}
+
+
+	public static void setFromQuiz(boolean fromQuiz) {
+		Calculator_Controller.fromQuiz = fromQuiz;
 	}
 }

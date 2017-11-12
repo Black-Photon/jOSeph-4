@@ -33,6 +33,8 @@ public class Achievement {
 		switch(type){
 			case GENERATOR:
 				return "Generator";
+			case MISC:
+				return "Miscellaneous";
 			default:
 				new Error("Error #0010: No such type at Achievement.java").showModalWindow();
 		}

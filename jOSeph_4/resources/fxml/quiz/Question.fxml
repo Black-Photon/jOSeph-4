@@ -43,22 +43,22 @@
            <children>
                <StackPane prefHeight="150.0" prefWidth="200.0">
                    <children>
-                       <Button id="maths" fx:id="a1" mnemonicParsing="false" onAction="#onAnswer1" prefHeight="10000.0" prefWidth="10000.0" text="1" />
+                       <Button id="maths" fx:id="a1" mnemonicParsing="false" onAction="#onAnswer1" prefHeight="10000.0" prefWidth="10000.0" styleClass="square" text="1" />
                    </children>
                </StackPane>
                <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                    <children>
-                       <Button id="option4" fx:id="a4" mnemonicParsing="false" onAction="#onAnswer4" prefHeight="10000.0" prefWidth="10000.0" text="4" />
+                       <Button id="option4" fx:id="a4" mnemonicParsing="false" onAction="#onAnswer4" prefHeight="10000.0" prefWidth="10000.0" styleClass="square" text="4" />
                    </children>
                </StackPane>
                <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
                    <children>
-                       <Button id="computing" fx:id="a3" mnemonicParsing="false" onAction="#onAnswer3" prefHeight="10000.0" prefWidth="10000.0" text="3" />
+                       <Button id="computing" fx:id="a3" mnemonicParsing="false" onAction="#onAnswer3" prefHeight="10000.0" prefWidth="10000.0" styleClass="square" text="3" />
                    </children>
                </StackPane>
                <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                       <Button id="science" fx:id="a2" mnemonicParsing="false" onAction="#onAnswer2" prefHeight="10000.0" prefWidth="10000.0" text="2" />
+                       <Button id="science" fx:id="a2" mnemonicParsing="false" onAction="#onAnswer2" prefHeight="10000.0" prefWidth="10000.0" styleClass="square" text="2" />
                </children>
                </StackPane>
            </children>
@@ -74,7 +74,7 @@
             </Label>
          </left>
          <right>
-            <Button id="calc_s" mnemonicParsing="false" onAction="#calculator" BorderPane.alignment="CENTER" />
+            <Button id="calc_s" mnemonicParsing="false" onAction="#calculator" styleClass="square" BorderPane.alignment="CENTER" />
          </right>
          <BorderPane.margin>
             <Insets />
@@ -84,5 +84,6 @@
    <stylesheets>
       <URL value="@../../css/main.css" />
       <URL value="@../../css/quiz.css" />
+      <URL value="@../../css/core/core.css" />
    </stylesheets>
 </BorderPane>

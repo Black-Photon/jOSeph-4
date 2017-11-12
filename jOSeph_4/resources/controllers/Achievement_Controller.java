@@ -15,18 +15,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Achievement_Controller  implements Initializable {
 
 	private Scene scene;
 	private static Stage stage;
 	private static Achievement achievement;
-	private static List allAchievements;
-	private static List generatorAchievements;
+	private static List<List<Achievement>> allAchievements;
+	private static List<Achievement> generatorAchievements;
+	private static List<Achievement> miscellaneousAchievements;
 
 	@FXML
 	ImageView imageView;
@@ -43,8 +41,9 @@ public class Achievement_Controller  implements Initializable {
 	 * Creates all achievements
 	 */
 	public static void createAchievements(){
-		allAchievements = new ArrayList<List>();
+		allAchievements = new ArrayList<>();
 		createGeneratorAchievements();
+		createMiscellaneousAchievements();
 	}
 
 	/**
@@ -61,6 +60,15 @@ public class Achievement_Controller  implements Initializable {
 		generatorAchievements.add(new Achievement("level500.png","Revolutionary Thinker", "The Modern Newton",500, type));
 		allAchievements.add(generatorAchievements);
 	}
+	/**
+	 * Create's miscellaneous achievements
+	 */
+	public static void createMiscellaneousAchievements(){
+		miscellaneousAchievements = new ArrayList<Achievement>();
+		Achievement_Type type = Achievement_Type.MISC;
+		miscellaneousAchievements.add(new Achievement("level42.png","Problem Solver", "Find another way to solve a problem", -1, type));
+		allAchievements.add(miscellaneousAchievements);
+	}
 
 	/**
 	 * Controls leveling up on generator, and checks if you get an achievement
@@ -75,6 +83,32 @@ public class Achievement_Controller  implements Initializable {
 				thisController.start(thisAchievement);
 			}
 		}
+	}
+
+	/**
+	 *
+	 * @param name Of Achievement
+	 * @return Achievement From the name
+	 * @throws NoSuchElementException if name doesn't match
+	 */
+	public static Achievement getAchievementByName(String name){
+		for(List i: allAchievements){
+			for(Achievement j: (ArrayList<Achievement>) i){
+				if(j.getTitle().equals(name)){
+					return j;
+				}
+			}
+		}
+		throw new NoSuchElementException();
+	}
+
+	/**
+	 * Does stuff to say you got that achievement
+	 */
+	public static void getAchievement(Achievement achievement){
+		achievement.setObtained(true);
+		Achievement_Controller thisController = new Achievement_Controller();
+		thisController.start(achievement);
 	}
 
 	/**

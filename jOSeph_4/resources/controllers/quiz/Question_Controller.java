@@ -5,6 +5,7 @@ import jOSeph_4.core.Calculator;
 import jOSeph_4.core.quiz.Feedback;
 import jOSeph_4.core.quiz.Question;
 import jOSeph_4.core.quiz.Subject;
+import jOSeph_4.resources.controllers.core.Calculator_Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -66,6 +67,9 @@ public class Question_Controller implements Initializable{
 	//Opens calculator in new window
 	@FXML
 	public void calculator(){
+		if(thisQuestion.getQuestion().equals("What is 2+2?")) Calculator_Controller.setFromQuiz(true);
+		else Calculator_Controller.setFromQuiz(false);
+
 		Stage stage = new Stage();
 		Main.createWindow("core/Calculator.fxml", stage, "Calculator");
 		stage.show();

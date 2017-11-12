@@ -131,6 +131,7 @@ public class Core_Controller implements Initializable{
 	}
 	@FXML public void onCalcMenuClick(){
 		setMainPane(calculator);
+		Calculator_Controller.setFromQuiz(false);
 	}
 	@FXML public void onNewMenuClick(){
 		setMainPane(newObject);
