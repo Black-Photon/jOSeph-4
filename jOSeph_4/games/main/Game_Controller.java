@@ -137,4 +137,24 @@ public class Game_Controller implements Initializable{
 	public void setPlayer(Player player){
 		this.player = player;
 	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	/**
+	 *
+	 * @param player
+	 * @return
+	 * @throws NullPointerException if the player is not Player 1 or Player 2
+	 */
+	public Player otherPlayer(Player player){
+		if(player == Player.PLAYER1){
+			return Player.PLAYER2;
+		}
+		if(player == Player.PLAYER2){
+			return Player.PLAYER1;
+		}
+		throw new NullPointerException();
+	}
 }

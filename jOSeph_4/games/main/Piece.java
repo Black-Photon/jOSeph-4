@@ -6,6 +6,7 @@ import jOSeph_4.messageBoxes.sourceFiles.Error;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Piece {
 	//Image Name parts
@@ -53,8 +54,8 @@ public class Piece {
 	}
 
 	public Piece(Piece_Type type, Player player){
-		if(player==Player.PLAYER1) moveUp = true;
-		else moveUp = false;
+		if(player==Player.PLAYER1) moveUp = false;
+		else moveUp = true;
 
 		if(type==Piece_Type.ROOK || type == Piece_Type.KING) canCastle = true;
 
@@ -128,10 +129,6 @@ public class Piece {
 
 	//Projections
 	private void projectPawn(int row, int column, DualList<Piece> list){
-		if(doubleMove){
-			doubleMove = false;
-		}
-
 		if(moveUp){
 			//Double move
 			if(row==6){
@@ -159,23 +156,36 @@ public class Piece {
 				courses.add(coordinates);
 			}
 
-			//If the piece in front is a pawn which just double-moved, move diagonally
-			if(list.get(row-1, column).type==Piece_Type.PAWN && list.get(row-1, column).doubleMove){
-				if(column!=0)
-					if(list.get(row-1, column-1)==Piece.EMPTY_PIECE && list.get(row-1, column-1).player!=player){
-						Integer[] coordinates = {row-1, column-1};
-						courses.add(coordinates);
-					}
-				if(column!=7)
+			//If the piece to side is a pawn which just double-moved, move diagonally
+			if(column==0){
+				if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column+1).doubleMove){
 					if(list.get(row-1, column+1)==Piece.EMPTY_PIECE && list.get(row-1, column+1).player!=player){
 						Integer[] coordinates = {row-1, column+1};
 						courses.add(coordinates);
 					}
+				}
+			}else if(column==7){
+				if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+					if(list.get(row-1, column-1)==Piece.EMPTY_PIECE && list.get(row-1, column-1).player!=player){
+						Integer[] coordinates = {row-1, column-1};
+						courses.add(coordinates);
+					}
+				}
+			}else if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+				if(list.get(row-1, column-1)==Piece.EMPTY_PIECE && list.get(row-1, column-1).player!=player){
+					Integer[] coordinates = {row-1, column-1};
+					courses.add(coordinates);
+				}
+			}else if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+				if(list.get(row-1, column+1)==Piece.EMPTY_PIECE && list.get(row-1, column+1).player!=player){
+					Integer[] coordinates = {row-1, column+1};
+					courses.add(coordinates);
+				}
 			}
 
 		}else{
 			//Double move
-			if(row==6){
+			if(row==1){
 				if(list.get(row+2, column)==Piece.EMPTY_PIECE && list.get(row+1, column)==Piece.EMPTY_PIECE){
 					Integer[] coordinates = {row+2, column};
 					courses.add(coordinates);
@@ -200,18 +210,31 @@ public class Piece {
 					courses.add(coordinates);
 				}
 
-			//If the piece in front is a pawn which just double-moved, move diagonally
-			if(list.get(row+1, column).type==Piece_Type.PAWN && list.get(row+1, column).doubleMove){
-				if(column!=0)
-					if(list.get(row+1, column-1)==Piece.EMPTY_PIECE && list.get(row+1, column-1).player!=player){
-						Integer[] coordinates = {row+1, column-1};
-						courses.add(coordinates);
-					}
-				if(column!=7)
+			//If the piece to side is a pawn which just double-moved, move diagonally
+			if(column==0){
+				if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column+1).doubleMove){
 					if(list.get(row+1, column+1)==Piece.EMPTY_PIECE && list.get(row+1, column+1).player!=player){
 						Integer[] coordinates = {row+1, column+1};
 						courses.add(coordinates);
 					}
+				}
+			}else if(column==7){
+				if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+					if(list.get(row+1, column-1)==Piece.EMPTY_PIECE && list.get(row+1, column-1).player!=player){
+						Integer[] coordinates = {row+1, column-1};
+						courses.add(coordinates);
+					}
+				}
+			}else if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+				if(list.get(row+1, column-1)==Piece.EMPTY_PIECE && list.get(row+1, column-1).player!=player){
+					Integer[] coordinates = {row+1, column-1};
+					courses.add(coordinates);
+				}
+			}else if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+				if(list.get(row+1, column+1)==Piece.EMPTY_PIECE && list.get(row+1, column+1).player!=player){
+					Integer[] coordinates = {row+1, column+1};
+					courses.add(coordinates);
+				}
 			}
 		}
 	}
@@ -292,7 +315,7 @@ public class Piece {
 				break;
 			}else break;
 		}
-		for(int i = 1; row+i<8 && column+i>=0; i++){
+		for(int i = 1; row+i<8 && column-i>=0; i++){
 			if(list.get(row+i, column-i)==Piece.EMPTY_PIECE){
 				Integer[] coordinates = {row+i, column-i};
 				courses.add(coordinates);
@@ -302,7 +325,7 @@ public class Piece {
 				break;
 			}else break;
 		}
-		for(int i = 1; row+i>=0 && column+i>=0; i++){
+		for(int i = 1; row-i>=0 && column-i>=0; i++){
 			if(list.get(row-i, column-i)==Piece.EMPTY_PIECE){
 				Integer[] coordinates = {row-i, column-i};
 				courses.add(coordinates);
@@ -318,9 +341,38 @@ public class Piece {
 		projectBishop(row, column, list);
 	}
 	private void projectKing(int row, int column, DualList<Piece> list){
+		projectKingWithoutCheckConcern(row, column, list);
+
+		//Ensure you can't move to check
+		for(int i = 0; i<8; i++) {
+			for (int j = 0; j<8; j++) {
+				Piece piece = list.get(i,j);
+				if(piece.player!=player){
+					//To prevent a loop
+					if(piece.getType()==Piece_Type.KING)
+						piece.projectKingWithoutCheckConcern(i, j, list);
+					//To ensure pawn diagonals are not stepped onto (and forwards can be)
+					else if(piece.getType()==Piece_Type.PAWN)
+						piece.projectPawnDiagonals(i, j);
+					else piece.projectCourse(i, j, list);
+
+					removeThreateningPieces(piece, i, j);
+
+				}
+			}
+		}
+	}
+	/**
+	 * Like normal, but ignores whether the move will put it into check
+	 * @param row
+	 * @param column
+	 * @param list
+	 */
+	void projectKingWithoutCheckConcern(int row, int column, DualList<Piece> list){
+		courses = new ArrayList<>();
 		for(int i = -1; i<2; i++){
 			for(int j = -1; j<2; j++){
-				if(i!=0 && j!=0 && !(row+i<8 && row+i>=0) && !(column+j<8 && column+j>=0)) {
+				if((i!=0 || j!=0) && (row+i<8 && row+i>=0) && (column+j<8 && column+j>=0)) {
 					if (list.get(row + i, column + j).player != player && list.get(row + i, column + j).player != player){
 						Integer[] coordinates = {row + i, column + j};
 						courses.add(coordinates);
@@ -329,20 +381,79 @@ public class Piece {
 			}
 		}
 
-		//Ensure you can't move to check
-		for(int i = 0; i<8; i++) {
-			for (int j = 0; j<8; j++) {
-				Piece piece = list.get(i,j);
-				if(piece.player!=player){
-					piece.projectCourse(i, j, list);
-					for(Integer[] integers: piece.courses){
-						for(Integer[] integers1: courses){
-							if(integers == integers1){
-								courses.remove(integers);
-							}
+		//Castling
+		if(canCastle) {
+			if (list.get(row, column - 4).canCastle) {
+				if (list.get(row, column - 1) == EMPTY_PIECE)
+					if (list.get(row, column - 2) == EMPTY_PIECE)
+						if (list.get(row, column - 3) == EMPTY_PIECE) {
+							Integer[] coordinates = {row, column - 2};
+							courses.add(coordinates);
+						}
+			}
+			if (list.get(row, column + 3).canCastle) {
+				if (list.get(row, column + 1) == EMPTY_PIECE)
+					if (list.get(row, column + 2) == EMPTY_PIECE) {
+						Integer[] coordinates = {row, column + 2};
+						courses.add(coordinates);
+					}
+			}
+		}
+	}
+	/**
+	 * Call only when checking king for moves that check it.
+	 * Basically, tells the king it can't go to these spaces
+	 * @param piece current piece checking
+	 * @param i Row of piece
+	 * @param j Column of piece
+	 */
+	void removeThreateningPieces(Piece piece, int i, int j){
+		for(Integer[] integers: piece.courses){
+			for(Integer[] integers1: courses){
+				if(integers[0] == integers1[0] && integers[1] == integers1[1] && (integers[0]!=i||integers[1]!=j)){
+					for(int k = 0; k<courses.size(); k++){
+						if(Arrays.equals(courses.get(k), integers)){
+							courses.remove(k);
+							removeThreateningPieces(piece, i, j);
+							return;
 						}
 					}
 				}
+			}
+		}
+	}
+
+	/**
+	 * ONLY project's diagonals for a pawn.
+	 * Use to prevent a king entering check
+	 */
+	void projectPawnDiagonals(int row, int column){
+		courses = new ArrayList<>();
+		if(moveUp) {
+			if (column != 0 && column != 8) {
+				Integer[] coordinates = {row - 1, column + 1};
+				courses.add(coordinates);
+				Integer[] coordinates1 = {row - 1, column - 1};
+				courses.add(coordinates1);
+			}else if(column==0){
+				Integer[] coordinates = {row - 1, column + 1};
+				courses.add(coordinates);
+			}else if(column==8){
+				Integer[] coordinates = {row - 1, column - 1};
+				courses.add(coordinates);
+			}
+		}else{
+			if (column != 0 && column != 8) {
+				Integer[] coordinates = {row + 1, column + 1};
+				courses.add(coordinates);
+				Integer[] coordinates1 = {row + 1, column - 1};
+				courses.add(coordinates1);
+			}else if(column==0){
+				Integer[] coordinates = {row + 1, column + 1};
+				courses.add(coordinates);
+			}else if(column==8){
+				Integer[] coordinates = {row + 1, column - 1};
+				courses.add(coordinates);
 			}
 		}
 	}
@@ -379,5 +490,21 @@ public class Piece {
 
 	public boolean isDoubleMove() {
 		return doubleMove;
+	}
+
+	public ArrayList<Integer[]> getCourses() {
+		return courses;
+	}
+
+	public boolean isCanCastle() {
+		return canCastle;
+	}
+
+	public void setCanCastle(boolean canCastle) {
+		this.canCastle = canCastle;
+	}
+
+	public void setDoubleMove(boolean doubleMove) {
+		this.doubleMove = doubleMove;
 	}
 }

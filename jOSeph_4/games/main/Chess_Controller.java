@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.Stack;
@@ -38,6 +39,10 @@ public class Chess_Controller implements Initializable{
 	private final int COLUMNS = 8;
 
 	private DualList<Piece> list = new DualList<>(ROWS, COLUMNS);
+	private Piece selected = null;
+	private int selectedRow = -1;
+	private int selectedColumn = -1;
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -133,14 +138,178 @@ public class Chess_Controller implements Initializable{
 		}
 		if(column==-1 || row==-1) return;
 
-		if(list.get(row, column)== Piece.EMPTY_PIECE) return;
+		Piece thisPiece = list.get(row, column);
+
+		//If click on blank space
+		if(thisPiece == Piece.EMPTY_PIECE && selected==null) return;
+
+		//If click on wrong player
+		if(thisPiece.getPlayer()==controller.otherPlayer(controller.getPlayer()) && selected==null) return;
+
+		if(selected==null){
+			selected = thisPiece;
+			selectedColumn = column;
+			selectedRow = row;
+		}else{
+			if(thisPiece.getPlayer()==controller.getPlayer()){
+				selected = thisPiece;
+				selectedColumn = column;
+				selectedRow = row;
+				return;
+			}
+			if(thisPiece==Piece.EMPTY_PIECE || thisPiece.getPlayer()==controller.otherPlayer(controller.getPlayer())){
+				selected.projectCourse(selectedRow, selectedColumn, list);
+				for(Integer[] i: selected.getCourses()){
+					if(row == i[0] && column == i[1]){
+						//WHAT TO DO IF YOU CAN MOVE TO THE PIECE YOU TRY TO:
 
 
+						//For en-passe
+						if(selected.getType()==PAWN && thisPiece==Piece.EMPTY_PIECE && modulus(row-selectedRow)==1 && modulus(column-selectedColumn)==1) list.set(Piece.EMPTY_PIECE, selectedRow, column);
+						//For castling
+						if(selected.getType()==KING && thisPiece==Piece.EMPTY_PIECE && modulus(column-selectedColumn)==2){
+							Piece castle = list.get(row, column-2);
+							//If the 'rook' is not actually a rook, it's the wrong side, so swaps to the other rook
+							if(castle.getType()==KING){
+								castle = list.get(row, column+1);
+								list.set(castle, row, column-1);
+								list.set(Piece.EMPTY_PIECE, row, column+1);
+							}else{
+								castle = list.get(row, column-2);
+								list.set(castle, row, column+1);
+								list.set(Piece.EMPTY_PIECE, row, column-2);
+							}
+						}
+
+						//Check for check (pun intended)
+						Piece king = null;
+						int kingRow = -1;
+						int kingColumn = -1;
+						if(testCheck(king, kingRow, kingColumn))
+							if(testCheckmate(king, kingRow, kingColumn)){
+								if(controller.player1()) controller.setTitle("Black checkmated");
+								if(controller.player2()) controller.setTitle("White checkmated");
+								canClick=false;
+							}
+
+
+						list.set(selected, row, column);
+						list.set(Piece.EMPTY_PIECE, selectedRow, selectedColumn);
+						selected.nextTurn();
+						if(selected.getType()==KING || selected.getType()==ROOK) selected.setCanCastle(false);
+						if(selected.getType()==PAWN && modulus(row-selectedRow)==2) selected.setDoubleMove(true);
+
+						if(selected.getType()==PAWN && (row==7 || row==0)) list.set(new Piece(QUEEN, controller.getPlayer()), row, column);
+
+
+						selectedRow = -1;
+						selectedColumn = -1;
+						selected = null;
+						controller.swap();
+						break;
+					}
+				}
+			}
+		}
+		refresh();
+	}
+
+	private boolean testCheck(Piece king, int kingRow, int kingColumn){
+		for(int j = 0; j<8; j++) {
+			for (int k = 0; k < 8; k++) {
+				if(list.get(j,k).getType()==KING && list.get(j,k).getPlayer()!=controller.getPlayer())
+					king = list.get(j, k);
+				kingRow = j;
+				kingColumn = k;
+			}
+		}
+		for(int j = 0; j<8; j++) {
+			for (int k = 0; k<8; k++) {
+				Piece piece = list.get(j,k);
+				if(piece.getPlayer()!=king.getPlayer()){
+					//To prevent a loop
+					if(piece.getType()==Piece_Type.KING)
+						piece.projectKingWithoutCheckConcern(j, k, list);
+						//To ensure pawn diagonals are not stepped onto (and forwards can be)
+					else if(piece.getType()==Piece_Type.PAWN)
+						piece.projectPawnDiagonals(j, k);
+					else piece.projectCourse(j, k, list);
+
+					for(Integer[] integers: piece.getCourses()){
+						//If in check
+						if(integers[0]==kingRow && integers[1]==kingColumn){
+							if(controller.player1()) controller.setTitle("Black checked");
+							if(controller.player2()) controller.setTitle("White checked");
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Checks for checkmate by mapping every move and seeing if it's still in check
+	 * @param king
+	 * @param kingRow
+	 * @param kingColumn
+	 */
+	private boolean testCheckmate(Piece king, int kingRow, int kingColumn){
+		for(int j = 0; j<8; j++) {
+			for (int k = 0; k<8; k++) {
+				Piece piece = list.get(j,k);
+				if(piece.getPlayer()==king.getPlayer()){
+					//No chance of loop with king, so can remove
+
+					//Pawn check is also not necessary as it's the pawn moving
+					piece.projectCourse(j, k, list);
+
+					for(Integer[] integers: piece.getCourses()){
+						DualList<Piece> dupeList = list;
+						//Act's as if the move was made to test for check
+
+						//For en-passe
+						if(selected.getType()==PAWN && piece==Piece.EMPTY_PIECE && modulus(j-selectedRow)==1 && modulus(k-selectedColumn)==1) dupeList.set(Piece.EMPTY_PIECE, selectedRow, k);
+						//For castling
+						if(selected.getType()==KING && piece==Piece.EMPTY_PIECE && modulus(k-selectedColumn)==2){
+							Piece castle = dupeList.get(j, k-2);
+							//If the 'rook' is not actually a rook, it's the wrong side, so swaps to the other rook
+							if(castle.getType()==KING){
+								castle = dupeList.get(j, k+1);
+								dupeList.set(castle, j, k-1);
+								dupeList.set(Piece.EMPTY_PIECE, j, k+1);
+							}else{
+								castle = dupeList.get(j, k-2);
+								dupeList.set(castle, j, k+1);
+								dupeList.set(Piece.EMPTY_PIECE, j, k-1);
+							}
+						}
+
+
+						dupeList.set(selected, j, k);
+						dupeList.set(Piece.EMPTY_PIECE, selectedRow, selectedColumn);
+						selected.nextTurn();
+						if(selected.getType()==PAWN && (j==7 || j==0)) dupeList.set(new Piece(QUEEN, controller.getPlayer()), j, k);
+
+						Piece king1 = null;
+						int kingRow1 = -1;
+						int kingColumn1 = -1;
+						if(!testCheck(king1, kingRow1, kingColumn1)) return false;
+					}
+				}
+			}
+		}
+		return true;
 	}
 
 	@FXML
 	void onResetPressed() {
 		setDefaultPlaces();
+		selectedRow = -1;
+		selectedColumn = -1;
+		selected = null;
+		if(controller.player2()) controller.swap();
 	}
 
 	@FXML
@@ -175,5 +344,11 @@ public class Chess_Controller implements Initializable{
 		}
 		return null;
 	}
+
+	private int modulus(int i){
+		if(i<0) return -i;
+		return i;
+	}
+
 
 }
