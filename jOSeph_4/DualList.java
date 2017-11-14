@@ -152,4 +152,26 @@ public class DualList<E> extends List {
 		if (noColumns==1024) throw new NullPointerException();
 		return noColumns;
 	}
+
+	/**
+	 * Creates a clone
+	 */
+	public DualList<E> duplicate(){
+		DualList<E> list = new DualList<>();
+		list.noColumns = noColumns;
+		list.noRows = noRows;
+
+		ArrayList<ArrayList<E>> newRows = new ArrayList<>();
+
+		for(ArrayList<E> row: rows){
+			ArrayList<E> newRow = new ArrayList<>();
+			for(E element: row){
+				newRow.add(element);
+			}
+			newRows.add(newRow);
+		}
+		list.rows = newRows;
+
+		return list;
+	}
 }

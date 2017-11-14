@@ -341,34 +341,6 @@ public class Piece {
 		projectBishop(row, column, list);
 	}
 	private void projectKing(int row, int column, DualList<Piece> list){
-		projectKingWithoutCheckConcern(row, column, list);
-
-		//Ensure you can't move to check
-		for(int i = 0; i<8; i++) {
-			for (int j = 0; j<8; j++) {
-				Piece piece = list.get(i,j);
-				if(piece.player!=player){
-					//To prevent a loop
-					if(piece.getType()==Piece_Type.KING)
-						piece.projectKingWithoutCheckConcern(i, j, list);
-					//To ensure pawn diagonals are not stepped onto (and forwards can be)
-					else if(piece.getType()==Piece_Type.PAWN)
-						piece.projectPawnDiagonals(i, j);
-					else piece.projectCourse(i, j, list);
-
-					removeThreateningPieces(piece, i, j);
-
-				}
-			}
-		}
-	}
-	/**
-	 * Like normal, but ignores whether the move will put it into check
-	 * @param row
-	 * @param column
-	 * @param list
-	 */
-	void projectKingWithoutCheckConcern(int row, int column, DualList<Piece> list){
 		courses = new ArrayList<>();
 		for(int i = -1; i<2; i++){
 			for(int j = -1; j<2; j++){
@@ -397,28 +369,6 @@ public class Piece {
 						Integer[] coordinates = {row, column + 2};
 						courses.add(coordinates);
 					}
-			}
-		}
-	}
-	/**
-	 * Call only when checking king for moves that check it.
-	 * Basically, tells the king it can't go to these spaces
-	 * @param piece current piece checking
-	 * @param i Row of piece
-	 * @param j Column of piece
-	 */
-	void removeThreateningPieces(Piece piece, int i, int j){
-		for(Integer[] integers: piece.courses){
-			for(Integer[] integers1: courses){
-				if(integers[0] == integers1[0] && integers[1] == integers1[1] && (integers[0]!=i||integers[1]!=j)){
-					for(int k = 0; k<courses.size(); k++){
-						if(Arrays.equals(courses.get(k), integers)){
-							courses.remove(k);
-							removeThreateningPieces(piece, i, j);
-							return;
-						}
-					}
-				}
 			}
 		}
 	}
