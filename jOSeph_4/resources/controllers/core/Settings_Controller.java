@@ -31,6 +31,14 @@ public class Settings_Controller implements Initializable{
 	}
 	@FXML
 	void onPressOk(){
+		StringBuilder text = new StringBuilder();
+		for(int i = 0; i<username.getText().toCharArray().length; i++){
+			if(username.getText().toCharArray()[i]!=' '){
+				text.append(username.getText().toCharArray()[i]);
+			}
+		}
+		username.setText(text.toString());
+
 		if(usernameChanged()) {
 			for (String key : Variable.getDatabase().keySet()) {
 				if (!key.equals(Variable.getUser())) {

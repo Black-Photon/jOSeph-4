@@ -69,7 +69,7 @@ public class Load_Controller implements Initializable{
 		timeline.play();
 
 		//Exits load sequence
-		timeline.setOnFinished(e-> Main.coreProgramStart());
+		timeline.setOnFinished(e-> skip());
 
 	}
 

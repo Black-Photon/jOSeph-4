@@ -22,14 +22,6 @@ public class Logon_Controller {
 		String userText = username.getText();
 		String passText = password.getText();
 
-		//TODO Temp Admin shortcut for development. Remove in finished app
-		if(username.getText().equals("a")){
-			Variable.setUser("Guest");
-			Main.startLoad();
-		}else
-		//End Temp Section
-
-
 		if(Password.isPasswordCorrect(userText,passText)){
 			Variable.setUser(userText);
 			Main.startLoad();

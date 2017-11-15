@@ -43,7 +43,7 @@ public class Main extends Application{
 		});
 		Variable.getWindow().getIcons().add(new Image("jOSeph_4/resources/images/BasicLogo.png"));
 
-		new Launcher().start();
+		Main.createWindow("Launcher.fxml",Variable.getWindow(), "jOSeph " + Variable.getVersionObject().versionToString());
 		Variable.getWindow().show();
 	}
 
@@ -52,14 +52,16 @@ public class Main extends Application{
 	 * @throws IOException
 	 */
 	public static void startLoad() throws IOException{
-		new Load().start();
+		Main.createWindow("Load.fxml", Variable.getWindow(), "Loading...");
 	}
 
 	/**
 	 * Start's Core
 	 */
 	public static void coreProgramStart(){
-		new Core().start();
+		//Twice to prevent glitch
+		Main.createWindow("Core.fxml",Variable.getWindow(),"jOSeph " + Variable.getVersionObject().versionToString());
+		Main.createWindow("Core.fxml",Variable.getWindow(),"jOSeph " + Variable.getVersionObject().versionToString());
 	}
 
 	/**

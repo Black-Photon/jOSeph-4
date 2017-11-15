@@ -9,5 +9,4 @@ public class Settings extends CorePane{
 	public Pane getPane() throws IOException {
 		return super.getPane("Settings.fxml");
 	}
-	//TODO check if spaces work
 }

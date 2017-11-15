@@ -1,6 +1,5 @@
 package jOSeph_4.resources.controllers;
 
-import jOSeph_4.Logon;
 import jOSeph_4.Main;
 import jOSeph_4.Variable;
 import javafx.fxml.FXML;
@@ -16,7 +15,7 @@ public class Launcher_Controller implements Initializable{
 
 	@FXML
 	public void login() throws Exception{
-		new Logon().start();
+		Main.createWindow("Logon.fxml", Variable.getWindow(), "Login");
 	}
 	@FXML
 	public void quit(){

@@ -212,28 +212,31 @@ public class Piece {
 
 			//If the piece to side is a pawn which just double-moved, move diagonally
 			if(column==0){
-				if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column+1).doubleMove){
+				if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column+1).doubleMove && list.get(row, column+1).player==otherPlayer(player)){
 					if(list.get(row+1, column+1)==Piece.EMPTY_PIECE && list.get(row+1, column+1).player!=player){
 						Integer[] coordinates = {row+1, column+1};
 						courses.add(coordinates);
 					}
 				}
 			}else if(column==7){
-				if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
+				if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove && list.get(row, column-1).player==otherPlayer(player)){
 					if(list.get(row+1, column-1)==Piece.EMPTY_PIECE && list.get(row+1, column-1).player!=player){
 						Integer[] coordinates = {row+1, column-1};
 						courses.add(coordinates);
 					}
 				}
-			}else if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
-				if(list.get(row+1, column-1)==Piece.EMPTY_PIECE && list.get(row+1, column-1).player!=player){
-					Integer[] coordinates = {row+1, column-1};
-					courses.add(coordinates);
+			}else{
+				if(list.get(row, column-1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove && list.get(row, column-1).player==otherPlayer(player)) {
+					if (list.get(row + 1, column - 1) == Piece.EMPTY_PIECE && list.get(row + 1, column - 1).player != player) {
+						Integer[] coordinates = {row + 1, column - 1};
+						courses.add(coordinates);
+					}
 				}
-			}else if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column-1).doubleMove){
-				if(list.get(row+1, column+1)==Piece.EMPTY_PIECE && list.get(row+1, column+1).player!=player){
-					Integer[] coordinates = {row+1, column+1};
-					courses.add(coordinates);
+				if(list.get(row, column+1).type==Piece_Type.PAWN && list.get(row, column+1).doubleMove && list.get(row, column+1).player==otherPlayer(player)){
+					if(list.get(row+1, column+1)==Piece.EMPTY_PIECE && list.get(row+1, column+1).player!=player){
+						Integer[] coordinates = {row+1, column+1};
+						courses.add(coordinates);
+					}
 				}
 			}
 		}
@@ -354,7 +357,7 @@ public class Piece {
 		}
 
 		//Castling
-		if(canCastle) {
+		if(canCastle && column==4) {
 			if (list.get(row, column - 4).canCastle) {
 				if (list.get(row, column - 1) == EMPTY_PIECE)
 					if (list.get(row, column - 2) == EMPTY_PIECE)
@@ -411,6 +414,22 @@ public class Piece {
 	private int modulus(int i){
 		if(i<0) return -i;
 		return i;
+	}
+
+	/**
+	 *
+	 * @param player
+	 * @return
+	 * @throws NullPointerException if the player is not Player 1 or Player 2
+	 */
+	public Player otherPlayer(Player player){
+		if(player == Player.PLAYER1){
+			return Player.PLAYER2;
+		}
+		if(player == Player.PLAYER2){
+			return Player.PLAYER1;
+		}
+		throw new NullPointerException();
 	}
 
 

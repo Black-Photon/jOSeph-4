@@ -37,15 +37,15 @@ public class Version {
 	/**
 	 * Stability - Eg. Unstable, stable, fairly stable ect.
 	 */
-	private String stability = "Fairly Stable";
+	private String stability = "Mostly Stable";
 	/**
 	 * Version to 4 sig figs - eg. 4.1.2.9
 	 */
-	private int[] version = {4,1,3,0};
+	private int[] version = {4,2,0,0};
 	/**
 	 * Release type: Alpha, Beta, Pre-Release, Release
 	 */
-	private String release = "Alpha";
+	private String release = "Beta";
 
 	public String getStability() {
 		return stability;

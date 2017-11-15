@@ -202,7 +202,7 @@ public class Chess_Controller implements Initializable{
 						DualList<Piece> dupeList = list.duplicate();
 
 						//Makes the move in a dummy environment
-						performSpecial(thisPiece, row, column);
+						performSpecial(thisPiece, row, column, dupeList);
 						dupeList.set(selected, row, column);
 						dupeList.set(Piece.EMPTY_PIECE, selectedRow, selectedColumn);
 						if(selected.getType()==PAWN && (row==7 || row==0)) dupeList.set(new Piece(QUEEN, controller.getPlayer()), row, column);
@@ -212,7 +212,7 @@ public class Chess_Controller implements Initializable{
 						if(isInCheck(controller.getPlayer(), kingCoords, dupeList)){
 							return;
 						}else if(isInCheck(controller.otherPlayer(controller.getPlayer()), otherKingCoords, dupeList)){
-							if(isInCheckmate(controller.otherPlayer(controller.getPlayer()), otherKingCoords)){
+							if(isInCheckmate(controller.otherPlayer(controller.getPlayer()), otherKingCoords, dupeList)){
 								if(controller.player1()) showText = "White's Checkmate";
 								if(controller.player2()) showText = "Black's Checkmate";
 								canClick = false;
@@ -230,7 +230,8 @@ public class Chess_Controller implements Initializable{
 						selectedRow = -1;
 						selectedColumn = -1;
 						selected = null;
-						controller.swap();
+						//Prevent swapping for a checkmate
+						if(canClick) controller.swap();
 						if(showText!=null) controller.setTitle(showText);
 						showText = null;
 						break;
@@ -249,15 +250,11 @@ public class Chess_Controller implements Initializable{
 				//Ignore if it's the current players piece
 				//Or only check if it's an enemy piece
 				if(piece.getPlayer()==controller.otherPlayer(player)) {
-					if(piece.getType()==KING && piece.isCanCastle()) {
-						piece.setCanCastle(false);
-						piece.projectCourse(i, j, list);
-						piece.setCanCastle(true);
-					}else piece.projectCourse(i, j, list);
+					piece.projectCourse(i, j, list);
 					if(piece.getType()==PAWN) piece.projectPawnDiagonals(i, j);
 					//For each possible move
 					for (Integer[] course : piece.getCourses()) {
-						if (course[0].equals(kingCoords[0]) && course[1].equals(kingCoords[1]))
+						if (course[0].equals(kingCoords[0]) && course[1].equals(kingCoords[1])) //The king can move to block it's last position
 						return true;
 					}
 				}
@@ -266,7 +263,7 @@ public class Chess_Controller implements Initializable{
 		return false;
 	}
 
-	private boolean isInCheckmate(Player player, Integer[] kingCoords){
+	private boolean isInCheckmate(Player player, Integer[] kingCoords, DualList<Piece> list){
 		//Duplicates the list to test on
 		DualList<Piece> dupeList = list.duplicate();
 
@@ -289,15 +286,30 @@ public class Chess_Controller implements Initializable{
 						selectedRow = i;
 						selectedColumn = j;
 
-						performSpecial(dupeList.get(course[0], course[1]), course[0], course[1]);
+						performSpecial(dupeList.get(course[0], course[1]), course[0], course[1], dupeList);
 						dupeList.set(selected, course[0], course[1]);
 						dupeList.set(Piece.EMPTY_PIECE, selectedRow, selectedColumn);
-						if(selected.getType()==KING || selected.getType()==ROOK) selected.setCanCastle(false);
-						if(selected.getType()==PAWN && modulus(course[0]-selectedRow)==2) selected.setDoubleMove(true);
 
 						if(selected.getType()==PAWN && (course[0]==7 || course[0]==0)) dupeList.set(new Piece(QUEEN, controller.getPlayer()), course[0], course[1]);
 
+						Integer[] newKingCoords = {-1,-1};
 
+						//In case the king moves - So the king can't block itself
+						if(piece.getType()==KING){
+							newKingCoords[0] = course[0];
+							newKingCoords[1] = course[1];
+						}
+
+						if(newKingCoords[0]!=-1 && newKingCoords[1]!=-1){
+							if(!isInCheck(player, newKingCoords, dupeList)){
+								selected = tempSelected;
+								selectedRow = tempSelectedRow;
+								selectedColumn = tempSelectedColumn;
+								return false;
+							}
+							newKingCoords[0] = -1;
+							newKingCoords[1] = -1;
+						} else
 						if(!isInCheck(player, kingCoords, dupeList)){
 							selected = tempSelected;
 							selectedRow = tempSelectedRow;
@@ -320,7 +332,7 @@ public class Chess_Controller implements Initializable{
 	 * @param row Row clicked on
 	 * @param column column clicked on
 	 */
-	private void performSpecial(Piece thisPiece, int row, int column){
+	private void performSpecial(Piece thisPiece, int row, int column, DualList<Piece> list){
 		//For en-passe
 		if(selected.getType()==PAWN && thisPiece==Piece.EMPTY_PIECE && modulus(row-selectedRow)==1 && modulus(column-selectedColumn)==1) list.set(Piece.EMPTY_PIECE, selectedRow, column);
 		//For castling
@@ -347,6 +359,7 @@ public class Chess_Controller implements Initializable{
 		selected = null;
 		if(controller.player2()) controller.swap();
 		canClick = true;
+		controller.setTitle("White's Turn");
 	}
 
 	@FXML

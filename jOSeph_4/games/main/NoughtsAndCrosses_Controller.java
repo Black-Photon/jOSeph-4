@@ -96,6 +96,11 @@ public class NoughtsAndCrosses_Controller implements Initializable{
 		winner=NONE;
 
 		if(controller.player2()) controller.swap();
+		//Reset's title
+		if(controller.player1()){
+			controller.swap();
+			controller.swap();
+		}
 	}
 
 	/**

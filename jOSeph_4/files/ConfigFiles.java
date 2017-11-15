@@ -62,9 +62,10 @@ public class ConfigFiles extends Files {
 	 * @param data To add
 	 */
 	void addDefaultConfigData(HashMap<String,String> data){
-		data.put("Ele20002", Encryption.hashEncrypt("Triangle"));
 		data.put("Guest", Encryption.hashEncrypt("Admin"));
-		data.put("Tom", Encryption.hashEncrypt("Tom"));
+		data.put("User1", Encryption.hashEncrypt("password1"));
+		data.put("User2", Encryption.hashEncrypt("password2"));
+		data.put("User3", Encryption.hashEncrypt("password3"));
 	}
 
 	/**
