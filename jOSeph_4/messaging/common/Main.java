@@ -31,6 +31,9 @@ public class Main {
 	public static void createWindow(String location, Stage window, String title){
 		windows.createWindow(location, window, title,"jOSeph_4/messaging/resources/fxml/");
 	}
+	public static void createWindowElsewhere(String location, Stage window, String title){
+		windows.createWindow(location, window, title,"");
+	}
 
 	//Getters and Setters
 	public static String getSpecialCode() {

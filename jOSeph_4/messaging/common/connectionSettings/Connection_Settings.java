@@ -29,7 +29,7 @@ public class Connection_Settings extends messageBoxes {
 	 * @return Data given by the message. The first element indicates if it was successful - True means successful
 	 */
 	public ArrayList<Object> createResponseBox(){
-		String startLocation = "../../../messaging/resources/fxml/";
+		String startLocation = "jOSeph_4/messaging/resources/fxml/";
 
 		//Get's data
 		if(Start.getSide()== Sides.CLIENT)
@@ -37,7 +37,7 @@ public class Connection_Settings extends messageBoxes {
 		else
 		if(Start.getSide()==Sides.SERVER)
 			fileName = startLocation + "Connection_Server_Settings.fxml";
-		showModalWindow();
+		showModalWindowElsewhere();
 
 		//Analyses data
 		if(data==null){

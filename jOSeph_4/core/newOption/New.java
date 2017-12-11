@@ -45,7 +45,7 @@ public class New extends CorePane{
 		New_Controller.preInitialize(version, info);
 	}
 	private BorderPane getTabContents() throws IOException{
-		BorderPane root = FXMLLoader.load(getClass().getResource("../../resources/fxml/core/New.fxml"));
+		BorderPane root = FXMLLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/core/New.fxml"));
 		return root;
 	}
 

@@ -27,7 +27,9 @@ public class Windows {
 	public void createWindow(String location, Stage window, String title, String startLocation){
 		try {
 			//Set's scene to that given by a FXML file and set's the title
-			URL classLocation = getClass().getClassLoader().getResource(startLocation + location);
+			String fullLocation = startLocation + location;
+			System.out.println(fullLocation);
+			URL classLocation = getClass().getClassLoader().getResource(fullLocation);
 			if(classLocation==null) throw new NullPointerException("FXML file could not be found");
 			Parent root = FXMLLoader.load(classLocation);
 			Scene scene = new Scene(root);

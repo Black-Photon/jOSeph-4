@@ -88,6 +88,12 @@ public abstract class messageBoxes {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 	}
+
+	public void showModalWindowElsewhere(){
+		createWindowElsewhere();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
+	}
 	/**
 	 * Set's up the window without showing it
 	 * Passes the current object as parameters
@@ -140,6 +146,55 @@ public abstract class messageBoxes {
 			URL classLocation = getClass().getClassLoader().getResource("jOSeph_4/messageBoxes/resources/fxml/"+fileName);
 			if(classLocation==null) throw new NullPointerException("FXML file could not be found");
 			Parent root = FXMLLoader.load(classLocation, resources);
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle(title);
+		}catch(IOException e){ //Thrown by FXMLLoader.load();
+			new Error("sourceFiles.Error #0000: Can't create window").showModalWindow();
+			e.printStackTrace();
+		}
+	}
+
+	protected void createWindowElsewhere(){
+		try {
+			//Set's scene to that given by a FXML file and set's the title
+			URL classLocation = getClass().getClassLoader().getResource(fileName);
+			if(classLocation==null) throw new NullPointerException("FXML file could not be found");
+			Parent root = FXMLLoader.load(classLocation, new ResourceBundle() {
+				/**
+				 * Should be "this" for this object
+				 * @param key What data to retrieve
+				 * @return The Object relating to the key
+				 */
+				@Override
+				protected Object handleGetObject(String key) {
+					if(key.equals("this")){
+						return thisObject;
+					}
+					return null;
+				}
+
+				@Override
+				public Enumeration<String> getKeys() {
+					Enumeration<String> enumeration = new Enumeration<String>() {
+						private String[] elements = {"this"};
+						private int count = 0;
+
+						@Override
+						public boolean hasMoreElements() {
+							if(count<elements.length) return true;
+							return false;
+						}
+
+						@Override
+						public String nextElement() {
+							count++;
+							return elements[count-1];
+						}
+					};
+					return enumeration;
+				}
+			});      //Resources basically contains this object in a convoluted way. Supports extra info
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.setTitle(title);

@@ -21,7 +21,7 @@ public class Notes extends CorePane {
 	 * @throws IOException
 	 */
 	private BorderPane getNotes() throws IOException {
-		BorderPane root = FXMLLoader.load(getClass().getResource("../resources/fxml/core/Notes.fxml"));
+		BorderPane root = FXMLLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/core/Notes.fxml"));
 		return root;
 	}
 }

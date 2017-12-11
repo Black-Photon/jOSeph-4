@@ -102,7 +102,7 @@ public class Messaging_Controller implements Initializable{
 		refresh();
 	}
 	@FXML void onPressBack(){
-		Main.createWindow("../../../resources/fxml/Core.fxml", Variable.getWindow(), "Messaging");
+		Main.createWindowElsewhere("jOSeph_4/resources/fxml/Core.fxml", Variable.getWindow(), "Messaging");
 	}
 
 

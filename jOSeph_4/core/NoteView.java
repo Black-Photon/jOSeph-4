@@ -14,7 +14,7 @@ public class NoteView{
 
 	public void createNoteView(File file) throws IOException{
 		NoteView_Controller.setFile(file);
-		BorderPane root = FXMLLoader.load(getClass().getResource("../resources/fxml/core/NoteView.fxml"));
+		BorderPane root = FXMLLoader.load(getClass().getClassLoader().getResource("jOSeph_4/resources/fxml/core/NoteView.fxml"));
 		stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle(file.getName());
